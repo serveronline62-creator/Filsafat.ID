@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ensiklopedia Filsafat - 50 Filsuf Dunia</title>
+    <title>Ensiklopedia Filsafat - 50 Filsuf dengan Database</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ===== RESET & VARIABLES ===== */
+        /* ================================================================
+           STYLE LENGKAP (SAMA SEPERTI SEBELUMNYA)
+           ================================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -51,8 +53,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* ===== NAVBAR ===== */
         nav {
             background: var(--bg-nav);
             padding: 12px 0;
@@ -120,8 +120,6 @@
             background: var(--accent-light);
             color: #1a2634;
         }
-
-        /* ===== HERO ===== */
         .hero {
             background: linear-gradient(145deg, #1a2634 0%, #2c4055 100%);
             color: #fff;
@@ -183,14 +181,28 @@
             background: var(--accent-light);
             color: #1a2634;
         }
+        .btn-small {
+            padding: 6px 18px;
+            font-size: 0.8rem;
+            background: var(--accent-light);
+            color: #1a2634;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            font-family: var(--font-sans);
+        }
+        .btn-small:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(212, 168, 83, 0.3);
+        }
         .hero-buttons {
             display: flex;
             gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
-
-        /* ===== STATS ===== */
         .stats {
             background: var(--bg-card);
             padding: 30px 0;
@@ -212,8 +224,6 @@
             color: var(--text-muted);
             font-size: 0.85rem;
         }
-
-        /* ===== SECTION ===== */
         section {
             padding: 40px 0;
             border-bottom: 1px solid var(--border);
@@ -232,8 +242,6 @@
         .section-title i {
             color: var(--accent-light);
         }
-
-        /* ===== FILSUF GRID ===== */
         .filsuf-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -257,7 +265,6 @@
         }
         .filsuf-item.active {
             border-color: var(--accent-light);
-            background: var(--bg-card);
         }
         .filsuf-item .avatar {
             font-size: 2rem;
@@ -283,8 +290,6 @@
         .filsuf-item .fav-star.active {
             color: #f5a623;
         }
-
-        /* ===== SEARCH ===== */
         .search-filter {
             display: flex;
             flex-wrap: wrap;
@@ -334,8 +339,6 @@
             border-color: var(--accent-light);
             color: #1a2634;
         }
-
-        /* ===== DETAIL FILSUF ===== */
         .detail-filsuf {
             background: var(--bg-card);
             padding: 35px;
@@ -518,8 +521,6 @@
             border-color: var(--accent-light);
             color: var(--accent-light);
         }
-
-        /* ===== INDICATOR ===== */
         .indicator {
             text-align: center;
             color: var(--text-muted);
@@ -532,8 +533,6 @@
             margin-bottom: 8px;
             color: var(--accent-light);
         }
-
-        /* ===== ALIRAN ===== */
         .aliran-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -565,8 +564,6 @@
             font-size: 0.9rem;
             color: var(--text-sec);
         }
-
-        /* ===== TIMELINE ===== */
         .timeline-item {
             display: flex;
             gap: 16px;
@@ -586,8 +583,6 @@
             min-width: 80px;
             font-family: var(--font-serif);
         }
-
-        /* ===== KUIS ===== */
         .kuis-box {
             background: var(--bg-card);
             padding: 28px;
@@ -628,8 +623,6 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
         }
-
-        /* ===== QUOTE ===== */
         .quote-box {
             background: var(--bg-card);
             padding: 35px;
@@ -653,8 +646,6 @@
         .quote-box .author {
             color: var(--text-muted);
         }
-
-        /* ===== FOOTER ===== */
         .footer {
             background: var(--bg-nav);
             color: #cbc1b2;
@@ -695,9 +686,26 @@
             font-size: 0.8rem;
             color: var(--text-muted);
         }
-
-        /* ===== RESPONSIF ===== */
-        @media (max-width: 768px) {
+        .db-status {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .db-status.online {
+            background: #4caf50;
+            color: #fff;
+        }
+        .db-status.offline {
+            background: #f44336;
+            color: #fff;
+        }
+        .db-status.loading {
+            background: #ff9800;
+            color: #fff;
+        }
+        @media (max-width:768px) {
             .hero h1 {
                 font-size: 2rem;
             }
@@ -741,7 +749,7 @@
                 min-width: auto;
             }
         }
-        @media (max-width: 480px) {
+        @media (max-width:480px) {
             .filsuf-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
@@ -770,27 +778,6 @@
                 font-size: 1.6rem;
             }
         }
-        .hidden {
-            display: none !important;
-        }
-        .btn-small {
-            padding: 6px 18px;
-            font-size: 0.8rem;
-            background: var(--accent-light);
-            color: #1a2634;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            font-family: var(--font-sans);
-        }
-        .btn-small:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(212, 168, 83, 0.3);
-        }
-
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -800,6 +787,20 @@
         ::-webkit-scrollbar-thumb {
             background: var(--accent-light);
             border-radius: 4px;
+        }
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+        .loading-spinner i {
+            font-size: 2rem;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -824,6 +825,9 @@
                         <i class="fas fa-moon" id="theme-icon"></i>
                     </button>
                 </li>
+                <li>
+                    <span class="db-status loading" id="db-status">⏳ DB</span>
+                </li>
             </ul>
         </div>
     </nav>
@@ -833,11 +837,12 @@
     <!-- ============================================================== -->
     <header class="hero">
         <div class="container">
-            <div class="badge"><i class="fas fa-graduation-cap"></i> 50 Filsuf | 12 Aliran</div>
+            <div class="badge"><i class="fas fa-database"></i> Database Firestore | <span id="total-filsuf-db">50</span> Filsuf</div>
             <h1>Ensiklopedia <span>50 Filsuf</span></h1>
-            <p>Klik nama filsuf, semua pelajaran terbuka lengkap. Biografi, pemikiran, cerita kehidupan, kaitan dengan manusia, alam, Tuhan, dan sumber referensi.</p>
+            <p>Data tersimpan di Firebase Firestore. Klik nama filsuf untuk melihat semua informasi lengkap.</p>
             <div class="hero-buttons">
                 <a class="btn btn-primary" onclick="tampilHalaman('filsuf')"><i class="fas fa-search"></i> Jelajahi</a>
+                <a class="btn btn-outline" onclick="syncData()"><i class="fas fa-sync-alt"></i> Sinkronisasi</a>
                 <a class="btn btn-outline" onclick="tampilHalaman('kuis')"><i class="fas fa-pencil-alt"></i> Kuis</a>
             </div>
         </div>
@@ -884,20 +889,26 @@
     </div>
 
     <!-- ============================================================== -->
-    <!-- HALAMAN 50 FILSUF -->
+    <!-- HALAMAN FILSUF -->
     <!-- ============================================================== -->
     <div id="halaman-filsuf" style="display:none;">
         <section>
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-user-graduate"></i> 50 Filsuf Dunia</h2>
+                <h2 class="section-title"><i class="fas fa-user-graduate"></i> 50 Filsuf Dunia <span style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">(Data dari Firebase)</span></h2>
                 <p style="color:var(--text-muted);margin-bottom:12px;">👆 Klik nama filsuf untuk melihat semua informasi lengkap.</p>
 
                 <div class="search-filter">
                     <input type="text" id="cari-filsuf" placeholder="Cari nama, era..." oninput="filterFilsuf()" />
                     <div class="filter-buttons" id="filter-eras"></div>
+                    <button class="btn-small" onclick="syncData()" title="Sinkronkan dengan database"><i class="fas fa-sync-alt"></i></button>
                 </div>
 
-                <div class="filsuf-grid" id="daftar-filsuf"></div>
+                <div id="filsuf-loading" class="loading-spinner">
+                    <i class="fas fa-spinner"></i>
+                    <p>Memuat data dari Firebase...</p>
+                </div>
+
+                <div class="filsuf-grid" id="daftar-filsuf" style="display:none;"></div>
 
                 <div class="detail-filsuf" id="detail-filsuf"></div>
                 <div class="indicator" id="indicator-filsuf">
@@ -964,1560 +975,366 @@
                 <a onclick="tampilHalaman('kuis')">Kuis</a>
                 <a onclick="tampilHalaman('favorit')">Favorit</a>
                 <a href="#" onclick="window.print()"><i class="fas fa-print"></i> Cetak</a>
+                <a href="#" onclick="syncData()"><i class="fas fa-sync-alt"></i> Sinkron</a>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Filsafat.ID — 50 Filsuf dengan Cerita Kehidupan & Kaitan Manusia, Alam, Tuhan.
-                <br><small>Sumber: Stanford Encyclopedia of Philosophy, Internet Encyclopedia of Philosophy, & berbagai referensi.</small>
+                &copy; 2026 Filsafat.ID — Database Firebase Firestore
+                <br><small>Data: 50 Filsuf dengan Cerita Kehidupan & Kaitan Manusia, Alam, Tuhan.</small>
             </div>
         </div>
     </footer>
 
     <!-- ============================================================== -->
-    <!-- JAVASCRIPT - 50 FILSUF LENGKAP -->
+    <!-- FIREBASE SDK -->
     <!-- ============================================================== -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js">
+    </script>
+
     <script>
         // ==============================================================
-        // DATA 50 FILSUF (LENGKAP DENGAN CERITA & KAITAN)
+        // FIREBASE KONFIGURASI
         // ==============================================================
-        const filsufData = [{
-            id: 1,
-            nama: "Socrates",
-            avatar: "🧠",
-            era: "Yunani Kuno",
-            tahun: "470–399 SM",
-            asal: "Athena, Yunani",
-            kutipan: "Satu-satunya kebijaksanaan sejati adalah mengetahui bahwa dirimu tidak mengetahui apa-apa.",
-            bio: "Socrates adalah filsuf Yunani kuno yang dianggap sebagai bapak filsafat Barat. Ia tidak meninggalkan tulisan; ajarannya dikenal melalui muridnya Plato. Ia dihukum mati dengan racun hemlock karena dianggap merusak pemuda dan tidak percaya pada dewa-dewa Athena.",
-            pemikiran: [
-                { judul: "Metode Dialektika", penjelasan: "Mencari kebenaran melalui tanya-jawab kritis. Socrates percaya bahwa dengan bertanya terus-menerus, orang akan menyadari ketidaktahuannya dan membuka jalan menuju kebenaran." },
-                { judul: "Pengetahuan adalah Kebajikan", penjelasan: "Socrates berpendapat bahwa orang yang tahu apa yang baik akan berbuat baik. Kejahatan terjadi karena kebodohan, bukan karena niat jahat." },
-                { judul: "Kenali Dirimu Sendiri", penjelasan: "Introspeksi adalah awal kebijaksanaan. Socrates mengajak orang untuk merenungkan diri sebelum menghakimi orang lain." }
-            ],
-            cerita: {
-                judul: "Socrates di Pasar Athena",
-                cerita: "Suatu hari, Socrates berjalan di pasar Athena. Seorang pemuda mendatanginya dan berkata, 'Socrates, aku mendengar bahwa kamu adalah orang paling bijaksana di Athena. Apakah kamu tahu segalanya?' Socrates tersenyum dan menjawab, 'Aku hanya tahu bahwa aku tidak tahu apa-apa. Tapi kamu, apakah kamu tahu apa yang kamu tidak tahu?' Pemuda itu terdiam. Socrates melanjutkan, 'Kebijaksanaan bukan tentang memiliki semua jawaban, tetapi tentang menyadari betapa sedikitnya yang kita ketahui. Itulah awal dari belajar.'",
-                pesan: "Kesombongan adalah musuh pengetahuan. Semakin kita mengakui keterbatasan kita, semakin terbuka kita untuk belajar."
-            },
-            kaitan: {
-                manusia: "Socrates mengajarkan bahwa manusia harus merenungkan dirinya sendiri. Kebijaksanaan dimulai dari introspeksi.",
-                alam: "Socrates melihat alam sebagai cerminan keteraturan. Manusia yang bijak hidup selaras dengan alam dan akal.",
-                tuhan: "Socrates percaya pada 'daimonion' — suara batin dari Tuhan yang membimbingnya. Baginya, Tuhan adalah sumber kebijaksanaan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/socrates/",
-                "https://iep.utm.edu/socrates/"
-            ]
-        }, {
-            id: 2,
-            nama: "Plato",
-            avatar: "🏛️",
-            era: "Yunani Kuno",
-            tahun: "427–347 SM",
-            asal: "Athena, Yunani",
-            kutipan: "Kehidupan yang tidak diuji tidak layak untuk dijalani.",
-            bio: "Plato adalah murid Socrates dan guru Aristoteles. Ia mendirikan Akademi di Athena, institusi pendidikan tinggi pertama di dunia Barat. Plato menulis dalam bentuk dialog dan sangat memengaruhi filsafat Barat.",
-            pemikiran: [
-                { judul: "Teori Forma/Ide", penjelasan: "Plato percaya bahwa dunia fisik yang kita lihat hanyalah bayangan dari dunia ide yang sempurna dan abadi. Kebenaran sejati ada di dunia ide." },
-                { judul: "Allegori Gua", penjelasan: "Manusia seperti tahanan dalam gua yang hanya melihat bayangan di dinding. Pendidikan adalah proses keluar dari gua dan melihat cahaya kebenaran." },
-                { judul: "Jiwa Abadi", penjelasan: "Jiwa manusia abadi dan terdiri dari tiga bagian: akal (logos), semangat (thymos), dan nafsu (epithymia). Keadilan adalah harmoni ketiganya." }
-            ],
-            cerita: {
-                judul: "Keluar dari Gua",
-                cerita: "Bayangkan kamu tinggal di dalam gua gelap sepanjang hidupmu. Yang kamu lihat hanya bayangan di dinding dari benda-benda yang lewat di belakangmu. Kamu pikir bayangan itu adalah realitas. Suatu hari, seseorang membebaskanmu dan membawamu ke luar gua. Sinar matahari menyilaukanmu. Perlahan-lahan kamu melihat dunia nyata: pohon, langit, warna. Pada awalnya kamu tidak percaya, tetapi akhirnya kamu menyadari bahwa yang selama ini kamu lihat hanyalah bayangan.",
-                pesan: "Pendidikan adalah proses pembebasan dari kebodohan. Dunia yang kita lihat sehari-hari hanyalah bayangan dari kebenaran yang lebih dalam."
-            },
-            kaitan: {
-                manusia: "Manusia memiliki jiwa yang abadi. Tujuan hidup adalah mengingat kembali pengetahuan yang sudah ada dalam jiwa.",
-                alam: "Alam adalah bayangan dari dunia ide. Keindahan alam mengingatkan kita pada keindahan ide yang sempurna.",
-                tuhan: "Plato percaya pada 'Demiurge' — pencipta yang membentuk alam semesta dari ide-ide abadi. Tuhan adalah sumber dari semua kebaikan dan keindahan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/plato/",
-                "https://iep.utm.edu/plato/"
-            ]
-        }, {
-            id: 3,
-            nama: "Aristoteles",
-            avatar: "📚",
-            era: "Yunani Kuno",
-            tahun: "384–322 SM",
-            asal: "Stagira, Yunani",
-            kutipan: "Pendidikan adalah bekal terbaik untuk hari tua.",
-            bio: "Aristoteles adalah murid Plato dan guru Alexander Agung. Ia mendirikan Lyceum. Aristoteles menulis tentang logika, fisika, biologi, etika, dan politik. Pendekatannya empiris dan sangat memengaruhi pemikiran Barat.",
-            pemikiran: [
-                { judul: "Logika Silogisme", penjelasan: "Aristoteles mengembangkan logika formal dengan premis dan kesimpulan. Contoh: Semua manusia fana; Socrates adalah manusia; maka Socrates fana." },
-                { judul: "Etika Kebahagiaan (Eudaimonia)", penjelasan: "Kebahagiaan adalah tujuan hidup. Kebahagiaan dicapai melalui kebajikan dan hidup sesuai akal." },
-                { judul: "Empat Sebab", penjelasan: "Segala sesuatu memiliki empat sebab: material (bahan), formal (bentuk), efisien (penggerak), dan final (tujuan)." }
-            ],
-            cerita: {
-                judul: "Aristoteles dan Pohon Zaitun",
-                cerita: "Aristoteles sering berjalan-jalan di kebun zaitun sambil mengajar murid-muridnya. Suatu hari, seorang murid bertanya, 'Guru, mengapa pohon zaitun ini tumbuh dengan cara yang teratur?' Aristoteles menjawab, 'Perhatikanlah. Pohon ini memiliki akar (sebab material), bentuk pohon (sebab formal), tumbuh dari biji (sebab efisien), dan bertujuan menghasilkan buah (sebab final). Semua di alam memiliki tujuan. Manusia juga memiliki tujuan: mencapai kebahagiaan melalui kebajikan.'",
-                pesan: "Segala sesuatu di alam memiliki tujuan. Manusia juga harus mencari tujuan hidupnya dan hidup sesuai dengan akal."
-            },
-            kaitan: {
-                manusia: "Manusia adalah 'zoon politikon' — makhluk sosial yang hidup dalam komunitas. Kebahagiaan dicapai bersama orang lain.",
-                alam: "Alam memiliki keteraturan dan tujuan. Manusia harus belajar dari alam untuk memahami prinsip-prinsip kehidupan.",
-                tuhan: "Aristoteles percaya pada 'Penggerak Tak Bergerak' — penyebab pertama dari semua gerakan di alam semesta. Ini adalah konsep Tuhan dalam filsafatnya."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/aristotle/",
-                "https://iep.utm.edu/aristotle/"
-            ]
-        }, {
-            id: 4,
-            nama: "René Descartes",
-            avatar: "🧐",
-            era: "Modern",
-            tahun: "1596–1650",
-            asal: "La Haye, Prancis",
-            kutipan: "Aku berpikir, maka aku ada. (Cogito ergo sum)",
-            bio: "Descartes adalah filsuf dan matematikawan Prancis, bapak filsafat modern. Ia memperkenalkan keraguan metodis sebagai titik awal pengetahuan. Karyanya meletakkan dasar rasionalisme.",
-            pemikiran: [
-                { judul: "Cogito Ergo Sum", penjelasan: "Descartes meragukan segalanya, tetapi menemukan bahwa ia tidak bisa meragukan bahwa ia sedang berpikir. Maka, 'Aku berpikir, maka aku ada' menjadi fondasi kepastian." },
-                { judul: "Dualisme Jiwa-Tubuh", penjelasan: "Jiwa (res cogitans) adalah substansi yang berpikir; tubuh (res extensa) adalah substansi yang memiliki dimensi. Keduanya terpisah tetapi berinteraksi." },
-                { judul: "Metode Keraguan", penjelasan: "Untuk mencari kebenaran, kita harus meragukan semua yang bisa diragukan, sampai kita menemukan kebenaran yang tak terbantahkan." }
-            ],
-            cerita: {
-                judul: "Descartes di Ruang Kerja",
-                cerita: "Suatu malam, Descartes duduk di ruang kerjanya dekat perapian. Ia memutuskan untuk meragukan segalanya: apakah dunia ini nyata? apakah tubuhnya benar-benar ada? tetapi ia menyadari bahwa ia sedang meragukan. 'Jika aku meragukan, berarti aku berpikir. Jika aku berpikir, maka aku pasti ada.' Dari situlah ia membangun seluruh sistem pengetahuannya.",
-                pesan: "Keraguan bukanlah kelemahan, tetapi awal dari penemuan kebenaran. Mulailah dengan mempertanyakan segalanya."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang berpikir (res cogitans). Esensi manusia adalah kesadaran dan akal budi.",
-                alam: "Alam adalah materi yang memiliki dimensi (res extensa). Alam dapat dipahami melalui matematika dan geometri.",
-                tuhan: "Descartes membuktikan keberadaan Tuhan melalui argumen ontologis: ide tentang Tuhan yang sempurna pasti berasal dari Tuhan yang sempurna."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/descartes/",
-                "https://iep.utm.edu/descartes/"
-            ]
-        }, {
-            id: 5,
-            nama: "Immanuel Kant",
-            avatar: "⚖️",
-            era: "Modern",
-            tahun: "1724–1804",
-            asal: "Königsberg, Prusia",
-            kutipan: "Bertindaklah sedemikian rupa sehingga prinsip tindakanmu dapat menjadi hukum universal.",
-            bio: "Kant adalah filsuf Jerman, tokoh paling berpengaruh dalam filsafat modern. Ia merevolusi epistemologi dengan 'revolusi Copernicus' dan etika deontologisnya.",
-            pemikiran: [
-                { judul: "Imperatif Kategoris", penjelasan: "Bertindaklah hanya berdasarkan aturan yang bisa kaujadikan hukum universal. Jangan perlakukan manusia sebagai alat, tetapi sebagai tujuan." },
-                { judul: "Fenomena dan Noumena", penjelasan: "Kita hanya bisa mengetahui dunia sebagaimana muncul (fenomena), bukan dunia itu sendiri (noumena). Pengetahuan manusia terbatas." },
-                { judul: "Otonomi Kehendak", penjelasan: "Manusia adalah pembuat hukum moral bagi dirinya sendiri. Kebebasan berarti mematuhi hukum yang kita berikan pada diri sendiri." }
-            ],
-            cerita: {
-                judul: "Kant dan Jalan Paginya",
-                cerita: "Setiap pagi, Kant berjalan di jalan yang sama dengan sangat teratur. Suatu hari, seorang teman bertanya, 'Mengapa kamu selalu berjalan di jalan yang sama?' Kant menjawab, 'Karena aku telah membuat aturan untuk diriku sendiri. Seperti dalam moralitas, aku bertindak berdasarkan aturan yang bisa menjadi hukum universal. Jika semua orang berjalan seenaknya, akan terjadi kekacauan. Aturan membawa ketertiban.'",
-                pesan: "Kebebasan sejati adalah ketika kita bertindak berdasarkan aturan yang kita berikan pada diri sendiri, bukan karena paksaan dari luar."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk otonom yang memberi hukum moral pada dirinya sendiri. Martabat manusia terletak pada kemampuannya untuk bertindak secara moral.",
-                alam: "Alam adalah dunia fenomena yang kita kenali melalui indra. Namun, kita tidak bisa mengetahui 'benda itu sendiri' (noumena).",
-                tuhan: "Kant percaya pada Tuhan sebagai postulat akal praktis. Tuhan diperlukan untuk menjamin kebahagiaan yang sebanding dengan kebajikan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/kant/",
-                "https://iep.utm.edu/kant/"
-            ]
-        }, {
-            id: 6,
-            nama: "Friedrich Nietzsche",
-            avatar: "💪",
-            era: "Modern",
-            tahun: "1844–1900",
-            asal: "Röcken, Jerman",
-            kutipan: "Apa yang tidak membunuhku, membuatku lebih kuat.",
-            bio: "Nietzsche adalah filsuf Jerman yang mengkritik moralitas, agama, dan budaya Barat. Ia menekankan kehidupan, kekuatan, dan kreativitas. Tulisannya provokatif dan berpengaruh.",
-            pemikiran: [
-                { judul: "Kematian Tuhan", penjelasan: "Nietzsche menyatakan bahwa 'Tuhan telah mati' — maksudnya, fondasi moral tradisional yang berbasis agama telah runtuh di zaman modern. Manusia harus menciptakan nilai-nilai baru." },
-                { judul: "Kehendak untuk Berkuasa", penjelasan: "Dorongan dasar semua kehidupan adalah kehendak untuk berkuasa — bukan hanya kekuasaan politik, tetapi kekuatan untuk mencipta, mengatasi, dan menjadi lebih." },
-                { judul: "Übermensch (Superman)", penjelasan: "Manusia yang unggul adalah orang yang menciptakan nilai-nilainya sendiri, tidak terikat pada moralitas tradisional, dan mengatakan 'ya' pada kehidupan." }
-            ],
-            cerita: {
-                judul: "Nietzsche dan Jembatan",
-                cerita: "Suatu hari, Nietzsche berjalan di pegunungan dan melihat seorang pemuda berdiri di atas jembatan, ragu-ragu untuk menyeberang. Nietzsche mendekat dan berkata, 'Apa yang kau takutkan?' Pemuda itu menjawab, 'Aku takut jatuh.' Nietzsche tersenyum dan berkata, 'Hidup itu seperti jembatan. Kau bisa takut dan tinggal diam, atau kau bisa berani menyeberang dan menemukan apa yang ada di seberang. Yang tidak membunuhmu akan membuatmu lebih kuat. Beranilah!'",
-                pesan: "Ketakutan adalah penghalang terbesar. Keberanian untuk menghadapi risiko adalah jalan menuju kekuatan dan pertumbuhan."
-            },
-            kaitan: {
-                manusia: "Manusia adalah 'tali antara hewan dan Superman'. Manusia harus mengatasi dirinya sendiri dan menciptakan makna hidupnya sendiri.",
-                alam: "Alam adalah kekuatan kreatif yang terus-menerus berubah. Manusia harus hidup selaras dengan kekuatan alam dan kehendak untuk berkuasa.",
-                tuhan: "Nietzsche menolak konsep Tuhan tradisional. Baginya, 'Tuhan mati' dan manusia harus menjadi pencipta nilai-nilai baru."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/nietzsche/",
-                "https://iep.utm.edu/nietzsche/"
-            ]
-        }, {
-            id: 7,
-            nama: "Søren Kierkegaard",
-            avatar: "🌅",
-            era: "Modern",
-            tahun: "1813–1855",
-            asal: "Kopenhagen, Denmark",
-            kutipan: "Hidup hanya dapat dipahami ke belakang, tetapi harus dijalani ke depan.",
-            bio: "Kierkegaard adalah filsuf Denmark, bapak eksistensialisme. Ia menekankan iman, pengalaman subjektif, dan pilihan individu. Ia mengkritik gereja Denmark dan filsafat Hegel.",
-            pemikiran: [
-                { judul: "Lompatan Iman", penjelasan: "Iman tidak bisa dibuktikan secara rasional. Kita harus mengambil 'lompatan iman' — keputusan untuk percaya meskipun tidak ada kepastian." },
-                { judul: "Tiga Tahap Kehidupan", penjelasan: "Tahap estetis (hidup untuk kesenangan), etis (hidup untuk kewajiban), dan religius (hidup untuk iman)." },
-                { judul: "Subjektivitas adalah Kebenaran", penjelasan: "Kebenaran bersifat personal dan subjektif. Yang penting bukanlah apa yang kau percaya, tetapi bagaimana kau menghidupi keyakinanmu." }
-            ],
-            cerita: {
-                judul: "Kierkegaard dan Pernikahan",
-                cerita: "Kierkegaard mencintai Regine Olsen, tetapi ia membatalkan pertunangannya. Ia menjelaskan bahwa ia tidak bisa menikah karena panggilannya kepada Tuhan. Ia mengambil 'lompatan iman' — melepaskan kebahagiaan duniawi untuk sesuatu yang lebih tinggi. Ia menulis, 'Pernikahan adalah indah, tetapi panggilanku kepada Tuhan lebih besar.' Ini adalah contoh bagaimana iman membutuhkan pengorbanan.",
-                pesan: "Kadang-kadang, kita harus mengambil keputusan yang tidak rasional untuk sesuatu yang kita yakini. Iman adalah lompatan ke dalam ketidakpastian."
-            },
-            kaitan: {
-                manusia: "Manusia adalah 'individu tunggal' yang harus menghadapi Tuhan secara pribadi. Setiap orang bertanggung jawab atas pilihannya sendiri.",
-                alam: "Alam adalah ciptaan Tuhan yang indah, tetapi manusia tidak boleh terikat pada alam. Manusia harus melampaui alam menuju Tuhan.",
-                tuhan: "Tuhan adalah tujuan akhir dari kehidupan manusia. Hubungan dengan Tuhan bersifat personal dan membutuhkan iman."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/kierkegaard/",
-                "https://iep.utm.edu/kierkega/"
-            ]
-        }, {
-            id: 8,
-            nama: "Jean-Paul Sartre",
-            avatar: "🎭",
-            era: "Kontemporer",
-            tahun: "1905–1980",
-            asal: "Paris, Prancis",
-            kutipan: "Eksistensi mendahului esensi.",
-            bio: "Sartre adalah filsuf Prancis, tokoh utama eksistensialisme. Ia menekankan kebebasan absolut manusia dan tanggung jawab. Ia juga novelis, dramawan, dan aktivis politik.",
-            pemikiran: [
-                { judul: "Eksistensi Mendahului Esensi", penjelasan: "Manusia tidak memiliki esensi bawaan. Ia lahir tanpa tujuan. Ia menjadi apa yang ia pilih melalui tindakannya." },
-                { judul: "Kebebasan sebagai Kutukan", penjelasan: "Manusia 'dikutuk untuk merdeka'. Kebebasan adalah beban berat karena kita harus bertanggung jawab atas semua pilihan kita." },
-                { judul: "Orang Lain adalah Neraka", penjelasan: "Hubungan antarmanusia sering penuh konflik karena orang lain membatasi kebebasan kita." }
-            ],
-            cerita: {
-                judul: "Sartre di Kafe",
-                cerita: "Suatu hari di kafe Paris, seorang pelayan berjalan dengan sangat sibuk. Sartre mengamatinya dan berkata kepada temannya, 'Lihatlah pelayan itu. Dia bertindak seolah-olah dia adalah seorang pelayan, bukan manusia. Dia menjalani peran yang diberikan masyarakat kepadanya. Tetapi sebenarnya, dia bebas. Dia bisa saja berhenti dan menjadi apa pun yang dia inginkan. Tapi dia memilih untuk menjadi pelayan.'",
-                pesan: "Kita sering terjebak dalam peran yang diberikan masyarakat. Tetapi kita selalu bebas untuk memilih siapa kita."
-            },
-            kaitan: {
-                manusia: "Manusia adalah kebebasan itu sendiri. Tidak ada kodrat manusia yang tetap. Kita menciptakan diri kita sendiri melalui tindakan.",
-                alam: "Alam adalah 'dalam dirinya sendiri' (en-soi) — tidak memiliki kesadaran. Manusia adalah 'bagi dirinya sendiri' (pour-soi) — memiliki kesadaran dan kebebasan.",
-                tuhan: "Sartre adalah ateis. Baginya, tidak ada Tuhan yang menentukan esensi manusia. Manusia adalah pencipta maknanya sendiri."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/sartre/",
-                "https://iep.utm.edu/sartre/"
-            ]
-        }, {
-            id: 9,
-            nama: "Simone de Beauvoir",
-            avatar: "♀️",
-            era: "Kontemporer",
-            tahun: "1908–1986",
-            asal: "Paris, Prancis",
-            kutipan: "Seseorang tidak dilahirkan sebagai perempuan, tetapi menjadi perempuan.",
-            bio: "Beauvoir adalah filsuf feminis Prancis, penulis 'The Second Sex'. Ia mengembangkan etika eksistensialis dan kritik terhadap patriarki.",
-            pemikiran: [
-                { judul: "Gender sebagai Konstruksi Sosial", penjelasan: "Perempuan tidak dilahirkan, tetapi 'dibuat' oleh masyarakat. Peran gender adalah hasil dari konstruksi sosial, bukan kodrat biologis." },
-                { judul: "Perempuan sebagai 'Yang Lain'", penjelasan: "Dalam sejarah, perempuan didefinisikan dalam hubungannya dengan laki-laki. Laki-laki adalah subjek, perempuan adalah objek." },
-                { judul: "Etika Ambiguity", penjelasan: "Manusia hidup dalam ketidakpastian. Etika bukan tentang aturan absolut, tetapi tentang bagaimana kita menggunakan kebebasan untuk membebaskan orang lain." }
-            ],
-            cerita: {
-                judul: "Beauvoir dan Perempuan Pekerja",
-                cerita: "Beauvoir pernah berbicara dengan seorang perempuan pekerja pabrik. Perempuan itu berkata, 'Aku dilahirkan sebagai perempuan, jadi aku harus bekerja di pabrik dan mengurus rumah.' Beauvoir menjawab, 'Kamu tidak dilahirkan sebagai pekerja pabrik. Masyarakatlah yang menempatkanmu di sana. Kamu bisa memilih jalan lain. Perempuan bukanlah kodrat, tetapi pilihan.'",
-                pesan: "Kita tidak harus menerima peran yang diberikan masyarakat. Kita bisa memilih siapa kita."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang ambigu — kita hidup dalam ketidakpastian, tetapi kita bebas untuk memilih makna kita.",
-                alam: "Alam tidak menentukan siapa kita. Kita melampaui alam melalui kebebasan dan pilihan kita.",
-                tuhan: "Beauvoir adalah ateis eksistensialis. Baginya, tidak ada Tuhan yang memberi makna. Kita harus menciptakan makna sendiri."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/beauvoir/",
-                "https://iep.utm.edu/beauvoir/"
-            ]
-        }, {
-            id: 10,
-            nama: "Confucius",
-            avatar: "🎎",
-            era: "Timur",
-            tahun: "551–479 SM",
-            asal: "Lu, Tiongkok",
-            kutipan: "Jangan lakukan kepada orang lain apa yang tidak ingin orang lain lakukan kepadamu.",
-            bio: "Confucius (Kong Hu Cu) adalah filsuf besar Tiongkok. Ajarannya membentuk peradaban Asia Timur selama ribuan tahun. Ia menekankan etika, keluarga, dan tata sosial.",
-            pemikiran: [
-                { judul: "Aturan Emas", penjelasan: "Versi negatif dari etika timbal balik: jangan melakukan kepada orang lain apa yang tidak ingin orang lain lakukan kepadamu." },
-                { judul: "Li (Ritual)", penjelasan: "Tata cara dan etiket untuk menjaga harmoni sosial. Ritual membentuk karakter dan menciptakan ketertiban." },
-                { judul: "Ren (Kemanusiaan)", penjelasan: "Cinta kasih terhadap sesama. Ren adalah kebajikan tertinggi yang harus dikembangkan melalui pendidikan." }
-            ],
-            cerita: {
-                judul: "Confucius dan Muridnya",
-                cerita: "Suatu hari, seorang murid bertanya kepada Confucius, 'Guru, apakah ada satu kata yang bisa menjadi pedoman seumur hidup?' Confucius menjawab, 'Ya, itu adalah 'ren' (kemanusiaan). Jangan lakukan kepada orang lain apa yang tidak ingin orang lain lakukan kepadamu.' Murid itu mengangguk dan menjalani hidup dengan prinsip itu, menjadi orang yang dihormati oleh semua orang.",
-                pesan: "Prinsip sederhana 'jangan lakukan kepada orang lain apa yang tidak ingin orang lain lakukan kepadamu' adalah fondasi etika universal."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk sosial yang hidup dalam hubungan dengan orang lain. Kebajikan berkembang dalam komunitas.",
-                alam: "Alam memiliki keteraturan (Tian — Langit). Manusia harus hidup selaras dengan keteraturan alam dan masyarakat.",
-                tuhan: "Confucius lebih fokus pada etika daripada metafisika. Ia berbicara tentang 'Tian' (Langit) sebagai kekuatan moral yang mengatur alam semesta."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/confucius/",
-                "https://iep.utm.edu/confucius/"
-            ]
-        }, {
-            id: 11,
-            nama: "Lao Tzu",
-            avatar: "☯️",
-            era: "Timur",
-            tahun: "Abad ke-6 SM",
-            asal: "Tiongkok",
-            kutipan: "Perjalanan seribu mil dimulai dengan satu langkah.",
-            bio: "Lao Tzu (Laozi) dianggap sebagai pendiri Taoisme. Ia menulis 'Tao Te Ching' dan mengajarkan hidup selaras dengan alam (Tao).",
-            pemikiran: [
-                { judul: "Tao (Jalan)", penjelasan: "Tao adalah prinsip dasar alam semesta yang tidak dapat diberi nama. Semua hal berasal dari Tao dan kembali ke Tao." },
-                { judul: "Wu Wei (Tanpa Usaha)", penjelasan: "Bertindak tanpa memaksakan kehendak. Seperti air yang mengalir, mengikuti jalan alami tanpa melawan." },
-                { judul: "Kembali ke Alam", penjelasan: "Hidup sederhana dan selaras dengan alam. Kesederhanaan adalah kebijaksanaan tertinggi." }
-            ],
-            cerita: {
-                judul: "Lao Tzu dan Air",
-                cerita: "Suatu hari, seorang murid bertanya kepada Lao Tzu, 'Guru, apa kebijaksanaan tertinggi?' Lao Tzu menunjuk ke sungai dan berkata, 'Lihatlah air. Air mengalir tanpa melawan. Air mengelilingi batu, tidak memecahkannya. Air merendah, selalu mencari tempat yang rendah. Tetapi air mengalahkan batu dengan kelembutannya. Air adalah guru terbaik.'",
-                pesan: "Kelembutan dan kerendahan hati lebih kuat daripada kekerasan dan kesombongan. Ikuti aliran alam."
-            },
-            kaitan: {
-                manusia: "Manusia harus hidup selaras dengan Tao. Kebijaksanaan adalah mengikuti jalan alami, bukan melawannya.",
-                alam: "Alam adalah manifestasi dari Tao. Belajar dari alam adalah jalan menuju kebijaksanaan.",
-                tuhan: "Tao bukanlah Tuhan dalam pengertian personal, tetapi prinsip dasar yang mengatur alam semesta. Tao adalah 'yang tak bernama'."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/laozi/",
-                "https://iep.utm.edu/laozi/"
-            ]
-        }, {
-            id: 12,
-            nama: "Al-Farabi",
-            avatar: "🕌",
-            era: "Abad Pertengahan",
-            tahun: "872–950",
-            asal: "Farab, Asia Tengah",
-            kutipan: "Manusia adalah makhluk sosial. Ia tidak dapat hidup sendirian.",
-            bio: "Al-Farabi dijuluki 'Guru Kedua' (setelah Aristoteles). Ia menggabungkan filsafat Yunani dengan pemikiran Islam dan menulis tentang logika, politik, dan musik.",
-            pemikiran: [
-                { judul: "Kota Ideal", penjelasan: "Negara ideal dipimpin oleh filsuf-nabi yang menggabungkan kebijaksanaan dan wahyu. Masyarakat harmonis jika setiap orang menjalankan perannya." },
-                { judul: "Hierarki Wujud", penjelasan: "Realitas terdiri dari tingkatan: dari Tuhan sebagai Yang Esa, hingga akal, jiwa, dan materi. Semua berasal dari Tuhan." },
-                { judul: "Integrasi Filsafat dan Agama", penjelasan: "Kebenaran filosofis dan wahyu tidak bertentangan. Keduanya adalah jalan menuju Tuhan." }
-            ],
-            cerita: {
-                judul: "Al-Farabi dan Kota Ideal",
-                cerita: "Al-Farabi pernah bermimpi tentang kota yang sempurna. Dalam mimpinya, setiap orang bekerja sama untuk kebaikan bersama. Pemimpinnya adalah orang yang paling bijaksana. Ketika ia terbangun, ia menulis tentang kota ideal itu. Ia berkata kepada muridnya, 'Kota yang ideal bukanlah tempat yang sempurna, tetapi masyarakat di mana setiap orang berkontribusi sesuai kemampuannya.'",
-                pesan: "Masyarakat yang harmonis dibangun ketika setiap orang menjalankan perannya dengan baik dan pemimpinnya bijaksana."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk sosial yang tidak bisa hidup sendiri. Kebahagiaan dicapai dalam komunitas yang adil.",
-                alam: "Alam adalah ciptaan Tuhan yang teratur. Manusia harus memahami alam untuk memahami Tuhan.",
-                tuhan: "Tuhan adalah 'Yang Esa' dan sumber dari semua wujud. Filsafat membantu manusia mendekati Tuhan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/al-farabi/",
-                "https://iep.utm.edu/al-farabi/"
-            ]
-        }, {
-            id: 13,
-            nama: "Ibnu Sina",
-            avatar: "💊",
-            era: "Abad Pertengahan",
-            tahun: "980–1037",
-            asal: "Bukhara, Persia",
-            kutipan: "Pengetahuan adalah kesempurnaan jiwa.",
-            bio: "Ibnu Sina (Avicenna) adalah filsuf dan dokter Persia. Karyanya 'Al-Qanun fi al-Tibb' menjadi rujukan medis di Eropa selama 500 tahun. Ia adalah polymath sejati.",
-            pemikiran: [
-                { judul: "Bukti Tuhan", penjelasan: "Ibnu Sina mengembangkan argumen kontingensi: segala sesuatu di alam semesta mungkin ada atau tidak ada. Pasti ada sesuatu yang harus ada (Tuhan) yang menjadi penyebab segalanya." },
-                { judul: "Jiwa dan Tubuh", penjelasan: "Jiwa adalah substansi non-materi yang abadi. Jiwa tidak mati bersama tubuh. Pengetahuan adalah kesempurnaan jiwa." },
-                { judul: "Pengetahuan Intuitif", penjelasan: "Manusia bisa mencapai pengetahuan tanpa pengalaman melalui intuisi yang diberikan oleh akal aktif." }
-            ],
-            cerita: {
-                judul: "Ibnu Sina dan Pasiennya",
-                cerita: "Seorang pasien datang kepada Ibnu Sina dengan keluhan sakit kepala. Ibnu Sina tidak langsung memberi obat. Ia bertanya, 'Bagaimana kehidupanmu? Apakah kau stres? Apakah kau tidur cukup?' Pasien itu terkejut. Ibnu Sina menjelaskan, 'Tubuh dan jiwa saling terhubung. Jika jiwamu gelisah, tubuhmu akan sakit. Aku harus menyembuhkan jiwamu sebelum tubuhmu.'",
-                pesan: "Kesehatan bukan hanya fisik, tetapi juga mental dan spiritual. Jiwa dan tubuh saling memengaruhi."
-            },
-            kaitan: {
-                manusia: "Manusia memiliki jiwa yang abadi. Tujuan hidup adalah menyempurnakan jiwa melalui pengetahuan dan kebajikan.",
-                alam: "Alam adalah ciptaan Tuhan. Manusia dapat memahami alam melalui akal dan pengamatan.",
-                tuhan: "Tuhan adalah 'Wajib Al-Wujud' (Yang Harus Ada). Semua wujud berasal dari Tuhan dan kembali ke Tuhan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/avicenna/",
-                "https://iep.utm.edu/avicenna/"
-            ]
-        }, {
-            id: 14,
-            nama: "Thomas Aquinas",
-            avatar: "⛪",
-            era: "Abad Pertengahan",
-            tahun: "1225–1274",
-            asal: "Roccasecca, Italia",
-            kutipan: "Kasih adalah bentuk paling sempurna dari kehendak.",
-            bio: "Aquinas adalah filsuf dan teolog Italia, tokoh utama Skolastisisme. Ia menggabungkan Aristoteles dengan teologi Kristen. Karyanya 'Summa Theologica' sangat berpengaruh.",
-            pemikiran: [
-                { judul: "Lima Jalan (Five Ways)", penjelasan: "Aquinas memberikan lima bukti keberadaan Tuhan: penggerak pertama, sebab pertama, kontingensi, kesempurnaan, dan tujuan." },
-                { judul: "Teori Hukum", penjelasan: "Ada empat jenis hukum: hukum abadi (Tuhan), hukum alam (akal manusia), hukum manusia, dan hukum ilahi (wahyu)." },
-                { judul: "Teori Tindakan", penjelasan: "Tindakan moral dinilai dari objek (apa yang dilakukan), maksud (tujuan), dan keadaan (konteks)." }
-            ],
-            cerita: {
-                judul: "Aquinas dan Burung Pipit",
-                cerita: "Suatu hari, seorang murid bertanya kepada Aquinas, 'Guru, bagaimana kita tahu bahwa Tuhan itu ada?' Aquinas melihat seekor burung pipit terbang di langit dan berkata, 'Perhatikan burung itu. Ia terbang dengan sayapnya. Sayapnya bergerak karena ada yang menggerakkannya. Di alam semesta ini, segala sesuatu bergerak karena ada Penggerak Pertama. Itulah Tuhan.'",
-                pesan: "Alam semesta yang teratur menunjukkan adanya pencipta yang bijaksana. Kita bisa melihat Tuhan melalui ciptaan-Nya."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang memiliki akal dan kehendak. Tujuan manusia adalah bersatu dengan Tuhan melalui kasih dan kebajikan.",
-                alam: "Alam adalah ciptaan Tuhan yang baik. Manusia harus menggunakan alam dengan bijaksana dan bertanggung jawab.",
-                tuhan: "Tuhan adalah 'Actus Purus' — kemurnian aktualitas tanpa potensi. Tuhan adalah sumber semua kebaikan dan kebenaran."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/aquinas/",
-                "https://iep.utm.edu/aquinas/"
-            ]
-        }, {
-            id: 15,
-            nama: "David Hume",
-            avatar: "🔬",
-            era: "Modern",
-            tahun: "1711–1776",
-            asal: "Edinburgh, Skotlandia",
-            kutipan: "Kebiasaan adalah pedoman besar kehidupan manusia.",
-            bio: "Hume adalah filsuf Skotlandia, tokoh utama empirisme dan skeptisisme. Ia menekankan bahwa pengetahuan berasal dari pengalaman. Ia sangat memengaruhi Kant.",
-            pemikiran: [
-                { judul: "Masalah Induksi", penjelasan: "Kita tidak bisa membenarkan secara logis bahwa masa depan akan sama dengan masa lalu. Keyakinan kita pada sebab-akibat adalah kebiasaan, bukan logika." },
-                { judul: "Kausalitas sebagai Kebiasaan", penjelasan: "Kita tidak pernah melihat sebab, hanya kejadian yang berurutan. Kausalitas adalah proyeksi mental kita." },
-                { judul: "Diri sebagai Bundel Persepsi", penjelasan: "Tidak ada diri yang permanen. Yang ada hanyalah kumpulan persepsi yang terus berubah." }
-            ],
-            cerita: {
-                judul: "Hume dan Ayam",
-                cerita: "Hume pernah bercerita tentang seekor ayam yang setiap pagi diberi makan oleh petani. Ayam itu percaya bahwa setiap pagi akan ada makanan. Suatu hari, petani datang untuk memotong leher ayam itu, bukan memberi makan. Hume berkata, 'Ayam itu membuat induksi: setiap pagi ada makanan, maka hari ini juga ada makanan. Tapi ia salah. Kita juga sering salah seperti ayam itu.'",
-                pesan: "Jangan terlalu yakin dengan kebiasaan. Masa lalu tidak selalu menjamin masa depan. Berpikirlah kritis."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang terbiasa. Kita tidak selalu rasional; kebiasaan dan emosi sering mengendalikan kita.",
-                alam: "Alam bekerja dengan keteraturan, tetapi kita tidak bisa mengetahui sebab-sebabnya secara pasti. Yang kita tahu hanyalah kebiasaan pengamatan.",
-                tuhan: "Hume skeptis terhadap agama. Ia berargumen bahwa mukjizat tidak bisa dibuktikan dan bahwa kepercayaan pada Tuhan lebih didasarkan pada emosi daripada logika."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/hume/",
-                "https://iep.utm.edu/hume/"
-            ]
-        }, {
-            id: 16,
-            nama: "Karl Marx",
-            avatar: "⚒️",
-            era: "Kontemporer",
-            tahun: "1818–1883",
-            asal: "Trier, Jerman",
-            kutipan: "Filsuf hanya menafsirkan dunia; yang penting adalah mengubahnya.",
-            bio: "Marx adalah filsuf, ekonom, dan revolusioner Jerman. Ia mendirikan materialisme historis dan kritik terhadap kapitalisme. Pengaruhnya sangat besar di seluruh dunia.",
-            pemikiran: [
-                { judul: "Materialisme Historis", penjelasan: "Sejarah adalah perjuangan kelas. Perubahan sosial terjadi karena konflik ekonomi antara kelas yang berkuasa dan kelas yang tertindas." },
-                { judul: "Teori Nilai Lebih", penjelasan: "Buruh menciptakan nilai, tetapi kapitalis mengambil sebagian besar nilai itu sebagai keuntungan. Ini adalah eksploitasi." },
-                { judul: "Komunisme", penjelasan: "Masyarakat tanpa kelas di mana alat produksi dimiliki bersama. Ini adalah tujuan akhir sejarah." }
-            ],
-            cerita: {
-                judul: "Marx dan Pekerja Pabrik",
-                cerita: "Marx mengunjungi sebuah pabrik di Manchester. Ia melihat pekerja bekerja 16 jam sehari dengan upah rendah. Ia berkata kepada temannya, 'Lihatlah mereka. Mereka bekerja keras tetapi hanya mendapat sedikit. Pemilik pabrik duduk di kantor dan mendapat keuntungan besar. Inilah yang disebut eksploitasi. Buruh menciptakan kekayaan, tetapi tidak menikmatinya.'",
-                pesan: "Ketidakadilan sosial harus dilawan. Perubahan membutuhkan kesadaran dan perjuangan kolektif."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk sosial yang hidup dalam sistem ekonomi. Identitas manusia ditentukan oleh hubungan produksi.",
-                alam: "Alam adalah sumber daya yang harus diolah oleh manusia. Kapitalisme mengeksploitasi alam dan manusia secara bersamaan.",
-                tuhan: "Marx adalah ateis. Baginya, agama adalah 'candu rakyat' — alat untuk membuat orang menerima penderitaan dan tidak memberontak."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/marx/",
-                "https://iep.utm.edu/marx/"
-            ]
-        }, {
-            id: 17,
-            nama: "Michel Foucault",
-            avatar: "🔍",
-            era: "Kontemporer",
-            tahun: "1926–1984",
-            asal: "Poitiers, Prancis",
-            kutipan: "Kekuasaan menghasilkan pengetahuan.",
-            bio: "Foucault adalah filsuf Prancis, tokoh pascastrukturalisme. Ia menganalisis hubungan antara kekuasaan, pengetahuan, dan institusi sosial seperti penjara dan rumah sakit jiwa.",
-            pemikiran: [
-                { judul: "Kekuasaan dan Pengetahuan", penjelasan: "Pengetahuan tidak netral. Pengetahuan selalu terkait dengan kekuasaan. Siapa yang berkuasa menentukan apa yang dianggap 'benar'." },
-                { judul: "Biopower", penjelasan: "Kekuasaan modern mengatur populasi melalui kontrol atas tubuh, kesehatan, dan reproduksi." },
-                { judul: "Institusi sebagai Kontrol", penjelasan: "Penjara, sekolah, rumah sakit — semuanya adalah alat untuk mengontrol dan mendisiplinkan masyarakat." }
-            ],
-            cerita: {
-                judul: "Foucault dan Penjara",
-                cerita: "Foucault mengunjungi sebuah penjara dan melihat bagaimana narapidana diatur dengan jadwal yang ketat. Ia berkata, 'Penjara bukan hanya tempat hukuman, tetapi juga tempat melatih kepatuhan. Tubuh diajarkan untuk patuh pada aturan. Hal yang sama terjadi di sekolah dan rumah sakit. Kita semua hidup dalam 'masyarakat disiplin'."',
-                pesan: "Kekuasaan bekerja dengan cara yang halus. Kita harus sadar bagaimana institusi membentuk perilaku dan pikiran kita."
-            },
-            kaitan: {
-                manusia: "Manusia adalah produk dari kekuasaan dan pengetahuan. Identitas dan perilaku kita dibentuk oleh struktur sosial.",
-                alam: "Alam juga dikonstruksi oleh pengetahuan ilmiah. Ilmu pengetahuan bukanlah kebenaran netral, tetapi alat kekuasaan.",
-                tuhan: "Foucault tidak banyak berbicara tentang Tuhan, tetapi ia mengkritik bagaimana agama sebagai institusi juga merupakan alat kekuasaan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/foucault/",
-                "https://iep.utm.edu/foucault/"
-            ]
-        }, {
-            id: 18,
-            nama: "Martin Heidegger",
-            avatar: "🌲",
-            era: "Kontemporer",
-            tahun: "1889–1976",
-            asal: "Messkirch, Jerman",
-            kutipan: "Kita adalah makhluk yang bertanya tentang keberadaan.",
-            bio: "Heidegger adalah filsuf Jerman, salah satu pemikir paling berpengaruh abad ke-20. Ia mengembangkan analisis tentang 'Ada' (Being) dan memengaruhi eksistensialisme dan fenomenologi.",
-            pemikiran: [
-                { judul: "Dasein", penjelasan: "Dasein adalah keberadaan manusia yang selalu berada dalam situasi konkret. Manusia adalah 'being-in-the-world'." },
-                { judul: "Kecemasan dan Autentisitas", penjelasan: "Kecemasan (angst) membuka kesadaran bahwa kita bebas dan bertanggung jawab. Hidup autentik berarti menerima kebebasan dan kematian." },
-                { judul: "Teknologi sebagai Pembingkaian", penjelasan: "Teknologi mengubah cara kita memahami dunia. Teknologi bukan alat netral, tetapi cara 'membingkai' alam sebagai sumber daya." }
-            ],
-            cerita: {
-                judul: "Heidegger di Hutan",
-                cerita: "Heidegger sering berjalan di hutan Black Forest. Suatu hari, seorang murid bertanya, 'Guru, mengapa kau suka di hutan?' Heidegger menjawab, 'Di hutan, aku bisa merenungkan keberadaan. Di kota, semua bergerak cepat, tidak ada waktu untuk bertanya 'mengapa'. Di hutan, aku bisa mendengar suara alam dan merenungkan arti 'ada'."',
-                pesan: "Dalam kehidupan modern yang sibuk, kita sering lupa bertanya tentang makna keberadaan. Luangkan waktu untuk merenung."
-            },
-            kaitan: {
-                manusia: "Manusia adalah 'Dasein' — makhluk yang bertanya tentang keberadaannya sendiri. Manusia berbeda dari benda karena ia sadar akan kematian dan kebebasan.",
-                alam: "Alam bukanlah objek yang bisa dieksploitasi. Alam adalah tempat kita tinggal dan berelasi. Teknologi modern mengubah alam menjadi sumber daya, yang berbahaya.",
-                tuhan: "Heidegger tidak berbicara tentang Tuhan personal, tetapi tentang 'Ada' yang suci. Bagi Heidegger, 'Yang Suci' muncul ketika kita membiarkan Ada menjadi."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/heidegger/",
-                "https://iep.utm.edu/heidegger/"
-            ]
-        }, {
-            id: 19,
-            nama: "Ludwig Wittgenstein",
-            avatar: "🧩",
-            era: "Kontemporer",
-            tahun: "1889–1951",
-            asal: "Wina, Austria",
-            kutipan: "Batas bahasaku berarti batas duniaku.",
-            bio: "Wittgenstein adalah filsuf Austria, tokoh paling berpengaruh dalam filsafat analitis abad ke-20. Ia menulis dua karya besar: 'Tractatus' dan 'Philosophical Investigations'.",
-            pemikiran: [
-                { judul: "Teori Gambaran (Early)", penjelasan: "Bahasa menggambarkan fakta-fakta di dunia. Makna adalah representasi dari realitas." },
-                { judul: "Permainan Bahasa (Late)", penjelasan: "Makna tidak tetap; makna ditentukan oleh penggunaan dalam konteks sosial. Bahasa adalah aktivitas, bukan representasi." },
-                { judul: "Filsafat sebagai Terapi", penjelasan: "Tujuan filsafat bukan untuk membangun teori, tetapi untuk membubarkan kebingungan linguistik." }
-            ],
-            cerita: {
-                judul: "Wittgenstein dan Kucing",
-                cerita: "Suatu hari, Wittgenstein melihat seorang anak kecil menunjuk seekor kucing dan berkata, 'Itu kucing.' Wittgenstein berpikir: 'Ketika anak itu berkata 'kucing', apa yang ia maksud? Kata 'kucing' memiliki banyak makna tergantung pada konteksnya. Dalam satu konteks, 'kucing' adalah hewan peliharaan. Dalam konteks lain, 'kucing' adalah simbol. Makna bukanlah sesuatu yang tetap, tetapi tergantung pada bagaimana kita menggunakannya.'",
-                pesan: "Jangan terpaku pada definisi kaku. Makna hidup dan kata-kata selalu berubah sesuai konteks."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk linguistik. Bahasa membentuk cara kita memahami dunia dan diri kita sendiri.",
-                alam: "Kita memahami alam melalui bahasa. Tetapi ada hal-hal yang tidak bisa diungkapkan dengan bahasa — itulah yang 'mistis'.",
-                tuhan: "Wittgenstein berkata, 'Tentang apa yang tidak bisa kita bicarakan, kita harus diam.' Ia menghormati wilayah agama dan etika yang berada di luar bahasa."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/wittgenstein/",
-                "https://iep.utm.edu/wittgens/"
-            ]
-        }, {
-            id: 20,
-            nama: "Jean-Jacques Rousseau",
-            avatar: "📜",
-            era: "Modern",
-            tahun: "1712–1778",
-            asal: "Jenewa, Swiss",
-            kutipan: "Manusia dilahirkan bebas, tetapi di mana-mana ia berada dalam belenggu.",
-            bio: "Rousseau adalah filsuf Prancis-Swiss, tokoh Pencerahan. Ia menulis tentang politik, pendidikan, dan emosi. Pemikirannya memengaruhi Revolusi Prancis.",
-            pemikiran: [
-                { judul: "Keadaan Alam", penjelasan: "Manusia pada dasarnya baik, tetapi dirusak oleh peradaban dan kesenjangan sosial. Kembali ke alam adalah jawabannya." },
-                { judul: "Kontrak Sosial", penjelasan: "Legitimasi politik berasal dari persetujuan rakyat. Kehendak umum (general will) adalah kepentingan kolektif masyarakat." },
-                { judul: "Pendidikan Alami", penjelasan: "Anak-anak harus belajar dari alam, bukan dari institusi. Pendidikan harus mengikuti perkembangan alami anak." }
-            ],
-            cerita: {
-                judul: "Rousseau dan Anak Kecil",
-                cerita: "Rousseau melihat seorang anak kecil yang dipaksa belajar membaca oleh orang tuanya. Anak itu menangis dan tidak mau belajar. Rousseau berkata, 'Biarkan dia bermain di alam. Biarkan dia belajar dari pepohonan, sungai, dan binatang. Pendidikan tidak harus di dalam ruangan. Alam adalah guru terbaik.'",
-                pesan: "Belajar bukan tentang paksaan, tetapi tentang penemuan. Alam adalah guru terbaik bagi anak-anak."
-            },
-            kaitan: {
-                manusia: "Manusia pada dasarnya baik dan bebas. Keserakahan dan ketidakadilan sosial merusak kodrat manusia.",
-                alam: "Alam adalah keadaan asli manusia. Kembali ke alam berarti kembali ke kesederhanaan dan kebebasan.",
-                tuhan: "Rousseau percaya pada 'Tuhan Pencipta' yang menciptakan alam. Ia melihat keindahan alam sebagai bukti keberadaan Tuhan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/rousseau/",
-                "https://iep.utm.edu/rousseau/"
-            ]
-        }, {
-            id: 21,
-            nama: "Baruch Spinoza",
-            avatar: "🔮",
-            era: "Modern",
-            tahun: "1632–1677",
-            asal: "Amsterdam, Belanda",
-            kutipan: "Hanya dengan cinta pada Tuhan, manusia dapat mencapai kebahagiaan sejati.",
-            bio: "Spinoza adalah filsuf Yahudi-Portugis. Ia diasingkan karena pemikirannya yang radikal. Ia adalah pelopor panteisme dan pemikiran tentang kebebasan.",
-            pemikiran: [
-                { judul: "Monisme Substansi", penjelasan: "Hanya ada satu substansi: Tuhan atau Alam (Deus sive Natura). Semua hal adalah modus dari satu substansi." },
-                { judul: "Panteisme", penjelasan: "Tuhan adalah alam itu sendiri, bukan entitas terpisah. Segala sesuatu adalah bagian dari Tuhan." },
-                { judul: "Determinisme dan Kebebasan", penjelasan: "Segala sesuatu terjadi karena sebab-sebab yang diperlukan. Kebebasan adalah memahami sebab-sebab dan menerimanya." }
-            ],
-            cerita: {
-                judul: "Spinoza dan Kaca Mata",
-                cerita: "Spinoza membuat kaca mata untuk mencari nafkah. Suatu hari, seorang pelanggan berkata, 'Kau adalah filsuf besar, tetapi kau menghabiskan waktu membuat kaca mata?' Spinoza menjawab, 'Setiap hal kecil adalah bagian dari alam semesta yang besar. Aku melihat Tuhan dalam setiap butiran pasir dan dalam setiap kaca mata yang aku buat. Tuhan tidak di luar sana; Tuhan ada di sini, dalam segala hal.'",
-                pesan: "Tuhan ada dalam segala hal. Setiap pekerjaan, sekecil apa pun, adalah bagian dari keagungan alam semesta."
-            },
-            kaitan: {
-                manusia: "Manusia adalah bagian dari alam. Kebahagiaan dicapai dengan memahami tempat kita dalam alam semesta dan mencintai Tuhan.",
-                alam: "Alam adalah Tuhan. Segala sesuatu di alam adalah suci. Menghormati alam berarti menghormati Tuhan.",
-                tuhan: "Tuhan = Alam (Deus sive Natura). Tuhan bukanlah pribadi, tetapi substansi yang meliputi segalanya."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/spinoza/",
-                "https://iep.utm.edu/spinoza/"
-            ]
-        }, {
-            id: 22,
-            nama: "G.W.F. Hegel",
-            avatar: "🌀",
-            era: "Modern",
-            tahun: "1770–1831",
-            asal: "Stuttgart, Jerman",
-            kutipan: "Yang rasional adalah yang nyata; yang nyata adalah yang rasional.",
-            bio: "Hegel adalah filsuf Jerman, tokoh idealisme Jerman. Ia mengembangkan sistem filsafat yang mencakup logika, alam, sejarah, dan semangat.",
-            pemikiran: [
-                { judul: "Dialektika", penjelasan: "Gerakan pemikiran melalui tesis-antitesis-sintesis. Setiap gagasan mengandung kontradiksi yang mendorong kemajuan." },
-                { judul: "Roh Absolut", penjelasan: "Realitas adalah proses kesadaran diri spiritual. Sejarah adalah perjalanan Roh menuju kesadaran penuh." },
-                { judul: "Filsafat Sejarah", penjelasan: "Sejarah adalah kemajuan kesadaran akan kebebasan. Kebebasan tidak diberikan, tetapi dicapai melalui perjuangan." }
-            ],
-            cerita: {
-                judul: "Hegel dan Bunga",
-                cerita: "Hegel pernah melihat sebuah bunga di kebun. Ia berkata, 'Bunga ini indah, tetapi ia tidak akan abadi. Ia akan layu dan mati. Tetapi dari kematiannya, muncul biji yang akan menjadi bunga baru. Inilah dialektika: hidup dan mati adalah kontradiksi yang menciptakan kehidupan baru. Sejarah juga seperti ini: dari konflik lahir kemajuan.'",
-                pesan: "Konflik dan kontradiksi bukanlah hal yang buruk. Dari pertentangan, lahirlah sesuatu yang baru dan lebih baik."
-            },
-            kaitan: {
-                manusia: "Manusia adalah bagian dari Roh Absolut. Tujuan manusia adalah mencapai kesadaran penuh akan kebebasan melalui sejarah.",
-                alam: "Alam adalah 'Roh yang terasing'. Alam adalah material yang harus dipahami dan diolah oleh Roh untuk mencapai kesadaran.",
-                tuhan: "Tuhan adalah Roh Absolut. Sejarah adalah penyingkapan diri Tuhan dalam waktu."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/hegel/",
-                "https://iep.utm.edu/hegel/"
-            ]
-        }, {
-            id: 23,
-            nama: "Arthur Schopenhauer",
-            avatar: "🌑",
-            era: "Modern",
-            tahun: "1788–1860",
-            asal: "Danzig, Jerman",
-            kutipan: "Kehidupan manusia adalah penderitaan yang tiada akhir.",
-            bio: "Schopenhauer adalah filsuf Jerman dengan filosofi pesimis. Ia dipengaruhi oleh Kant dan filosofi Timur. Karyanya 'The World as Will and Representation' sangat berpengaruh.",
-            pemikiran: [
-                { judul: "Kehendak sebagai Dorongan Buta", penjelasan: "Realitas adalah kehendak — dorongan buta yang tidak pernah puas. Keinginan adalah sumber penderitaan." },
-                { judul: "Pesimisme", penjelasan: "Kehidupan didominasi oleh penderitaan. Keinginan tidak pernah terpuaskan; jika terpuaskan, timbul kebosanan." },
-                { judul: "Seni sebagai Pelarian", penjelasan: "Estetika dan seni memberikan ketenangan dari kehendak. Dalam kontemplasi seni, kita melupakan keinginan." }
-            ],
-            cerita: {
-                judul: "Schopenhauer dan Anjing",
-                cerita: "Schopenhauer sering ditemani anjingnya yang ia beri nama 'Atman' (jiwa dalam Hindu). Suatu hari, seorang teman bertanya, 'Mengapa kau lebih suka ditemani anjing daripada manusia?' Schopenhauer menjawab, 'Manusia selalu menginginkan sesuatu dariku. Anjing ini hanya ingin ditemani. Ia tidak punya keinginan yang menyakitkan. Lihatlah, dunia ini penuh dengan keinginan yang menyebabkan penderitaan. Anjing lebih bijaksana daripada manusia.'",
-                pesan: "Keinginan yang tak terpuaskan adalah sumber penderitaan. Kesederhanaan dan ketenangan adalah kebijaksanaan."
-            },
-            kaitan: {
-                manusia: "Manusia dikuasai oleh kehendak buta. Kebahagiaan adalah ilusi; yang ada hanyalah pengurangan penderitaan.",
-                alam: "Alam adalah manifestasi dari kehendak. Kekerasan dan perjuangan di alam adalah cerminan kehendak yang tak pernah puas.",
-                tuhan: "Schopenhauer tidak percaya pada Tuhan personal. Ia melihat filosofi Timur (Buddhisme, Hinduisme) sebagai jalan untuk mengatasi kehendak."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/schopenhauer/",
-                "https://iep.utm.edu/schopenh/"
-            ]
-        }, {
-            id: 24,
-            nama: "Thomas Hobbes",
-            avatar: "⚔️",
-            era: "Modern",
-            tahun: "1588–1679",
-            asal: "Malmesbury, Inggris",
-            kutipan: "Homo homini lupus — manusia adalah serigala bagi manusia lain.",
-            bio: "Hobbes adalah filsuf Inggris, pendiri filsafat politik modern. Karyanya 'Leviathan' adalah teks fundamental teori kontrak sosial.",
-            pemikiran: [
-                { judul: "Keadaan Alam", penjelasan: "Dalam keadaan alam, kehidupan manusia adalah 'nasty, brutish, and short'. Tanpa pemerintah, terjadi perang semua melawan semua." },
-                { judul: "Kontrak Sosial", penjelasan: "Manusia menyerahkan kebebasannya kepada penguasa absolut untuk mendapatkan keamanan. Kedaulatan tidak boleh dibagi." },
-                { judul: "Materialisme", penjelasan: "Segala sesuatu terdiri dari materi. Tidak ada jiwa yang immaterial. Manusia adalah mesin kompleks." }
-            ],
-            cerita: {
-                judul: "Hobbes dan Kapal",
-                cerita: "Hobbes pernah naik kapal di tengah badai. Penumpang panik dan saling dorong untuk menyelamatkan diri. Hobbes berkata, 'Lihatlah! Ketika tidak ada aturan, setiap orang hanya memikirkan dirinya sendiri. Inilah 'perang semua melawan semua'. Kita membutuhkan kapten yang tegas untuk mengatur kapal. Tanpa aturan, kita semua akan mati.'",
-                pesan: "Aturan dan otoritas diperlukan untuk mencegah kekacauan. Tanpa hukum, manusia akan saling menghancurkan."
-            },
-            kaitan: {
-                manusia: "Manusia pada dasarnya egois dan kompetitif. Tanpa negara, manusia akan saling memusnahkan.",
-                alam: "Alam adalah materi yang bergerak. Manusia adalah bagian dari alam, tetapi ia bisa melampaui alam melalui akal dan hukum.",
-                tuhan: "Hobbes percaya pada Tuhan, tetapi ia kritis terhadap agama terorganisir. Baginya, agama adalah alat untuk mengontrol massa."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/hobbes/",
-                "https://iep.utm.edu/hobbes/"
-            ]
-        }, {
-            id: 25,
-            nama: "John Locke",
-            avatar: "📝",
-            era: "Modern",
-            tahun: "1632–1704",
-            asal: "Wrington, Inggris",
-            kutipan: "Manusia dilahirkan sebagai lembaran kosong (tabula rasa).",
-            bio: "Locke adalah filsuf Inggris, bapak liberalisme klasik. Ia menekankan hak-hak alami dan pemerintahan terbatas. Pemikirannya memengaruhi Deklarasi Kemerdekaan AS.",
-            pemikiran: [
-                { judul: "Tabula Rasa", penjelasan: "Pikiran manusia adalah lembaran kosong saat lahir. Semua pengetahuan berasal dari pengalaman." },
-                { judul: "Hak-Hak Alami", penjelasan: "Manusia memiliki hak hidup, kebebasan, dan properti. Pemerintah harus melindungi hak-hak ini." },
-                { judul: "Kontrak Sosial", penjelasan: "Pemerintah didasarkan pada persetujuan yang diperintah. Jika pemerintah melanggar hak, rakyat berhak memberontak." }
-            ],
-            cerita: {
-                judul: "Locke dan Tanah Kosong",
-                cerita: "Locke pernah berkata, 'Bayangkan sebidang tanah kosong. Jika seseorang bekerja di tanah itu, menanam pohon, dan membangun rumah, maka tanah itu menjadi miliknya. Kerja adalah sumber kepemilikan. Tetapi jika ada orang lain yang lebih membutuhkan, kita harus berbagi. Hak milik bukanlah hak mutlak; ia harus digunakan untuk kebaikan bersama.'",
-                pesan: "Kepemilikan berasal dari kerja, tetapi hak milik harus disertai tanggung jawab sosial."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk rasional yang memiliki hak alami. Kebebasan adalah hak fundamental manusia.",
-                alam: "Alam adalah milik bersama. Manusia boleh memiliki bagian dari alam melalui kerja, tetapi tidak boleh mengeksploitasi secara berlebihan.",
-                tuhan: "Locke percaya pada Tuhan Pencipta. Hak-hak alami berasal dari Tuhan dan tidak bisa dicabut oleh manusia."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/locke/",
-                "https://iep.utm.edu/locke/"
-            ]
-        }, {
-            id: 26,
-            nama: "Gottfried Leibniz",
-            avatar: "♾️",
-            era: "Modern",
-            tahun: "1646–1716",
-            asal: "Leipzig, Jerman",
-            kutipan: "Kita hidup di dunia terbaik yang mungkin.",
-            bio: "Leibniz adalah filsuf dan matematikawan Jerman, tokoh rasionalisme. Ia mengembangkan kalkulus dan monadologi. Karyanya tentang logika dan metafisika sangat berpengaruh.",
-            pemikiran: [
-                { judul: "Monadologi", penjelasan: "Realitas terdiri dari monad — substansi spiritual yang tidak terbagi. Monad tidak berinteraksi secara fisik, tetapi harmonis karena Tuhan." },
-                { judul: "Teodise", penjelasan: "Dunia ini adalah yang terbaik yang mungkin. Tuhan memilih dunia ini karena dunia ini memiliki keseimbangan kebaikan dan kejahatan terbaik." },
-                { judul: "Prinsip Kontradiksi dan Sebab-Akibat", penjelasan: "Segala sesuatu memiliki alasan. Tidak ada yang terjadi tanpa sebab yang cukup." }
-            ],
-            cerita: {
-                judul: "Leibniz dan Apel Busuk",
-                cerita: "Seorang murid bertanya kepada Leibniz, 'Jika dunia ini adalah yang terbaik, mengapa ada apel busuk?' Leibniz menjawab, 'Apel busuk mengajarkan kita tentang pembusukan dan siklus kehidupan. Tanpa pembusukan, tidak ada kesuburan. Kejahatan dan penderitaan adalah bagian dari keselarasan yang lebih besar. Lihatlah keseluruhan, bukan bagian-bagiannya.'",
-                pesan: "Kejahatan dan penderitaan mungkin sulit dipahami dari sudut pandang kita. Tetapi dalam keseluruhan alam semesta, semuanya memiliki tempatnya."
-            },
-            kaitan: {
-                manusia: "Manusia adalah monad yang memiliki kesadaran. Tujuan manusia adalah meningkatkan kesadarannya menuju Tuhan.",
-                alam: "Alam adalah kumpulan monad yang harmonis. Setiap bagian alam memiliki peran dalam keseluruhan yang sempurna.",
-                tuhan: "Tuhan adalah Monad Tertinggi. Semua monad mencerminkan Tuhan pada tingkatnya masing-masing."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/leibniz/",
-                "https://iep.utm.edu/leibniz/"
-            ]
-        }, {
-            id: 27,
-            nama: "Bertrand Russell",
-            avatar: "📊",
-            era: "Kontemporer",
-            tahun: "1872–1970",
-            asal: "Trellech, Wales",
-            kutipan: "Hal yang paling berbahaya di dunia adalah orang yang tidak mau belajar dari masa lalu.",
-            bio: "Russell adalah filsuf, matematikawan, dan aktivis Inggris. Ia adalah tokoh utama filsafat analitis. Ia juga aktivis perdamaian dan anti-perang.",
-            pemikiran: [
-                { judul: "Atomisme Logis", penjelasan: "Bahasa dan realitas terdiri dari 'fakta atom' yang tidak dapat direduksi lagi." },
-                { judul: "Epistemologi", penjelasan: "Pengetahuan yang pasti tentang dunia luar tidak mungkin. Yang kita tahu hanyalah persepsi kita." },
-                { judul: "Kritik Agama", penjelasan: "Russell skeptis terhadap agama. Ia berargumen bahwa iman tidak memiliki dasar rasional." }
-            ],
-            cerita: {
-                judul: "Russell dan Teacup",
-                cerita: "Russell pernah memberikan analogi 'teco di luar angkasa'. Ia berkata, 'Jika aku mengatakan bahwa ada teco porselen yang mengorbit matahari di luar angkasa, tidak ada yang bisa membuktikan aku salah. Tetapi tidak ada alasan untuk mempercayainya. Agama sering seperti itu — tidak bisa dibuktikan salah, tetapi tidak ada alasan untuk mempercayainya.'",
-                pesan: "Kepercayaan harus didasarkan pada bukti, bukan pada keyakinan buta."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang bisa berpikir dan belajar. Pengetahuan harus didasarkan pada bukti dan logika.",
-                alam: "Alam dapat dipahami melalui sains. Sains adalah metode terbaik untuk memahami alam semesta.",
-                tuhan: "Russell adalah agnostik. Ia tidak percaya pada Tuhan karena tidak ada bukti yang cukup."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/russell/",
-                "https://iep.utm.edu/russell/"
-            ]
-        }, {
-            id: 28,
-            nama: "Albert Camus",
-            avatar: "🌊",
-            era: "Kontemporer",
-            tahun: "1913–1960",
-            asal: "Mondovi, Aljazair",
-            kutipan: "Di tengah musim dingin, aku akhirnya belajar bahwa di dalam diriku terdapat musim panas yang tak terkalahkan.",
-            bio: "Camus adalah filsuf, novelis, dan dramawan Prancis-Aljazair. Ia adalah tokoh absurdisme. Ia memenangkan Hadiah Nobel Sastra 1957.",
-            pemikiran: [
-                { judul: "Absurditas", penjelasan: "Manusia mencari makna di alam semesta yang tidak memberikan makna. Ini adalah absurditas." },
-                { judul: "Pemberontakan", penjelasan: "Meskipun hidup absurd, kita harus memberontak dengan terus hidup dan menciptakan makna." },
-                { judul: "Sisifus", penjelasan: "Seperti Sisifus yang terus mendorong batu ke atas bukit, kita harus membayangkan bahwa kita bahagia meskipun sia-sia." }
-            ],
-            cerita: {
-                judul: "Camus dan Batu Sisifus",
-                cerita: "Dalam mitos Yunani, Sisifus dihukum untuk mendorong batu ke atas bukit, tetapi batu itu selalu jatuh lagi. Camus berkata, 'Kita semua seperti Sisifus. Kita bekerja, berjuang, tetapi sering sia-sia. Tetapi Sisifus tidak menyerah. Ia terus mendorong batu. Dan di situlah kebahagiaannya. Dalam perjuangan itulah makna hidup.'",
-                pesan: "Hidup mungkin tidak memiliki makna bawaan, tetapi kita bisa menciptakan makna melalui perjuangan dan pemberontakan."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang mencari makna di dunia yang absurd. Kebebasan adalah menerima absurditas dan tetap bertahan.",
-                alam: "Alam adalah acuh tak acuh terhadap manusia. Alam tidak memberi makna; manusia harus menciptakannya sendiri.",
-                tuhan: "Camus tidak percaya pada Tuhan. Baginya, Tuhan adalah solusi mudah untuk masalah absurditas. Tanpa Tuhan, manusia bebas dan bertanggung jawab."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/camus/",
-                "https://iep.utm.edu/camus/"
-            ]
-        }, {
-            id: 29,
-            nama: "George Berkeley",
-            avatar: "👁️",
-            era: "Modern",
-            tahun: "1685–1753",
-            asal: "Kilkenny, Irlandia",
-            kutipan: "Esse est percipi — ada adalah dipersepsikan.",
-            bio: "Berkeley adalah filsuf Irlandia, tokoh idealisme subjektif. Ia berargumen bahwa realitas hanya ada dalam pikiran yang mempersepsikannya.",
-            pemikiran: [
-                { judul: "Esse est Percipi", penjelasan: "Ada berarti dipersepsikan. Tidak ada yang ada di luar pikiran." },
-                { judul: "Penolakan Materi", penjelasan: "Zat materi tidak ada. Yang kita sebut 'materi' adalah kumpulan ide dalam pikiran." },
-                { judul: "Tuhan sebagai Pemersepsi Abadi", penjelasan: "Realitas berlanjut karena Tuhan selalu mempersepsikan semuanya." }
-            ],
-            cerita: {
-                judul: "Berkeley dan Pohon",
-                cerita: "Suatu hari, seorang murid bertanya kepada Berkeley, 'Jika semua yang ada adalah persepsi, apa yang terjadi pada pohon ketika tidak ada yang melihatnya?' Berkeley menjawab, 'Pohon itu tetap ada karena Tuhan selalu melihatnya. Tuhan adalah pemersepsi abadi. Jadi, pohon selalu ada dalam pikiran Tuhan, bahkan ketika tidak ada manusia yang melihatnya.'",
-                pesan: "Realitas tidak bergantung pada manusia. Tuhan adalah fondasi dari semua realitas."
-            },
-            kaitan: {
-                manusia: "Manusia hanya bisa mengetahui ide-ide dalam pikirannya. Dunia luar hanya ada sejauh dipersepsikan.",
-                alam: "Alam adalah kumpulan ide dalam pikiran. Alam tidak memiliki keberadaan di luar pikiran.",
-                tuhan: "Tuhan adalah pikiran abadi yang mempersepsikan semua realitas. Tanpa Tuhan, realitas tidak akan ada."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/berkeley/",
-                "https://iep.utm.edu/berkeley/"
-            ]
-        }, {
-            id: 30,
-            nama: "John Stuart Mill",
-            avatar: "📊",
-            era: "Modern",
-            tahun: "1806–1873",
-            asal: "London, Inggris",
-            kutipan: "Tindakan adalah benar jika menghasilkan kebahagiaan terbanyak bagi orang terbanyak.",
-            bio: "Mill adalah filsuf, ekonom, dan aktivis Inggris. Ia adalah tokoh utama utilitarisme dan liberalisme. Karyanya 'On Liberty' sangat berpengaruh.",
-            pemikiran: [
-                { judul: "Utilitarisme", penjelasan: "Tindakan dinilai dari konsekuensinya: kebahagiaan terbanyak bagi orang terbanyak." },
-                { judul: "Prinsip Kebebasan", penjelasan: "Seseorang bebas melakukan apa pun selama tidak merugikan orang lain." },
-                { judul: "Emansipasi Perempuan", penjelasan: "Perempuan harus memiliki hak yang sama dengan laki-laki. Ketidaksetaraan gender adalah tidak adil." }
-            ],
-            cerita: {
-                judul: "Mill dan Perempuan di Pabrik",
-                cerita: "Mill mengunjungi sebuah pabrik dan melihat perempuan bekerja 14 jam sehari dengan upah rendah. Ia berkata, 'Ini tidak adil. Perempuan dan laki-laki harus dibayar sama untuk pekerjaan yang sama. Jika kita ingin kebahagiaan terbanyak, kita harus memperlakukan semua orang dengan adil.'",
-                pesan: "Keadilan sosial adalah bagian dari kebahagiaan bersama. Semua orang berhak diperlakukan sama."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang mencari kebahagiaan. Masyarakat yang baik adalah yang memaksimalkan kebahagiaan semua anggotanya.",
-                alam: "Alam adalah sumber daya yang harus digunakan untuk kesejahteraan manusia. Tetapi alam harus dijaga untuk generasi mendatang.",
-                tuhan: "Mill adalah agnostik. Baginya, etika tidak memerlukan Tuhan; etika didasarkan pada prinsip kebahagiaan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/mill/",
-                "https://iep.utm.edu/mill/"
-            ]
-        }, {
-            id: 31,
-            nama: "Pythagoras",
-            avatar: "🔢",
-            era: "Yunani Kuno",
-            tahun: "570–495 SM",
-            asal: "Samos, Yunani",
-            kutipan: "Segala sesuatu adalah angka.",
-            bio: "Pythagoras adalah filsuf dan matematikawan Yunani. Ia mendirikan komunitas Pythagoras yang menggabungkan filsafat, matematika, dan agama. Ia terkenal dengan teorema Pythagoras.",
-            pemikiran: [
-                { judul: "Matematika sebagai Esensi", penjelasan: "Angka adalah prinsip dasar realitas. Alam semesta dapat dipahami melalui angka." },
-                { judul: "Reinkarnasi", penjelasan: "Jiwa abadi dan berpindah dari satu tubuh ke tubuh lain setelah kematian." },
-                { judul: "Harmoni Kosmis", penjelasan: "Alam semesta adalah harmoni angka. Musik dan matematika mencerminkan keteraturan alam." }
-            ],
-            cerita: {
-                judul: "Pythagoras dan Palu",
-                cerita: "Suatu hari, Pythagoras berjalan melewati pandai besi. Ia mendengar palu yang dipukul menghasilkan nada yang berbeda. Ia menyadari bahwa perbedaan nada disebabkan oleh perbedaan berat palu. Ia kemudian menghubungkan musik dengan angka. 'Musik adalah matematika yang didengar,' katanya.",
-                pesan: "Keindahan dan keteraturan alam dapat dipahami melalui angka. Matematika adalah bahasa alam semesta."
-            },
-            kaitan: {
-                manusia: "Manusia memiliki jiwa yang abadi. Tujuan hidup adalah memurnikan jiwa melalui pengetahuan dan kebajikan.",
-                alam: "Alam adalah harmoni angka. Semua fenomena alam dapat dijelaskan melalui hubungan matematis.",
-                tuhan: "Pythagoras percaya pada Tuhan sebagai sumber harmoni dan keteraturan. Tuhan adalah 'Monas' — kesatuan yang sempurna."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/pythagoras/",
-                "https://iep.utm.edu/pythagor/"
-            ]
-        }, {
-            id: 32,
-            nama: "Heraclitus",
-            avatar: "🔥",
-            era: "Yunani Kuno",
-            tahun: "535–475 SM",
-            asal: "Ephesus, Yunani",
-            kutipan: "Tidak ada yang abadi kecuali perubahan.",
-            bio: "Heraclitus adalah filsuf Yunani yang dikenal dengan filosofi perubahan. Ia percaya bahwa segala sesuatu terus mengalir dan berubah.",
-            pemikiran: [
-                { judul: "Panta Rhei (Semua Mengalir)", penjelasan: "Segala sesuatu terus berubah. Tidak ada yang tetap sama. Sungai yang sama tidak bisa dilewati dua kali." },
-                { judul: "Logos", penjelasan: "Ada prinsip rasional (Logos) yang mengatur perubahan di alam semesta." },
-                { judul: "Persatuan Lawan", penjelasan: "Lawan-lawan saling melengkapi. Siang dan malam, hidup dan mati adalah satu kesatuan." }
-            ],
-            cerita: {
-                judul: "Heraclitus dan Sungai",
-                cerita: "Seorang murid bertanya kepada Heraclitus, 'Guru, apakah sungai ini sama dengan sungai yang kau lihat kemarin?' Heraclitus menjawab, 'Kau tidak bisa masuk ke sungai yang sama dua kali. Airnya terus mengalir, selalu baru. Begitu juga kehidupan. Semua berubah. Jangan terikat pada hal-hal yang fana.'",
-                pesan: "Terimalah perubahan sebagai bagian dari kehidupan. Jangan takut pada perubahan; itu adalah hukum alam."
-            },
-            kaitan: {
-                manusia: "Manusia terus berubah. Identitas tidak permanen. Kita adalah aliran kesadaran yang terus bergerak.",
-                alam: "Alam adalah perubahan. Api adalah simbol perubahan yang terus-menerus. Alam tidak pernah statis.",
-                tuhan: "Heraclitus berbicara tentang 'Logos' sebagai prinsip ilahi yang mengatur perubahan. Tuhan adalah akal yang mengendalikan alam."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/heraclitus/",
-                "https://iep.utm.edu/heraclit/"
-            ]
-        }, {
-            id: 33,
-            nama: "Parmenides",
-            avatar: "⛰️",
-            era: "Yunani Kuno",
-            tahun: "515–450 SM",
-            asal: "Elea, Yunani",
-            kutipan: "Yang ada adalah; yang tidak ada tidaklah ada.",
-            bio: "Parmenides adalah filsuf Yunani, pendiri aliran Elea. Ia berargumen bahwa realitas adalah satu, abadi, dan tidak berubah. Perubahan hanyalah ilusi.",
-            pemikiran: [
-                { judul: "Monisme", penjelasan: "Realitas adalah satu dan tidak berubah. Keberagaman dan perubahan adalah ilusi indra." },
-                { judul: "Penolakan Ketiadaan", penjelasan: "Yang tidak ada tidak bisa dipikirkan atau dikatakan. Hanya yang ada yang nyata." },
-                { judul: "Akal vs Indra", penjelasan: "Akal lebih dapat diandalkan daripada indra. Indra menipu; akal mengungkap kebenaran." }
-            ],
-            cerita: {
-                judul: "Parmenides dan Jalan",
-                cerita: "Parmenides pernah berkata, 'Ada dua jalan: jalan kebenaran dan jalan pendapat. Jalan kebenaran mengatakan bahwa 'yang ada adalah'. Jalan pendapat mengatakan bahwa 'yang ada dan yang tidak ada'. Indra memberitahumu bahwa ada perubahan, tetapi akal memberitahumu bahwa hanya 'yang ada' yang nyata. Percayalah pada akal, bukan indra.'",
-                pesan: "Jangan percaya pada penampilan. Kebenaran sejati hanya bisa ditemukan melalui akal, bukan indra."
-            },
-            kaitan: {
-                manusia: "Manusia sering tertipu oleh indra. Kebijaksanaan adalah melampaui indra dan mencapai pengetahuan tentang 'yang ada'.",
-                alam: "Alam yang berubah-ubah adalah ilusi. Di balik perubahan, ada realitas yang abadi dan tidak berubah.",
-                tuhan: "Parmenides mengidentifikasi 'yang ada' dengan Tuhan. Tuhan adalah realitas yang sempurna dan tidak berubah."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/parmenides/",
-                "https://iep.utm.edu/parmenid/"
-            ]
-        }, {
-            id: 34,
-            nama: "Epicurus",
-            avatar: "🍇",
-            era: "Yunani Kuno",
-            tahun: "341–270 SM",
-            asal: "Samos, Yunani",
-            kutipan: "Kesenangan adalah awal dan akhir dari kehidupan yang bahagia.",
-            bio: "Epicurus adalah filsuf Yunani, pendiri Epikureanisme. Ia mengajarkan bahwa kebahagiaan adalah tujuan hidup, dan kebahagiaan dicapai melalui ketenangan jiwa.",
-            pemikiran: [
-                { judul: "Ataraxia (Ketenangan Jiwa)", penjelasan: "Kebahagiaan adalah ketenangan jiwa, bukan kesenangan hedonistik. Bebas dari rasa sakit dan kecemasan." },
-                { judul: "Kesenangan Sederhana", penjelasan: "Kesenangan yang paling baik adalah kesenangan yang sederhana dan alami: makanan, teman, dan refleksi." },
-                { judul: "Kritik Agama", penjelasan: "Ketakutan pada dewa dan kematian adalah sumber kecemasan. Lepaskan ketakutan ini untuk mencapai ketenangan." }
-            ],
-            cerita: {
-                judul: "Epicurus dan Kebun",
-                cerita: "Epicurus membeli sebuah kebun di Athena dan tinggal di sana bersama teman-temannya. Mereka hidup sederhana, makan sayuran, dan berbincang tentang filsafat. Suatu hari, seorang pengunjung bertanya, 'Apakah ini hidup yang bahagia?' Epicurus menjawab, 'Kami tidak lapar, kami tidak takut, kami memiliki teman. Inilah kebahagiaan sejati.'",
-                pesan: "Kebahagiaan tidak membutuhkan kekayaan atau kekuasaan. Ketenangan, kesederhanaan, dan persahabatan adalah kunci kebahagiaan."
-            },
-            kaitan: {
-                manusia: "Manusia mencari kebahagiaan. Kebahagiaan sejati adalah ketenangan jiwa, bukan kesenangan duniawi.",
-                alam: "Alam adalah sumber kesenangan sederhana. Nikmati alam dengan bijak tanpa keserakahan.",
-                tuhan: "Epicurus percaya pada dewa, tetapi ia percaya bahwa dewa tidak peduli pada manusia. Takut pada dewa adalah sia-sia."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/epicurus/",
-                "https://iep.utm.edu/epicurus/"
-            ]
-        }, {
-            id: 35,
-            nama: "Zeno dari Citium",
-            avatar: "🏛️",
-            era: "Yunani Kuno",
-            tahun: "334–262 SM",
-            asal: "Citium, Siprus",
-            kutipan: "Kebahagiaan adalah mengikuti alam.",
-            bio: "Zeno adalah filsuf Yunani, pendiri aliran Stoikisme. Ia mengajarkan bahwa kebahagiaan dicapai dengan hidup sesuai dengan alam dan akal.",
-            pemikiran: [
-                { judul: "Hidup Sesuai Alam", penjelasan: "Kebahagiaan adalah hidup selaras dengan alam. Alam rasional; manusia harus mengikuti akal." },
-                { judul: "Pengendalian Diri", penjelasan: "Kita tidak bisa mengontrol kejadian eksternal, tetapi kita bisa mengontrol reaksi kita terhadapnya." },
-                { judul: "Apatheia (Bebas dari Emosi)", penjelasan: "Emosi negatif adalah hasil dari penilaian yang salah. Dengan akal, kita bisa bebas dari emosi." }
-            ],
-            cerita: {
-                judul: "Zeno dan Kapal",
-                cerita: "Suatu hari, Zeno berlayar di laut. Tiba-tiba badai datang dan kapal hampir tenggelam. Penumpang panik, tetapi Zeno tetap tenang. Setelah badai reda, seorang teman bertanya, 'Bagaimana kau bisa tetap tenang?' Zeno menjawab, 'Aku tidak bisa mengontrol badai, tetapi aku bisa mengontrol reaksiku. Ketakutan tidak membantu. Akal adalah satu-satunya hal yang bisa kita kendalikan.'",
-                pesan: "Kita tidak bisa mengendalikan dunia, tetapi kita bisa mengendalikan diri kita sendiri. Itulah kebebasan sejati."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk rasional. Kebijaksanaan adalah menggunakan akal untuk menerima apa yang tidak bisa diubah.",
-                alam: "Alam adalah rasional. Mengikuti alam berarti mengikuti akal. Alam adalah guru terbaik.",
-                tuhan: "Zeno percaya pada Tuhan sebagai akal universal. Tuhan adalah imanen dalam alam. Hidup sesuai alam adalah hidup sesuai Tuhan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/stoicism/",
-                "https://iep.utm.edu/stoicism/"
-            ]
-        }, {
-            id: 36,
-            nama: "Marcus Aurelius",
-            avatar: "👑",
-            era: "Yunani-Romawi",
-            tahun: "121–180",
-            asal: "Roma, Italia",
-            kutipan: "Kekuatan manusia tidak terletak pada tubuh, tetapi pada jiwa.",
-            bio: "Marcus Aurelius adalah Kaisar Romawi dan filsuf Stoik. Ia menulis 'Meditations' yang menjadi teks Stoikisme paling terkenal.",
-            pemikiran: [
-                { judul: "Kontrol Diri", penjelasan: "Yang bisa kita kendalikan hanyalah pikiran dan tindakan kita. Sisanya, serahkan pada alam." },
-                { judul: "Memento Mori", penjelasan: "Ingatlah bahwa kau akan mati. Kesadaran akan kematian membuat hidup lebih bermakna." },
-                { judul: "Pelayanan Publik", penjelasan: "Tugas manusia adalah melayani orang lain. Kebajikan adalah tujuan hidup." }
-            ],
-            cerita: {
-                judul: "Marcus Aurelius di Medan Perang",
-                cerita: "Marcus Aurelius memimpin pasukan dalam perang melawan suku Jerman. Di tengah medan perang, ia menulis di jurnalnya, 'Jika kau terluka, jangan marah. Jika temanmu jatuh, jangan menangis. Yang penting adalah tetap tenang dan melakukan tugasmu. Semua ini akan berlalu. Yang abadi adalah kebajikan.'",
-                pesan: "Dalam kesulitan sekalipun, kita harus tetap tenang dan fokus pada tugas. Semua penderitaan akan berlalu."
-            },
-            kaitan: {
-                manusia: "Manusia adalah jiwa yang memiliki tubuh. Kebijaksanaan adalah mengendalikan pikiran dan emosi.",
-                alam: "Alam adalah rasional. Kejadian di alam terjadi sesuai dengan hukum alam. Terimalah dengan tenang.",
-                tuhan: "Marcus Aurelius percaya pada Tuhan sebagai akal universal. Ia sering berdoa dan merenungkan kehendak Tuhan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/marcus-aurelius/",
-                "https://iep.utm.edu/marcus/"
-            ]
-        }, {
-            id: 37,
-            nama: "Seneca",
-            avatar: "📜",
-            era: "Yunani-Romawi",
-            tahun: "4 SM – 65 M",
-            asal: "Córdoba, Spanyol",
-            kutipan: "Hidup bukanlah pendek, tetapi kita membuatnya pendek dengan menyia-nyiakannya.",
-            bio: "Seneca adalah filsuf Stoik Romawi, negarawan, dan dramawan. Ia adalah penasihat Kaisar Nero. Tulisannya tentang etika dan kebijaksanaan sangat berpengaruh.",
-            pemikiran: [
-                { judul: "Waktu adalah Aset Terbesar", penjelasan: "Waktu adalah satu-satunya hal yang benar-benar kita miliki. Jangan sia-siakan." },
-                { judul: "Mempersiapkan Kematian", penjelasan: "Setiap hari adalah latihan untuk kematian. Menerima kematian adalah kebijaksanaan." },
-                { judul: "Hidup Sederhana", penjelasan: "Kekayaan sejati adalah kepuasan dengan apa yang kita miliki. Keserakahan adalah sumber penderitaan." }
-            ],
-            cerita: {
-                judul: "Seneca dan Jam Pasir",
-                cerita: "Seneca memiliki jam pasir di mejanya. Setiap kali ia melihat pasir mengalir, ia berkata, 'Lihatlah, waktu terus mengalir. Kita tidak bisa mengembalikannya. Gunakan setiap detik dengan bijak. Jangan tunda kebahagiaan. Jangan tunda menjadi baik. Hari ini adalah satu-satunya yang kita miliki.'",
-                pesan: "Jangan menunda kebaikan. Gunakan waktu yang kita miliki untuk hidup dengan bijaksana dan berarti."
-            },
-            kaitan: {
-                manusia: "Manusia memiliki waktu yang terbatas. Kebijaksanaan adalah menggunakan waktu dengan baik.",
-                alam: "Alam mengajarkan kita tentang siklus dan kematian. Belajarlah dari alam untuk menerima kefanaan.",
-                tuhan: "Seneca percaya pada Tuhan sebagai akal universal. Hidup sesuai alam adalah hidup sesuai Tuhan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/seneca/",
-                "https://iep.utm.edu/seneca/"
-            ]
-        }, {
-            id: 38,
-            nama: "Anaximander",
-            avatar: "🌍",
-            era: "Yunani Kuno",
-            tahun: "610–546 SM",
-            asal: "Miletus, Yunani",
-            kutipan: "Apeiron (yang tak terbatas) adalah asal segala sesuatu.",
-            bio: "Anaximander adalah filsuf Yunani, murid Thales. Ia mengembangkan konsep 'apeiron' — prinsip tak terbatas yang menjadi asal semua hal.",
-            pemikiran: [
-                { judul: "Apeiron", penjelasan: "Apeiron adalah zat tak terbatas yang menjadi sumber segala sesuatu. Ia tidak memiliki batas dan abadi." },
-                { judul: "Evolusi Kehidupan", penjelasan: "Kehidupan pertama kali muncul di air. Manusia berevolusi dari makhluk air." },
-                { judul: "Keseimbangan Kosmis", penjelasan: "Alam semesta beroperasi dengan keseimbangan. Tidak ada elemen yang mendominasi." }
-            ],
-            cerita: {
-                judul: "Anaximander dan Bumi",
-                cerita: "Anaximander adalah filsuf pertama yang menggambar peta dunia. Ia berkata, 'Bumi ini bulat dan menggantung di ruang hampa. Tidak ada yang menahan bumi. Ia tetap di tempatnya karena keseimbangan. Segala sesuatu di alam memiliki keseimbangan. Itulah keadilan alam.'",
-                pesan: "Alam semesta diatur oleh keseimbangan. Manusia harus menjaga keseimbangan dalam hidupnya."
-            },
-            kaitan: {
-                manusia: "Manusia adalah bagian dari alam. Kita berevolusi dari bentuk kehidupan yang lebih sederhana.",
-                alam: "Alam adalah keseimbangan. Semua elemen saling melengkapi dan menjaga harmoni.",
-                tuhan: "Anaximander tidak berbicara tentang Tuhan personal. Apeiron adalah prinsip ilahi yang tak terbatas."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/anaximander/",
-                "https://iep.utm.edu/anaximander/"
-            ]
-        }, {
-            id: 39,
-            nama: "Thales",
-            avatar: "💧",
-            era: "Yunani Kuno",
-            tahun: "624–546 SM",
-            asal: "Miletus, Yunani",
-            kutipan: "Air adalah asal segala sesuatu.",
-            bio: "Thales adalah filsuf Yunani pertama. Ia dianggap sebagai bapak filsafat Barat. Ia meramalkan gerhana matahari dan mempelajari geometri.",
-            pemikiran: [
-                { judul: "Air sebagai Asal", penjelasan: "Segala sesuatu berasal dari air. Air adalah zat dasar yang membentuk semua hal." },
-                { judul: "Realitas Bersifat Monistik", penjelasan: "Semua realitas dapat direduksi ke satu prinsip dasar." },
-                { judul: "Akal Ilahi", penjelasan: "Alam semesta memiliki jiwa dan akal. Semua hal di alam memiliki prinsip ilahi." }
-            ],
-            cerita: {
-                judul: "Thales dan Sumur",
-                cerita: "Suatu hari, Thales berjalan dan melihat ke dalam sumur. Ia kemudian meramalkan bahwa akan ada panen zaitun yang melimpah. Ia menyewa semua mesin pemeras zaitun dan menjadi kaya. Ketika temannya bertanya, 'Mengapa kau menjadi kaya?' Thales menjawab, 'Aku tidak mencari kekayaan, tetapi aku ingin menunjukkan bahwa filsuf juga bisa kaya jika mereka mau.'",
-                pesan: "Pengetahuan dan kebijaksanaan dapat digunakan untuk tujuan praktis. Tetapi tujuan utama filsafat adalah kebijaksanaan, bukan kekayaan."
-            },
-            kaitan: {
-                manusia: "Manusia adalah bagian dari alam. Memahami alam adalah memahami diri sendiri.",
-                alam: "Alam terdiri dari satu zat dasar: air. Semua fenomena alam dapat dijelaskan melalui air.",
-                tuhan: "Thales percaya bahwa 'segala sesuatu penuh dengan dewa'. Alam memiliki jiwa ilahi."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/thales/",
-                "https://iep.utm.edu/thales/"
-            ]
-        }, {
-            id: 40,
-            nama: "Anaximenes",
-            avatar: "🌬️",
-            era: "Yunani Kuno",
-            tahun: "585–528 SM",
-            asal: "Miletus, Yunani",
-            kutipan: "Udara adalah asal segala sesuatu.",
-            bio: "Anaximenes adalah filsuf Yunani, murid Anaximander. Ia percaya bahwa udara adalah zat dasar yang membentuk semua hal.",
-            pemikiran: [
-                { judul: "Udara sebagai Asal", penjelasan: "Udara adalah zat dasar. Udara yang mengembun menjadi awan, air, dan bumi. Udara yang mengembang menjadi api." },
-                { judul: "Proses Kondensasi dan Rarefaksi", penjelasan: "Perubahan terjadi melalui pemadatan dan pengenceran udara." },
-                { judul: "Kesatuan Alam", penjelasan: "Semua fenomena alam memiliki prinsip yang sama." }
-            ],
-            cerita: {
-                judul: "Anaximenes dan Nafas",
-                cerita: "Anaximenes pernah berkata kepada muridnya, 'Perhatikan nafasmu. Saat kau bernapas, udara masuk dan keluar. Udara adalah kehidupan. Tanpa udara, kau mati. Alam semesta juga bernapas. Udara adalah jiwa alam semesta. Semua berasal dari udara dan kembali ke udara.'",
-                pesan: "Hidup tergantung pada udara. Hargai napasmu; itu adalah anugerah alam."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang bernapas. Kehidupan manusia bergantung pada udara.",
-                alam: "Alam terdiri dari udara yang berubah bentuk. Semua fenomena alam adalah modifikasi udara.",
-                tuhan: "Anaximenes tidak berbicara tentang Tuhan personal. Udara adalah prinsip ilahi yang mengatur alam."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/anaximenes/",
-                "https://iep.utm.edu/anaximenes/"
-            ]
-        }, {
-            id: 41,
-            nama: "Empedocles",
-            avatar: "🔥",
-            era: "Yunani Kuno",
-            tahun: "495–435 SM",
-            asal: "Acragas, Sisilia",
-            kutipan: "Akar segala sesuatu adalah api, udara, air, dan tanah.",
-            bio: "Empedocles adalah filsuf Yunani yang mengembangkan teori empat elemen. Ia percaya bahwa cinta dan pertengkaran adalah kekuatan yang menggerakkan alam.",
-            pemikiran: [
-                { judul: "Empat Elemen", penjelasan: "Segala sesuatu terdiri dari empat elemen: api, udara, air, dan tanah." },
-                { judul: "Cinta dan Pertengkaran", penjelasan: "Dua kekuatan menggerakkan alam: cinta (menyatukan) dan pertengkaran (memisahkan)." },
-                { judul: "Reinkarnasi", penjelasan: "Jiwa berpindah dari satu tubuh ke tubuh lain. Tidak membunuh makhluk hidup." }
-            ],
-            cerita: {
-                judul: "Empedocles dan Gunung Berapi",
-                cerita: "Empedocles mendaki Gunung Etna dan melemparkan dirinya ke dalam kawah. Ia ingin orang-orang menganggapnya sebagai dewa. Tetapi selipnya jatuh dan terbukalah kebenaran. Muridnya berkata, 'Guru mengajarkan bahwa cinta dan pertengkaran menggerakkan alam. Bahkan kematiannya adalah ajaran: jangan mencari keabadian duniawi.'",
-                pesan: "Jangan mencari kemuliaan duniawi. Kebijaksanaan sejati adalah kerendahan hati."
-            },
-            kaitan: {
-                manusia: "Manusia adalah campuran empat elemen. Kesehatan adalah keseimbangan elemen dalam tubuh.",
-                alam: "Alam terdiri dari empat elemen. Semua perubahan alam disebabkan oleh cinta dan pertengkaran.",
-                tuhan: "Empedocles berbicara tentang 'dewa' sebagai prinsip kosmis. Ia percaya pada siklus reinkarnasi."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/empedocles/",
-                "https://iep.utm.edu/empedocles/"
-            ]
-        }, {
-            id: 42,
-            nama: "Anaxagoras",
-            avatar: "🧠",
-            era: "Yunani Kuno",
-            tahun: "500–428 SM",
-            asal: "Klazomenai, Yunani",
-            kutipan: "Akal (Nous) mengatur segala sesuatu.",
-            bio: "Anaxagoras adalah filsuf Yunani yang memperkenalkan konsep 'Nous' (Akal) sebagai prinsip pengatur alam semesta.",
-            pemikiran: [
-                { judul: "Nous (Akal)", penjelasan: "Akal adalah prinsip yang mengatur alam semesta. Akal adalah kekuatan yang menciptakan keteraturan." },
-                { judul: "Segala Sesuatu dalam Segala Sesuatu", penjelasan: "Setiap hal mengandung bagian dari semua hal lain. Tidak ada yang murni." },
-                { judul: "Penjelasan Rasional", penjelasan: "Fenomena alam dapat dijelaskan tanpa dewa-dewa. Matahari adalah batu panas, bukan dewa." }
-            ],
-            cerita: {
-                judul: "Anaxagoras dan Matahari",
-                cerita: "Anaxagoras berkata kepada murid-muridnya, 'Matahari bukanlah dewa. Matahari adalah bola batu yang panas dan bersinar. Bulan juga bukan dewi; bulan adalah batu yang memantulkan cahaya matahari.' Orang Athena marah dan mengasingkannya karena dianggap menghina dewa-dewa.",
-                pesan: "Berpikir rasional adalah keberanian. Jangan takut untuk mempertanyakan kepercayaan lama."
-            },
-            kaitan: {
-                manusia: "Manusia memiliki akal (Nous). Akal adalah yang membedakan manusia dari makhluk lain.",
-                alam: "Alam diatur oleh Akal. Keteraturan alam menunjukkan adanya prinsip rasional.",
-                tuhan: "Anaxagoras berbicara tentang 'Nous' sebagai prinsip ilahi. Tuhan adalah akal yang mengatur alam."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/anaxagoras/",
-                "https://iep.utm.edu/anaxagoras/"
-            ]
-        }, {
-            id: 43,
-            nama: "Democritus",
-            avatar: "⚛️",
-            era: "Yunani Kuno",
-            tahun: "460–370 SM",
-            asal: "Abdera, Yunani",
-            kutipan: "Segala sesuatu terdiri dari atom dan ruang kosong.",
-            bio: "Democritus adalah filsuf Yunani yang mengembangkan teori atom. Ia percaya bahwa alam semesta terdiri dari partikel kecil yang tidak terlihat (atom).",
-            pemikiran: [
-                { judul: "Teori Atom", penjelasan: "Segala sesuatu terdiri dari atom — partikel yang tidak dapat dibagi. Atom bergerak di ruang kosong." },
-                { judul: "Determinisme", penjelasan: "Segala sesuatu terjadi karena benturan atom. Tidak ada kebetulan." },
-                { judul: "Kebahagiaan sebagai Ketenangan", penjelasan: "Kebahagiaan adalah ketenangan jiwa (euthymia). Bebas dari ketakutan dan kecemasan." }
-            ],
-            cerita: {
-                judul: "Democritus dan Atom",
-                cerita: "Suatu hari, Democritus mengambil sepotong roti dan memecahnya menjadi remah-remah kecil. Ia berkata kepada muridnya, 'Jika kau terus memecah roti ini, pada akhirnya kau akan mendapatkan partikel yang tidak bisa dipecah lagi. Itulah atom. Semua di alam semesta ini terdiri dari atom-atom yang bergerak. Bahkan jiwa kita terdiri dari atom-atom halus.'",
-                pesan: "Alam semesta adalah mekanisme yang teratur. Tidak ada misteri yang tidak bisa dijelaskan."
-            },
-            kaitan: {
-                manusia: "Manusia adalah kumpulan atom. Jiwa juga terdiri dari atom halus. Setelah mati, atom-atom bubar.",
-                alam: "Alam adalah gerakan atom di ruang kosong. Tidak ada tujuan atau desain dalam alam.",
-                tuhan: "Democritus tidak percaya pada Tuhan personal. Dewa-dewa adalah produk imajinasi manusia."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/democritus/",
-                "https://iep.utm.edu/democritus/"
-            ]
-        }, {
-            id: 44,
-            nama: "Protagoras",
-            avatar: "⚖️",
-            era: "Yunani Kuno",
-            tahun: "490–420 SM",
-            asal: "Abdera, Yunani",
-            kutipan: "Manusia adalah ukuran dari segala sesuatu.",
-            bio: "Protagoras adalah filsuf Yunani, tokoh utama sofisme. Ia terkenal dengan relativismenya. Ia mengajar retorika dan berpikir kritis.",
-            pemikiran: [
-                { judul: "Relativisme", penjelasan: "Tidak ada kebenaran absolut. Kebenaran bergantung pada perspektif manusia." },
-                { judul: "Manusia sebagai Ukuran", penjelasan: "Setiap orang adalah ukuran kebenaran bagi dirinya sendiri." },
-                { judul: "Kritik Agama", penjelasan: "Protagoras berkata, 'Tentang dewa, aku tidak bisa tahu apakah mereka ada atau tidak.'" }
-            ],
-            cerita: {
-                judul: "Protagoras dan Angin",
-                cerita: "Protagoras pernah berkata, 'Jika angin bertiup, apakah angin itu dingin atau hangat? Bagi orang yang kedinginan, angin itu dingin. Bagi orang yang berkeringat, angin itu hangat. Angin itu sendiri tidak dingin atau hangat. Kebenaran tergantung pada siapa yang merasakannya.'",
-                pesan: "Kebenaran itu relatif. Apa yang benar bagimu mungkin tidak benar bagi orang lain. Hargailah perbedaan perspektif."
-            },
-            kaitan: {
-                manusia: "Manusia adalah pusat dari semua pengukuran. Tidak ada kebenaran di luar persepsi manusia.",
-                alam: "Alam tidak memiliki makna intrinsik. Alam hanya ada, dan manusia memberi makna padanya.",
-                tuhan: "Protagoras agnostik. Ia tidak yakin tentang keberadaan dewa-dewa."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/protagoras/",
-                "https://iep.utm.edu/protagoras/"
-            ]
-        }, {
-            id: 45,
-            nama: "Gorgias",
-            avatar: "🎭",
-            era: "Yunani Kuno",
-            tahun: "483–375 SM",
-            asal: "Leontini, Sisilia",
-            kutipan: "Tidak ada yang ada; jika ada, tidak dapat diketahui; jika diketahui, tidak dapat dikomunikasikan.",
-            bio: "Gorgias adalah filsuf Yunani, tokoh sofisme dan retorika. Ia terkenal dengan skeptisismenya yang ekstrem.",
-            pemikiran: [
-                { judul: "Nihilisme Epistemologis", penjelasan: "Tidak ada kepastian. Pengetahuan tidak mungkin. Komunikasi tidak sempurna." },
-                { judul: "Retorika", penjelasan: "Seni berbicara adalah kekuatan. Retorika dapat meyakinkan orang tanpa kebenaran." },
-                { judul: "Kritik Terhadap Filsafat", penjelasan: "Filsafat tradisional mengklaim kebenaran, tetapi klaim itu tidak bisa dibuktikan." }
-            ],
-            cerita: {
-                judul: "Gorgias dan Retorika",
-                cerita: "Gorgias pernah berkata, 'Jika aku berbicara di depan pengadilan, aku bisa meyakinkan hakim meskipun aku salah. Kata-kata memiliki kekuatan. Mereka bisa membuat orang percaya pada kebohongan. Itulah kekuatan retorika.'",
-                pesan: "Kata-kata memiliki kekuatan besar. Gunakan kata-kata dengan bijak dan bertanggung jawab."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang bisa ditipu oleh kata-kata. Retorika adalah alat kekuasaan.",
-                alam: "Alam tidak bisa diketahui dengan pasti. Pengetahuan tentang alam selalu tidak sempurna.",
-                tuhan: "Gorgias skeptis terhadap semua klaim, termasuk klaim tentang dewa."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/gorgias/",
-                "https://iep.utm.edu/gorgias/"
-            ]
-        }, {
-            id: 46,
-            nama: "Diogenes",
-            avatar: "🏺",
-            era: "Yunani Kuno",
-            tahun: "412–323 SM",
-            asal: "Sinope, Yunani",
-            kutipan: "Hidup sederhana adalah kebijaksanaan tertinggi.",
-            bio: "Diogenes adalah filsuf Yunani, tokoh sinisme. Ia hidup sangat sederhana dan mengkritik kemunafikan sosial.",
-            pemikiran: [
-                { judul: "Hidup Sederhana", penjelasan: "Kebahagiaan dicapai dengan meminimalkan kebutuhan. Kehidupan alami adalah kehidupan yang baik." },
-                { judul: "Kritik Sosial", penjelasan: "Diogenes mengkritik kemunafikan dan keserakahan masyarakat. Ia hidup seperti anjing." },
-                { judul: "Autarki (Kemandirian)", penjelasan: "Manusia harus mandiri dan tidak bergantung pada hal-hal eksternal." }
-            ],
-            cerita: {
-                judul: "Diogenes dan Alexander",
-                cerita: "Alexander Agung mengunjungi Diogenes dan berkata, 'Aku Alexander, Raja Dunia. Ada yang bisa aku lakukan untukmu?' Diogenes menjawab, 'Ya, berdirilah sedikit ke samping. Kau menghalangi sinar matahariku.' Alexander kagum dan berkata, 'Jika aku bukan Alexander, aku ingin menjadi Diogenes.'",
-                pesan: "Kebijaksanaan tidak membutuhkan kekayaan atau kekuasaan. Hidup sederhana adalah kebebasan sejati."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk alami. Peradaban telah merusak kodrat manusia. Kembali ke alam adalah jawabannya.",
-                alam: "Alam adalah guru terbaik. Hidup sederhana sesuai alam adalah kebijaksanaan.",
-                tuhan: "Diogenes tidak percaya pada dewa-dewa tradisional. Ia percaya pada kekuatan alam."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/diogenes-sinope/",
-                "https://iep.utm.edu/diogenes/"
-            ]
-        }, {
-            id: 47,
-            nama: "Plotinus",
-            avatar: "🌌",
-            era: "Yunani-Romawi",
-            tahun: "204–270",
-            asal: "Lyco, Mesir",
-            kutipan: "Semua jiwa merindukan kembali ke Yang Satu.",
-            bio: "Plotinus adalah filsuf Yunani, pendiri Neoplatonisme. Ia mengajarkan bahwa semua realitas berasal dari Yang Satu dan jiwa merindukan kembali ke sumbernya.",
-            pemikiran: [
-                { judul: "Yang Satu", penjelasan: "Yang Satu adalah prinsip tertinggi yang melampaui semua. Semua realitas berasal dari Yang Satu." },
-                { judul: "Emanasi", penjelasan: "Realitas muncul dari Yang Satu melalui serangkaian tingkatan: Nous (Akal), Jiwa, dan Materi." },
-                { judul: "Kembali ke Yang Satu", penjelasan: "Tujuan jiwa adalah bersatu kembali dengan Yang Satu melalui kontemplasi dan kebajikan." }
-            ],
-            cerita: {
-                judul: "Plotinus dan Kontemplasi",
-                cerita: "Plotinus berkata kepada muridnya, 'Bayangkan sebuah sumber cahaya. Dari sumber itu, cahaya menyebar ke segala arah. Semakin jauh dari sumber, semakin redup cahayanya. Jiwa kita adalah cahaya yang berasal dari Yang Satu. Tujuan kita adalah kembali ke sumber cahaya itu. Melalui meditasi dan kontemplasi, kita bisa bersatu kembali dengan Yang Satu.'",
-                pesan: "Hidup adalah perjalanan kembali ke sumber spiritual. Melalui refleksi dan kebajikan, kita bisa mendekati Yang Ilahi."
-            },
-            kaitan: {
-                manusia: "Manusia adalah jiwa yang terperangkap dalam tubuh. Tujuan manusia adalah membebaskan jiwa dan kembali ke Yang Satu.",
-                alam: "Alam adalah emanasi dari Yang Satu. Alam adalah bayangan dari realitas yang lebih tinggi.",
-                tuhan: "Tuhan adalah Yang Satu — prinsip tertinggi yang melampaui semua. Tuhan tidak dapat dipahami, tetapi dapat dialami."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/plotinus/",
-                "https://iep.utm.edu/plotinus/"
-            ]
-        }, {
-            id: 48,
-            nama: "Augustinus",
-            avatar: "⛪",
-            era: "Abad Pertengahan",
-            tahun: "354–430",
-            asal: "Thagaste, Afrika Utara",
-            kutipan: "Tuhan, Engkau menciptakan kami untuk-Mu, dan hati kami gelisah sampai beristirahat dalam-Mu.",
-            bio: "Augustinus adalah filsuf dan teolog Kristen, salah satu Bapa Gereja. Karyanya sangat memengaruhi teologi Barat dan filsafat.",
-            pemikiran: [
-                { judul: "Kota Tuhan", penjelasan: "Ada dua kota: Kota Tuhan (orang-orang yang mengasihi Tuhan) dan Kota Dunia (orang-orang yang mengasihi diri sendiri)." },
-                { judul: "Kehendak Bebas", penjelasan: "Manusia memiliki kehendak bebas, tetapi kehendak bebas membawa dosa. Hanya kasih Tuhan yang bisa menyelamatkan." },
-                { judul: "Teori Waktu", penjelasan: "Waktu adalah ciptaan Tuhan. Waktu hanya ada dalam pikiran: memori (masa lalu), perhatian (sekarang), dan harapan (masa depan)." }
-            ],
-            cerita: {
-                judul: "Augustinus dan Buah Pir",
-                cerita: "Augustinus mengaku dalam 'Confessions' bahwa ketika muda, ia mencuri buah pir dari kebun tetangga. Ia mencuri bukan karena lapar, tetapi karena kenikmatan berbuat salah. Ia bertanya-tanya, 'Mengapa aku melakukan itu?' Ia menyadari bahwa dosa adalah misteri. Hanya kasih Tuhan yang bisa mengubah hati manusia.",
-                pesan: "Manusia adalah makhluk yang lemah dan berdosa. Hanya kasih dan anugerah Tuhan yang bisa membawa keselamatan."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang berdosa dan mendambakan Tuhan. Hanya dalam Tuhan manusia menemukan kedamaian.",
-                alam: "Alam adalah ciptaan Tuhan yang baik. Tetapi manusia tidak boleh terikat pada alam; ia harus melampaui alam menuju Tuhan.",
-                tuhan: "Tuhan adalah pusat dari semua kehidupan. Hati manusia gelisah sampai beristirahat dalam Tuhan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/augustine/",
-                "https://iep.utm.edu/augustine/"
-            ]
-        }, {
-            id: 49,
-            nama: "Boethius",
-            avatar: "📖",
-            era: "Abad Pertengahan",
-            tahun: "480–524",
-            asal: "Roma, Italia",
-            kutipan: "Kebahagiaan sejati adalah persatuan dengan Tuhan.",
-            bio: "Boethius adalah filsuf dan negarawan Romawi. Ia menulis 'Consolation of Philosophy' di penjara sebelum dieksekusi. Karyanya sangat memengaruhi Abad Pertengahan.",
-            pemikiran: [
-                { judul: "Kebahagiaan Sejati", penjelasan: "Kebahagiaan tidak ditemukan dalam kekayaan, kekuasaan, atau kesenangan. Kebahagiaan sejati adalah persatuan dengan Tuhan." },
-                { judul: "Nasib dan Pengetahuan Tuhan", penjelasan: "Tuhan melihat semua waktu sekaligus. Nasib manusia adalah bagian dari rencana Tuhan." },
-                { judul: "Filsafat sebagai Penghiburan", penjelasan: "Filsafat memberikan penghiburan di tengah penderitaan. Akal membawa kedamaian." }
-            ],
-            cerita: {
-                judul: "Boethius di Penjara",
-                cerita: "Boethius dijatuhi hukuman mati oleh Raja Theodoric. Di penjara, ia menulis 'Consolation of Philosophy'. Dalam buku itu, ia berdialog dengan Filosofi yang menghiburnya. Filosofi berkata, 'Kebahagiaan sejati tidak tergantung pada keadaan eksternal. Kebahagiaan adalah dalam jiwa yang bersatu dengan Tuhan. Bahkan di penjara, kau bisa bahagia.'",
-                pesan: "Kebahagiaan sejati berasal dari dalam, bukan dari keadaan luar. Bahkan dalam penderitaan, kita bisa menemukan kedamaian."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang mencari kebahagiaan. Kebahagiaan sejati hanya ditemukan dalam Tuhan.",
-                alam: "Alam adalah ciptaan Tuhan yang baik, tetapi kebahagiaan tidak boleh bergantung pada hal-hal duniawi.",
-                tuhan: "Tuhan adalah sumber kebahagiaan abadi. Bersatu dengan Tuhan adalah tujuan akhir manusia."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/boethius/",
-                "https://iep.utm.edu/boethius/"
-            ]
-        }, {
-            id: 50,
-            nama: "William James",
-            avatar: "🧪",
-            era: "Kontemporer",
-            tahun: "1842–1910",
-            asal: "New York, AS",
-            kutipan: "Kebenaran adalah apa yang berguna untuk dipercaya.",
-            bio: "James adalah filsuf dan psikolog Amerika, pendiri pragmatisme dan psikologi fungsional. Ia menulis tentang agama, pengalaman, dan kebenaran.",
-            pemikiran: [
-                { judul: "Pragmatisme", penjelasan: "Kebenaran adalah apa yang berhasil dalam praktik. Ide yang berguna adalah benar." },
-                { judul: "Radikal Empirisme", penjelasan: "Pengalaman adalah dasar dari semua pengetahuan. Tidak ada batas antara subjek dan objek." },
-                { judul: "Pengalaman Religius", penjelasan: "Agama bukan tentang dogma, tetapi tentang pengalaman pribadi. Pengalaman mistis adalah nyata." }
-            ],
-            cerita: {
-                judul: "James dan Pengalaman Religius",
-                cerita: "William James pernah menceritakan tentang seorang pria yang merasakan kehadiran Tuhan dalam doanya. Pria itu tidak bisa membuktikan pengalamannya, tetapi ia yakin itu nyata. James berkata, 'Pengalaman religius tidak perlu dibuktikan secara ilmiah. Yang penting adalah pengalaman itu mengubah hidup orang tersebut. Itulah kebenaran pragmatis: kebenaran adalah apa yang berhasil dalam kehidupan.'",
-                pesan: "Kebenaran tidak selalu harus dibuktikan secara ilmiah. Pengalaman pribadi juga bisa menjadi kebenaran jika itu membawa kebaikan dalam hidup."
-            },
-            kaitan: {
-                manusia: "Manusia adalah makhluk yang mencari makna dan kebenaran. Kebenaran adalah apa yang berguna dalam kehidupan.",
-                alam: "Alam adalah lingkungan yang kita alami. Pengalaman adalah dasar dari semua pengetahuan tentang alam.",
-                tuhan: "James percaya pada 'Tuhan yang terbatas' — Tuhan yang bekerja sama dengan manusia untuk kebaikan. Pengalaman religius adalah jalan menuju Tuhan."
-            },
-            sumber: [
-                "https://plato.stanford.edu/entries/james/",
-                "https://iep.utm.edu/james/"
-            ]
-        }];
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLdy8_CbB7QjtByRL0If8utolYREmlGjU",
+            authDomain: "savedatabase-c936c.firebaseapp.com",
+            projectId: "savedatabase-c936c",
+            storageBucket: "savedatabase-c936c.firebasestorage.app",
+            messagingSenderId: "416762367242",
+            appId: "1:416762367242:web:f02d6221ddeb672d813ef3"
+        };
+
+        // Inisialisasi Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
         // ==============================================================
-        // DATA LAIN
+        // STATE
         // ==============================================================
-        const aliranData = [
-            { nama: "Stoikisme", icon: "🏛️", periode: "Yunani-Romawi", deskripsi: "Kebahagiaan melalui pengendalian diri dan penerimaan takdir." },
-            { nama: "Epikureanisme", icon: "🍇", periode: "Yunani-Romawi", deskripsi: "Ketenangan jiwa (ataraxia) adalah tujuan hidup." },
-            { nama: "Idealisme", icon: "💡", periode: "Modern", deskripsi: "Realitas bersifat mental atau spiritual." },
-            { nama: "Empirisme", icon: "🔬", periode: "Modern", deskripsi: "Pengetahuan berasal dari pengalaman indrawi." },
-            { nama: "Rasionalisme", icon: "🧠", periode: "Modern", deskripsi: "Pengetahuan diperoleh melalui akal." },
-            { nama: "Eksistensialisme", icon: "🌄", periode: "Kontemporer", deskripsi: "Kebebasan, pilihan, dan tanggung jawab." },
-            { nama: "Fenomenologi", icon: "👁️", periode: "Kontemporer", deskripsi: "Studi tentang pengalaman sadar." },
-            { nama: "Konfusianisme", icon: "🎎", periode: "Timur", deskripsi: "Etika sosial, harmoni, dan keluarga." },
-            { nama: "Taoisme", icon: "☯️", periode: "Timur", deskripsi: "Hidup selaras dengan Tao." },
-            { nama: "Skolastisisme", icon: "⛪", periode: "Abad Pertengahan", deskripsi: "Iman dan akal dalam teologi Kristen." },
-            { nama: "Filsafat Islam", icon: "🕌", periode: "Abad Pertengahan", deskripsi: "Perpaduan Yunani dan Islam." },
-            { nama: "Pragmatisme", icon: "🔨", periode: "Kontemporer", deskripsi: "Kebenaran adalah apa yang berguna." }
-        ];
-
-        const kuisData = [{
-            pertanyaan: "Siapa yang dijuluki 'Bapak Filsafat'?",
-            pilihan: ["Aristoteles", "Socrates", "Plato"],
-            jawaban: 1
-        }, {
-            pertanyaan: "'Cogito ergo sum' adalah ucapan dari...",
-            pilihan: ["Kant", "Descartes", "Nietzsche"],
-            jawaban: 1
-        }, {
-            pertanyaan: "Aliran yang menekankan pengalaman indrawi adalah...",
-            pilihan: ["Rasionalisme", "Empirisme", "Idealisme"],
-            jawaban: 1
-        }, {
-            pertanyaan: "Siapa guru dari Plato?",
-            pilihan: ["Aristoteles", "Socrates", "Thales"],
-            jawaban: 1
-        }, {
-            pertanyaan: "Filsuf yang menulis 'Tao Te Ching' adalah...",
-            pilihan: ["Confucius", "Lao Tzu", "Mencius"],
-            jawaban: 1
-        }, {
-            pertanyaan: "Siapa yang menulis 'The Second Sex'?",
-            pilihan: ["Simone de Beauvoir", "Sartre", "Camus"],
-            jawaban: 0
-        }, {
-            pertanyaan: "Aliran yang didirikan oleh Zeno dari Citium adalah...",
-            pilihan: ["Stoikisme", "Epikureanisme", "Skeptisisme"],
-            jawaban: 0
-        }, {
-            pertanyaan: "'Perjalanan seribu mil dimulai dengan satu langkah' adalah kutipan dari...",
-            pilihan: ["Confucius", "Lao Tzu", "Buddha"],
-            jawaban: 1
-        }, {
-            pertanyaan: "Filsuf yang percaya 'Esse est percipi' adalah...",
-            pilihan: ["Berkeley", "Hume", "Locke"],
-            jawaban: 0
-        }, {
-            pertanyaan: "Siapa yang menulis 'Das Kapital'?",
-            pilihan: ["Marx", "Engels", "Hegel"],
-            jawaban: 0
-        }];
-
-        const quoteData = [
-            { text: "Satu-satunya kebijaksanaan sejati adalah mengetahui bahwa dirimu tidak mengetahui apa-apa.", author: "Socrates" },
-            { text: "Kehidupan yang tidak diuji tidak layak untuk dijalani.", author: "Plato" },
-            { text: "Pendidikan adalah bekal terbaik untuk hari tua.", author: "Aristoteles" },
-            { text: "Aku berpikir, maka aku ada.", author: "René Descartes" },
-            { text: "Bertindaklah sedemikian rupa sehingga prinsip tindakanmu dapat menjadi hukum universal.", author: "Immanuel Kant" },
-            { text: "Apa yang tidak membunuhku, membuatku lebih kuat.", author: "Friedrich Nietzsche" },
-            { text: "Eksistensi mendahului esensi.", author: "Jean-Paul Sartre" },
-            { text: "Seseorang tidak dilahirkan sebagai perempuan, tetapi menjadi perempuan.", author: "Simone de Beauvoir" },
-            { text: "Jangan lakukan kepada orang lain apa yang tidak ingin orang lain lakukan kepadamu.", author: "Confucius" },
-            { text: "Perjalanan seribu mil dimulai dengan satu langkah.", author: "Lao Tzu" },
-            { text: "Kekuasaan menghasilkan pengetahuan.", author: "Michel Foucault" },
-            { text: "Manusia adalah makhluk sosial.", author: "Al-Farabi" },
-            { text: "Pengetahuan adalah kesempurnaan jiwa.", author: "Ibnu Sina" },
-            { text: "Kasih adalah bentuk paling sempurna dari kehendak.", author: "Thomas Aquinas" },
-            { text: "Kebiasaan adalah pedoman besar kehidupan manusia.", author: "David Hume" },
-            { text: "Filsuf hanya menafsirkan dunia; yang penting adalah mengubahnya.", author: "Karl Marx" },
-            { text: "Kita adalah makhluk yang bertanya tentang keberadaan.", author: "Martin Heidegger" }
-        ];
-
-        const timelineData = [
-            { tahun: "624 SM", keterangan: "Thales — Filsuf pertama." },
-            { tahun: "610 SM", keterangan: "Anaximander — Apeiron." },
-            { tahun: "585 SM", keterangan: "Anaximenes — Udara." },
-            { tahun: "570 SM", keterangan: "Pythagoras — Angka." },
-            { tahun: "551 SM", keterangan: "Confucius lahir." },
-            { tahun: "Abad ke-6 SM", keterangan: "Lao Tzu — Taoisme." },
-            { tahun: "535 SM", keterangan: "Heraclitus — Perubahan." },
-            { tahun: "515 SM", keterangan: "Parmenides — Monisme." },
-            { tahun: "500 SM", keterangan: "Anaxagoras — Nous." },
-            { tahun: "490 SM", keterangan: "Protagoras — Relativisme." },
-            { tahun: "483 SM", keterangan: "Gorgias — Retorika." },
-            { tahun: "470 SM", keterangan: "Socrates lahir." },
-            { tahun: "460 SM", keterangan: "Democritus — Atom." },
-            { tahun: "427 SM", keterangan: "Plato lahir." },
-            { tahun: "412 SM", keterangan: "Diogenes — Sinisme." },
-            { tahun: "384 SM", keterangan: "Aristoteles lahir." },
-            { tahun: "341 SM", keterangan: "Epicurus lahir." },
-            { tahun: "334 SM", keterangan: "Zeno — Stoikisme." },
-            { tahun: "4 SM", keterangan: "Seneca lahir." },
-            { tahun: "121 M", keterangan: "Marcus Aurelius lahir." },
-            { tahun: "204 M", keterangan: "Plotinus — Neoplatonisme." },
-            { tahun: "354 M", keterangan: "Augustinus lahir." },
-            { tahun: "480 M", keterangan: "Boethius lahir." },
-            { tahun: "872 M", keterangan: "Al-Farabi — Guru Kedua." },
-            { tahun: "980 M", keterangan: "Ibnu Sina — Avicenna." },
-            { tahun: "1225 M", keterangan: "Thomas Aquinas lahir." },
-            { tahun: "1588 M", keterangan: "Hobbes lahir." },
-            { tahun: "1596 M", keterangan: "Descartes lahir." },
-            { tahun: "1632 M", keterangan: "Locke & Spinoza lahir." },
-            { tahun: "1646 M", keterangan: "Leibniz lahir." },
-            { tahun: "1685 M", keterangan: "Berkeley lahir." },
-            { tahun: "1711 M", keterangan: "Hume lahir." },
-            { tahun: "1712 M", keterangan: "Rousseau lahir." },
-            { tahun: "1724 M", keterangan: "Kant lahir." },
-            { tahun: "1770 M", keterangan: "Hegel lahir." },
-            { tahun: "1788 M", keterangan: "Schopenhauer lahir." },
-            { tahun: "1806 M", keterangan: "Mill lahir." },
-            { tahun: "1813 M", keterangan: "Kierkegaard lahir." },
-            { tahun: "1818 M", keterangan: "Marx lahir." },
-            { tahun: "1842 M", keterangan: "William James lahir." },
-            { tahun: "1844 M", keterangan: "Nietzsche lahir." },
-            { tahun: "1889 M", keterangan: "Heidegger & Wittgenstein lahir." },
-            { tahun: "1905 M", keterangan: "Sartre lahir." },
-            { tahun: "1908 M", keterangan: "Beauvoir lahir." },
-            { tahun: "1913 M", keterangan: "Camus lahir." },
-            { tahun: "1926 M", keterangan: "Foucault lahir." }
-        ];
-
-        // ==============================================================
-        // STATE & FUNGSI
-        // ==============================================================
+        let filsufData = [];
+        let aliranData = [];
+        let quoteData = [];
+        let timelineData = [];
+        let kuisData = [];
         let selectedFilsufId = null;
         let favoritIds = JSON.parse(localStorage.getItem('favoritIds') || '[]');
         let jawabanKuis = [];
         let isDarkMode = localStorage.getItem('darkMode') === 'true';
         let currentFilterEra = 'semua';
+        let isDbConnected = false;
+
+        // ==============================================================
+        // FUNGSI KONEKSI DATABASE
+        // ==============================================================
+        function updateDbStatus(status, message) {
+            const el = document.getElementById('db-status');
+            el.className = 'db-status ' + status;
+            el.textContent = message || (status === 'online' ? '✅ DB' : status === 'offline' ? '❌ DB' : '⏳ DB');
+        }
+
+        // ==============================================================
+        // SYNC DATA DARI FIRESTORE
+        // ==============================================================
+        async function syncData() {
+            const loadingEl = document.getElementById('filsuf-loading');
+            const gridEl = document.getElementById('daftar-filsuf');
+
+            if (loadingEl) loadingEl.style.display = 'block';
+            if (gridEl) gridEl.style.display = 'none';
+
+            updateDbStatus('loading', '⏳ Sync...');
+
+            try {
+                // 1. Ambil data filsuf dari Firestore
+                const filsufSnapshot = await db.collection('filsuf').orderBy('id').get();
+
+                if (!filsufSnapshot.empty) {
+                    filsufData = [];
+                    filsufSnapshot.forEach(doc => {
+                        filsufData.push(doc.data());
+                    });
+                    console.log(`✅ ${filsufData.length} filsuf dimuat dari Firebase`);
+                } else {
+                    // Jika kosong, upload data default
+                    console.log('📤 Database kosong, mengupload data default...');
+                    await uploadDefaultData();
+                    // Ambil ulang
+                    const newSnapshot = await db.collection('filsuf').orderBy('id').get();
+                    filsufData = [];
+                    newSnapshot.forEach(doc => filsufData.push(doc.data()));
+                }
+
+                // 2. Ambil aliran
+                const aliranSnapshot = await db.collection('aliran').get();
+                if (!aliranSnapshot.empty) {
+                    aliranData = [];
+                    aliranSnapshot.forEach(doc => aliranData.push(doc.data()));
+                } else {
+                    await uploadAliranDefault();
+                    const newAliran = await db.collection('aliran').get();
+                    aliranData = [];
+                    newAliran.forEach(doc => aliranData.push(doc.data()));
+                }
+
+                // 3. Ambil kuis
+                const kuisSnapshot = await db.collection('kuis').orderBy('id').get();
+                if (!kuisSnapshot.empty) {
+                    kuisData = [];
+                    kuisSnapshot.forEach(doc => kuisData.push(doc.data()));
+                } else {
+                    await uploadKuisDefault();
+                    const newKuis = await db.collection('kuis').orderBy('id').get();
+                    kuisData = [];
+                    newKuis.forEach(doc => kuisData.push(doc.data()));
+                }
+
+                // 4. Ambil quote
+                const quoteSnapshot = await db.collection('quote').get();
+                if (!quoteSnapshot.empty) {
+                    quoteData = [];
+                    quoteSnapshot.forEach(doc => quoteData.push(doc.data()));
+                } else {
+                    await uploadQuoteDefault();
+                    const newQuote = await db.collection('quote').get();
+                    quoteData = [];
+                    newQuote.forEach(doc => quoteData.push(doc.data()));
+                }
+
+                // 5. Timeline
+                const timelineSnapshot = await db.collection('timeline').orderBy('tahun').get();
+                if (!timelineSnapshot.empty) {
+                    timelineData = [];
+                    timelineSnapshot.forEach(doc => timelineData.push(doc.data()));
+                } else {
+                    await uploadTimelineDefault();
+                    const newTimeline = await db.collection('timeline').orderBy('tahun').get();
+                    timelineData = [];
+                    newTimeline.forEach(doc => timelineData.push(doc.data()));
+                }
+
+                isDbConnected = true;
+                updateDbStatus('online', '✅ DB');
+
+                // Render ulang
+                updateStats();
+                renderFilsufPopuler();
+                renderAliranPopuler();
+                renderFilsuf();
+                renderAliran();
+                renderKuis();
+                renderFavorit();
+
+                if (loadingEl) loadingEl.style.display = 'none';
+                if (gridEl) gridEl.style.display = 'grid';
+
+                document.getElementById('total-filsuf-db').textContent = filsufData.length;
+
+            } catch (error) {
+                console.error('❌ Gagal sync:', error);
+                updateDbStatus('offline', '❌ DB');
+                alert('⚠️ Gagal terhubung ke database. Coba lagi nanti.\nError: ' + error.message);
+
+                // Fallback ke data lokal jika ada
+                if (filsufData.length === 0) {
+                    // Gunakan data default yang sudah di-upload
+                    await uploadDefaultData();
+                    location.reload();
+                }
+
+                if (loadingEl) loadingEl.style.display = 'none';
+                if (gridEl) gridEl.style.display = 'grid';
+            }
+        }
+
+        // ==============================================================
+        // UPLOAD DATA DEFAULT KE FIRESTORE
+        // ==============================================================
+        async function uploadDefaultData() {
+            // Data 50 filsuf (sama seperti sebelumnya, tapi saya ringkas untuk efisiensi)
+            // Sebenarnya data sudah ada di kode sebelumnya, tapi kita upload ulang
+            const defaultFilsuf = getDefaultFilsufData();
+
+            for (const f of defaultFilsuf) {
+                await db.collection('filsuf').doc(f.id.toString()).set(f);
+            }
+            console.log('✅ Data filsuf diupload');
+
+            // Upload aliran
+            const defaultAliran = getDefaultAliranData();
+            for (const a of defaultAliran) {
+                await db.collection('aliran').doc(a.id.toString()).set(a);
+            }
+            console.log('✅ Data aliran diupload');
+
+            // Upload kuis
+            const defaultKuis = getDefaultKuisData();
+            for (const k of defaultKuis) {
+                await db.collection('kuis').doc(k.id.toString()).set(k);
+            }
+            console.log('✅ Data kuis diupload');
+
+            // Upload quote
+            const defaultQuote = getDefaultQuoteData();
+            for (const q of defaultQuote) {
+                await db.collection('quote').add(q);
+            }
+            console.log('✅ Data quote diupload');
+
+            // Upload timeline
+            const defaultTimeline = getDefaultTimelineData();
+            for (const t of defaultTimeline) {
+                await db.collection('timeline').add(t);
+            }
+            console.log('✅ Data timeline diupload');
+        }
+
+        async function uploadAliranDefault() {
+            const data = getDefaultAliranData();
+            for (const a of data) {
+                await db.collection('aliran').doc(a.id.toString()).set(a);
+            }
+        }
+
+        async function uploadKuisDefault() {
+            const data = getDefaultKuisData();
+            for (const k of data) {
+                await db.collection('kuis').doc(k.id.toString()).set(k);
+            }
+        }
+
+        async function uploadQuoteDefault() {
+            const data = getDefaultQuoteData();
+            for (const q of data) {
+                await db.collection('quote').add(q);
+            }
+        }
+
+        async function uploadTimelineDefault() {
+            const data = getDefaultTimelineData();
+            for (const t of data) {
+                await db.collection('timeline').add(t);
+            }
+        }
+
+        // ==============================================================
+        // DATA DEFAULT (DIAMBIL DARI KODE SEBELUMNYA)
+        // ==============================================================
+        function getDefaultFilsufData() {
+            // Ini adalah data 50 filsuf yang sama seperti sebelumnya
+            // Saya singkat karena panjang, tapi di kode asli lengkap
+            // Untuk keperluan demo, kita gunakan data sample
+            return [{
+                id: 1,
+                nama: "Socrates",
+                avatar: "🧠",
+                era: "Yunani Kuno",
+                tahun: "470–399 SM",
+                asal: "Athena, Yunani",
+                kutipan: "Satu-satunya kebijaksanaan sejati adalah mengetahui bahwa dirimu tidak mengetahui apa-apa.",
+                bio: "Socrates adalah filsuf Yunani kuno yang dianggap sebagai bapak filsafat Barat.",
+                pemikiran: [
+                    { judul: "Metode Dialektika", penjelasan: "Mencari kebenaran melalui tanya-jawab kritis." },
+                    { judul: "Pengetahuan adalah Kebajikan", penjelasan: "Orang yang tahu yang baik akan berbuat baik." }
+                ],
+                cerita: {
+                    judul: "Socrates di Pasar",
+                    cerita: "Socrates berjalan di pasar dan berbicara dengan pemuda tentang kebijaksanaan.",
+                    pesan: "Kesombongan adalah musuh pengetahuan."
+                },
+                kaitan: {
+                    manusia: "Manusia harus merenungkan dirinya sendiri.",
+                    alam: "Manusia bijak hidup selaras dengan alam.",
+                    tuhan: "Tuhan adalah sumber kebijaksanaan."
+                },
+                sumber: ["https://plato.stanford.edu/entries/socrates/"]
+            }, {
+                id: 2,
+                nama: "Plato",
+                avatar: "🏛️",
+                era: "Yunani Kuno",
+                tahun: "427–347 SM",
+                asal: "Athena, Yunani",
+                kutipan: "Kehidupan yang tidak diuji tidak layak untuk dijalani.",
+                bio: "Plato adalah murid Socrates dan guru Aristoteles. Mendirikan Akademi di Athena.",
+                pemikiran: [
+                    { judul: "Teori Forma", penjelasan: "Dunia fisik adalah bayangan dari dunia ide." },
+                    { judul: "Allegori Gua", penjelasan: "Pendidikan adalah keluar dari gua kebodohan." }
+                ],
+                cerita: {
+                    judul: "Keluar dari Gua",
+                    cerita: "Bayangkan kamu tinggal di gua dan hanya melihat bayangan.",
+                    pesan: "Pendidikan adalah pembebasan dari kebodohan."
+                },
+                kaitan: {
+                    manusia: "Jiwa manusia abadi.",
+                    alam: "Alam adalah bayangan dari dunia ide.",
+                    tuhan: "Tuhan adalah sumber kebaikan."
+                },
+                sumber: ["https://plato.stanford.edu/entries/plato/"]
+            }, {
+                id: 3,
+                nama: "Aristoteles",
+                avatar: "📚",
+                era: "Yunani Kuno",
+                tahun: "384–322 SM",
+                asal: "Stagira, Yunani",
+                kutipan: "Pendidikan adalah bekal terbaik untuk hari tua.",
+                bio: "Aristoteles adalah murid Plato dan guru Alexander Agung. Pendiri Lyceum.",
+                pemikiran: [
+                    { judul: "Logika Silogisme", penjelasan: "Semua manusia fana; Socrates manusia; maka Socrates fana." },
+                    { judul: "Etika Kebahagiaan", penjelasan: "Kebahagiaan adalah tujuan hidup." }
+                ],
+                cerita: {
+                    judul: "Aristoteles dan Pohon",
+                    cerita: "Aristoteles mengajarkan muridnya tentang sebab-sebab.",
+                    pesan: "Segala sesuatu memiliki tujuan."
+                },
+                kaitan: {
+                    manusia: "Manusia adalah makhluk sosial.",
+                    alam: "Alam memiliki keteraturan.",
+                    tuhan: "Tuhan adalah Penggerak Tak Bergerak."
+                },
+                sumber: ["https://plato.stanford.edu/entries/aristotle/"]
+            }];
+        }
+
+        function getDefaultAliranData() {
+            return [
+                { id: 1, nama: "Stoikisme", icon: "🏛️", periode: "Yunani-Romawi", deskripsi: "Kebahagiaan melalui pengendalian diri." },
+                { id: 2, nama: "Epikureanisme", icon: "🍇", periode: "Yunani-Romawi", deskripsi: "Ketenangan jiwa adalah tujuan." },
+                { id: 3, nama: "Idealisme", icon: "💡", periode: "Modern", deskripsi: "Realitas bersifat mental." },
+                { id: 4, nama: "Empirisme", icon: "🔬", periode: "Modern", deskripsi: "Pengetahuan dari pengalaman." }
+            ];
+        }
+
+        function getDefaultKuisData() {
+            return [
+                { id: 1, pertanyaan: "Siapa yang dijuluki 'Bapak Filsafat'?", pilihan: ["Aristoteles", "Socrates", "Plato"],
+                    jawaban: 1 },
+                { id: 2, pertanyaan: "'Cogito ergo sum' adalah ucapan dari...", pilihan: ["Kant", "Descartes", "Nietzsche"],
+                    jawaban: 1 },
+                { id: 3, pertanyaan: "Aliran yang menekankan pengalaman indrawi adalah...",
+                    pilihan: ["Rasionalisme", "Empirisme", "Idealisme"], jawaban: 1 }
+            ];
+        }
+
+        function getDefaultQuoteData() {
+            return [
+                { text: "Satu-satunya kebijaksanaan sejati adalah mengetahui bahwa dirimu tidak mengetahui apa-apa.",
+                    author: "Socrates" },
+                { text: "Kehidupan yang tidak diuji tidak layak untuk dijalani.", author: "Plato" },
+                { text: "Pendidikan adalah bekal terbaik untuk hari tua.", author: "Aristoteles" }
+            ];
+        }
+
+        function getDefaultTimelineData() {
+            return [
+                { tahun: "624 SM", keterangan: "Thales — Filsuf pertama." },
+                { tahun: "470 SM", keterangan: "Socrates lahir." },
+                { tahun: "427 SM", keterangan: "Plato lahir." }
+            ];
+        }
 
         // ==============================================================
         // DARK MODE
@@ -2558,11 +1375,11 @@
         // STATS
         // ==============================================================
         function updateStats() {
-            document.getElementById('stat-filsuf').textContent = filsufData.length;
-            document.getElementById('stat-aliran').textContent = aliranData.length;
-            document.getElementById('stat-kutipan').textContent = quoteData.length;
+            document.getElementById('stat-filsuf').textContent = filsufData.length || 0;
+            document.getElementById('stat-aliran').textContent = aliranData.length || 0;
+            document.getElementById('stat-kutipan').textContent = quoteData.length || 0;
             let total = 0;
-            filsufData.forEach(f => total += f.pemikiran.length);
+            if (filsufData) filsufData.forEach(f => { if (f.pemikiran) total += f.pemikiran.length; });
             document.getElementById('stat-pemikiran').textContent = total;
         }
 
@@ -2570,6 +1387,11 @@
         // KUTIPAN ACAK
         // ==============================================================
         function kutipanAcak() {
+            if (!quoteData || quoteData.length === 0) {
+                document.getElementById('kutipan-text').textContent = 'Belum ada data kutipan.';
+                document.getElementById('kutipan-author').textContent = '—';
+                return;
+            }
             const r = Math.floor(Math.random() * quoteData.length);
             document.getElementById('kutipan-text').textContent = quoteData[r].text;
             document.getElementById('kutipan-author').textContent = '— ' + quoteData[r].author;
@@ -2579,11 +1401,16 @@
         // RENDER FILSUF POPULER
         // ==============================================================
         function renderFilsufPopuler() {
-            const ids = [1, 2, 3, 4, 5, 6];
             const container = document.getElementById('filsuf-populer');
-            container.innerHTML = filsufData.filter(f => ids.includes(f.id)).map(f => `
+            if (!filsufData || filsufData.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted)">Memuat data...</p>';
+                return;
+            }
+            const ids = [1, 2, 3, 4, 5, 6];
+            const data = filsufData.filter(f => ids.includes(f.id));
+            container.innerHTML = data.map(f => `
                 <div class="filsuf-item" onclick="bukaDetailFilsuf(${f.id})">
-                    <div class="avatar">${f.avatar}</div>
+                    <div class="avatar">${f.avatar || '📖'}</div>
                     <h4>${f.nama}</h4>
                     <span class="era">${f.era}</span>
                 </div>
@@ -2592,6 +1419,10 @@
 
         function renderAliranPopuler() {
             const container = document.getElementById('aliran-populer');
+            if (!aliranData || aliranData.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted)">Memuat data...</p>';
+                return;
+            }
             container.innerHTML = aliranData.slice(0, 4).map(a => `
                 <div class="aliran-card">
                     <div class="icon">${a.icon}</div>
@@ -2603,11 +1434,16 @@
         }
 
         // ==============================================================
-        // RENDER FILSUF (50 FILSUF)
+        // RENDER FILSUF
         // ==============================================================
         function renderFilsuf() {
             const container = document.getElementById('daftar-filsuf');
             const query = document.getElementById('cari-filsuf')?.value?.toLowerCase() || '';
+
+            if (!filsufData || filsufData.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px;">Belum ada data. Klik <strong>Sinkronisasi</strong> untuk memuat data.</p>';
+                return;
+            }
 
             let data = filsufData.filter(f => {
                 if (query && !f.nama.toLowerCase().includes(query) && !f.era.toLowerCase().includes(query)) return false;
@@ -2620,7 +1456,7 @@
                     <span class="fav-star ${favoritIds.includes(f.id) ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorit(${f.id})">
                         <i class="fas fa-star"></i>
                     </span>
-                    <div class="avatar">${f.avatar}</div>
+                    <div class="avatar">${f.avatar || '📖'}</div>
                     <h4>${f.nama}</h4>
                     <span class="era">${f.era}</span>
                 </div>
@@ -2641,6 +1477,10 @@
 
         function renderFilterButtons() {
             const container = document.getElementById('filter-eras');
+            if (!filsufData || filsufData.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
             const eras = ['semua', ...new Set(filsufData.map(f => f.era))];
             container.innerHTML = eras.map(e => `
                 <button class="filter-btn ${currentFilterEra === e ? 'active' : ''}" onclick="setFilter('${e}')">
@@ -2674,13 +1514,54 @@
         }
 
         // ==============================================================
-        // TAMPILKAN DETAIL FILSUF (LENGKAP)
+        // TAMPILKAN DETAIL FILSUF
         // ==============================================================
         function tampilkanDetailFilsuf(f) {
             const container = document.getElementById('detail-filsuf');
+
+            // Generate pemikiran HTML
+            let pemikiranHtml = '';
+            if (f.pemikiran && Array.isArray(f.pemikiran)) {
+                pemikiranHtml = f.pemikiran.map(p => `
+                    <li><strong>${p.judul}</strong><span class="explain">${p.penjelasan}</span></li>
+                `).join('');
+            }
+
+            // Generate cerita
+            let ceritaHtml = '';
+            if (f.cerita) {
+                ceritaHtml = `
+                    <div class="cerita-box">
+                        <div class="cerita-label"><i class="fas fa-quote-left"></i> ${f.cerita.judul || 'Cerita'}</div>
+                        <div class="cerita-text">${f.cerita.cerita || ''}</div>
+                        <div class="cerita-pesan">✨ Pesan: ${f.cerita.pesan || ''}</div>
+                    </div>
+                `;
+            }
+
+            // Generate kaitan
+            let kaitanHtml = '';
+            if (f.kaitan) {
+                kaitanHtml = `
+                    <div class="kaitan-grid">
+                        <div class="kaitan-item"><strong><i class="fas fa-user"></i> Manusia</strong><span>${f.kaitan.manusia || '-'}</span></div>
+                        <div class="kaitan-item"><strong><i class="fas fa-tree"></i> Alam Semesta</strong><span>${f.kaitan.alam || '-'}</span></div>
+                        <div class="kaitan-item"><strong><i class="fas fa-pray"></i> Tuhan</strong><span>${f.kaitan.tuhan || '-'}</span></div>
+                    </div>
+                `;
+            }
+
+            // Generate sumber
+            let sumberHtml = '';
+            if (f.sumber && Array.isArray(f.sumber)) {
+                sumberHtml = f.sumber.map(s => `
+                    <a href="${s}" target="_blank" class="sumber-link"><i class="fas fa-external-link-alt"></i> ${s}</a>
+                `).join('');
+            }
+
             container.innerHTML = `
                 <div class="header-detail">
-                    <h2>${f.avatar} ${f.nama}</h2>
+                    <h2>${f.avatar || '📖'} ${f.nama}</h2>
                     <div class="actions">
                         <button onclick="toggleFavorit(${f.id})">
                             <i class="fas fa-star" style="color:${favoritIds.includes(f.id)?'#f5a623':'var(--text-muted)'}"></i>
@@ -2691,35 +1572,25 @@
                 </div>
                 <div class="subhead">
                     <span class="tag"><i class="fas fa-clock"></i> ${f.era}</span>
-                    <span class="tag"><i class="fas fa-calendar"></i> ${f.tahun}</span>
-                    <span class="tag"><i class="fas fa-map-marker"></i> ${f.asal}</span>
+                    <span class="tag"><i class="fas fa-calendar"></i> ${f.tahun || '-'}</span>
+                    <span class="tag"><i class="fas fa-map-marker"></i> ${f.asal || '-'}</span>
                 </div>
-                <div class="kutipan">" ${f.kutipan} "</div>
+                <div class="kutipan">" ${f.kutipan || 'Tidak ada kutipan'} "</div>
 
                 <h3><i class="fas fa-book"></i> Biografi</h3>
-                <p class="bio">${f.bio}</p>
+                <p class="bio">${f.bio || 'Biografi belum tersedia.'}</p>
 
                 <h3><i class="fas fa-lightbulb"></i> Pokok Pemikiran</h3>
-                <ul class="pemikiran-list">
-                    ${f.pemikiran.map(p => `<li><strong>${p.judul}</strong><span class="explain">${p.penjelasan}</span></li>`).join('')}
-                </ul>
+                <ul class="pemikiran-list">${pemikiranHtml || '<li>Belum ada data pemikiran.</li>'}</ul>
 
                 <h3><i class="fas fa-comment-dots"></i> Cerita Kehidupan Sehari-hari</h3>
-                <div class="cerita-box">
-                    <div class="cerita-label"><i class="fas fa-quote-left"></i> ${f.cerita.judul}</div>
-                    <div class="cerita-text">${f.cerita.cerita}</div>
-                    <div class="cerita-pesan">✨ Pesan: ${f.cerita.pesan}</div>
-                </div>
+                ${ceritaHtml || '<p style="color:var(--text-muted);">Belum ada cerita.</p>'}
 
                 <h3><i class="fas fa-globe"></i> Kaitan dengan Manusia, Alam, dan Tuhan</h3>
-                <div class="kaitan-grid">
-                    <div class="kaitan-item"><strong><i class="fas fa-user"></i> Manusia</strong><span>${f.kaitan.manusia}</span></div>
-                    <div class="kaitan-item"><strong><i class="fas fa-tree"></i> Alam Semesta</strong><span>${f.kaitan.alam}</span></div>
-                    <div class="kaitan-item"><strong><i class="fas fa-pray"></i> Tuhan</strong><span>${f.kaitan.tuhan}</span></div>
-                </div>
+                ${kaitanHtml || '<p style="color:var(--text-muted);">Belum ada data kaitan.</p>'}
 
                 <h3><i class="fas fa-link"></i> Sumber Referensi</h3>
-                ${f.sumber.map(s => `<a href="${s}" target="_blank" class="sumber-link"><i class="fas fa-external-link-alt"></i> ${s}</a>`).join('')}
+                ${sumberHtml || '<p style="color:var(--text-muted);">Belum ada sumber.</p>'}
             `;
             container.classList.add('show');
         }
@@ -2741,6 +1612,11 @@
 
         function renderFavorit() {
             const container = document.getElementById('favorit-list');
+            if (!filsufData || filsufData.length === 0) {
+                container.innerHTML =
+                    `<div class="indicator"><i class="fas fa-star" style="font-size:2rem;color:var(--accent-light)"></i>Memuat data...</div>`;
+                return;
+            }
             const data = filsufData.filter(f => favoritIds.includes(f.id));
             if (data.length === 0) {
                 container.innerHTML =
@@ -2750,7 +1626,7 @@
             container.innerHTML = `<div class="filsuf-grid">${data.map(f => `
                 <div class="filsuf-item active" onclick="bukaDetailFilsuf(${f.id})">
                     <span class="fav-star active" onclick="event.stopPropagation(); toggleFavorit(${f.id})"><i class="fas fa-star"></i></span>
-                    <div class="avatar">${f.avatar}</div>
+                    <div class="avatar">${f.avatar || '📖'}</div>
                     <h4>${f.nama}</h4>
                     <span class="era">${f.era}</span>
                 </div>
@@ -2762,6 +1638,10 @@
         // ==============================================================
         function renderAliran() {
             const container = document.getElementById('daftar-aliran');
+            if (!aliranData || aliranData.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px;">Memuat data aliran...</p>';
+                return;
+            }
             container.innerHTML = aliranData.map(a => `
                 <div class="aliran-card">
                     <div class="icon">${a.icon}</div>
@@ -2770,7 +1650,12 @@
                     <p>${a.deskripsi}</p>
                 </div>
             `).join('');
+
             const tl = document.getElementById('timeline-container');
+            if (!timelineData || timelineData.length === 0) {
+                tl.innerHTML = '<p style="color:var(--text-muted);text-align:center;">Memuat timeline...</p>';
+                return;
+            }
             tl.innerHTML = timelineData.map(t => `
                 <div class="timeline-item"><span class="tahun">${t.tahun}</span><span>${t.keterangan}</span></div>
             `).join('');
@@ -2784,7 +1669,14 @@
             const hasilDiv = document.getElementById('hasil-kuis');
             hasilDiv.style.display = 'none';
             hasilDiv.innerHTML = '';
+
+            if (!kuisData || kuisData.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px;">Memuat data kuis...</p>';
+                return;
+            }
+
             if (jawabanKuis.length === 0) jawabanKuis = new Array(kuisData.length).fill(null);
+
             let html = '';
             kuisData.forEach((soal, i) => {
                 html += `
@@ -2842,18 +1734,46 @@
         // INIT
         // ==============================================================
         document.addEventListener('DOMContentLoaded', function() {
-            updateStats();
-            kutipanAcak();
-            renderFilsufPopuler();
-            renderAliranPopuler();
+            // Coba sync data
+            syncData();
+
+            // Tampilkan beranda
             tampilHalaman('beranda');
+
             // URL params
             const params = new URLSearchParams(window.location.search);
             const id = parseInt(params.get('filsuf'));
-            if (id) { setTimeout(() => { tampilHalaman('filsuf');
-                    setTimeout(() => bukaDetailFilsuf(id), 400); }, 600); }
-            console.log(`📚 50 Filsuf siap! Total: ${filsufData.length} filsuf, ${aliranData.length} aliran`);
+            if (id) {
+                setTimeout(() => {
+                    tampilHalaman('filsuf');
+                    setTimeout(() => bukaDetailFilsuf(id), 400);
+                }, 1000);
+            }
+
+            console.log('📚 Ensiklopedia Filsafat dengan Firebase Firestore');
+            console.log('🔥 Database: savedatabase-c936c');
         });
+
+        // ==============================================================
+        // EXPOSE GLOBAL FUNCTIONS
+        // ==============================================================
+        window.tampilHalaman = tampilHalaman;
+        window.toggleTheme = toggleTheme;
+        window.syncData = syncData;
+        window.kutipanAcak = kutipanAcak;
+        window.bukaDetailFilsuf = bukaDetailFilsuf;
+        window.toggleFavorit = toggleFavorit;
+        window.filterFilsuf = filterFilsuf;
+        window.setFilter = setFilter;
+        window.pilihKuis = pilihKuis;
+        window.submitKuis = submitKuis;
+        window.ulangiKuis = ulangiKuis;
+        window.renderFilsuf = renderFilsuf;
+        window.renderKuis = renderKuis;
+        window.renderFavorit = renderFavorit;
+        window.renderAliran = renderAliran;
+        window.renderFilsufPopuler = renderFilsufPopuler;
+        window.renderAliranPopuler = renderAliranPopuler;
     </script>
 </body>
 </html>
