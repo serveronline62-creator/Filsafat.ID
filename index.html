@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecureFile · Excel & PDF Vault</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar Filsafat</title>
     <style>
+        /* ===== STYLE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -16,703 +13,766 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #f0f4fa;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f7f4f0;
+            color: #1e2a3a;
+            line-height: 1.7;
         }
 
-        .card {
-            max-width: 1100px;
-            width: 100%;
-            background: #ffffff;
-            border-radius: 32px;
-            padding: 2.5rem 2.8rem;
-            box-shadow: 0 20px 60px rgba(0, 20, 40, 0.10), 0 8px 24px rgba(0, 20, 40, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #0b1e33;
-            margin-bottom: 0.2rem;
+        /* NAVBAR */
+        nav {
+            background: #1e2a3a;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .subhead {
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 2.2rem;
-            border-bottom: 1px solid #eef3f9;
-            padding-bottom: 1rem;
         }
 
-        .subhead p {
-            color: #2c3f5c;
-            font-weight: 500;
-            background: #eef3f9;
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        nav .logo {
+            color: #f3c26b;
+            font-size: 1.4rem;
+            font-weight: bold;
         }
 
-        .subhead p i {
-            color: #0f6fbf;
-        }
-
-        .storage-badge {
+        nav ul {
             display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+            list-style: none;
+            gap: 20px;
         }
 
-        .badge {
-            background: #f8faff;
-            border-radius: 60px;
-            padding: 0.35rem 1.2rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #1a314b;
-            border: 1px solid #dce5ef;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        nav ul li a {
+            color: #cbc1b2;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: 0.3s;
         }
 
-        .badge i {
-            color: #1e7bcf;
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: #f3c26b;
+            color: #1e2a3a;
         }
 
-        .badge.local i {
-            color: #28a745;
-        }
-
-        .upload-zone {
-            background: #f8faff;
-            border: 2px dashed #c8d6e8;
-            border-radius: 28px;
-            padding: 2.2rem 1.8rem;
+        /* HEADER */
+        .hero {
+            background: linear-gradient(135deg, #1e2a3a, #2c4055);
+            color: #fff;
             text-align: center;
-            transition: 0.2s;
-            margin-bottom: 2.8rem;
-            position: relative;
+            padding: 60px 20px;
         }
 
-        .upload-zone:hover, .upload-zone.dragover {
-            border-color: #0f6fbf;
-            background: #f1f7fe;
+        .hero h1 {
+            font-size: 2.6rem;
         }
 
-        .upload-zone i.fa-cloud-upload-alt {
-            font-size: 3.2rem;
-            color: #1f6fb5;
-            opacity: 0.8;
+        .hero h1 span {
+            color: #f3c26b;
         }
 
-        .upload-zone h3 {
-            font-weight: 600;
-            font-size: 1.3rem;
-            color: #0b1e33;
-            margin-top: 0.3rem;
-        }
-
-        .upload-zone p {
-            color: #435e7c;
-            margin: 0.6rem 0 1.2rem;
-        }
-
-        .file-input-wrapper {
-            display: inline-block;
-            position: relative;
-        }
-
-        .file-input-wrapper input[type="file"] {
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 500px;
+            margin: 12px auto 24px;
         }
 
         .btn {
-            background: white;
-            border: 1px solid #cbdae9;
-            padding: 0.7rem 1.9rem;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: #1f3b57;
-            transition: 0.2s;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .btn-primary {
-            background: #0b1e33;
-            border: 1px solid #0b1e33;
-            color: white;
-            box-shadow: 0 6px 14px rgba(11, 30, 51, 0.2);
-        }
-
-        .btn-primary:hover {
-            background: #1a334f;
-            border-color: #1a334f;
-            transform: scale(1.02);
-        }
-
-        .btn-primary i {
-            color: #99c4f0;
-        }
-
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .btn-danger {
-            background: #dc3545;
-            border-color: #dc3545;
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background: #c82333;
-            border-color: #c82333;
-        }
-
-        .file-list-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .file-list-header h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #0b1e33;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .file-list-header h2 i {
-            color: #1f6fb5;
-        }
-
-        .file-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            max-height: 420px;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-
-        .file-item {
-            background: #fafdff;
-            padding: 0.9rem 1.4rem;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 1px solid #e5edf6;
-            transition: 0.15s;
-        }
-
-        .file-item:hover {
-            background: #ffffff;
-            border-color: #c5d6ea;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            overflow: hidden;
-            flex: 1;
-        }
-
-        .file-info i {
-            font-size: 1.6rem;
-            width: 32px;
-            color: #1f6fb5;
-        }
-
-        .file-info .file-name {
-            font-weight: 500;
-            color: #0b1e33;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 260px;
-        }
-
-        .file-info .file-meta {
-            font-size: 0.75rem;
-            color: #5f7d9c;
-            background: #eaf1fa;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-
-        .file-actions {
-            display: flex;
-            gap: 4px;
-            flex-shrink: 0;
-        }
-
-        .file-actions button {
-            background: transparent;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 40px;
-            color: #2b4b6f;
-            font-size: 0.9rem;
-            transition: 0.15s;
-            cursor: pointer;
-        }
-
-        .file-actions button:hover {
-            background: #e3edf9;
-            color: #0b1e33;
-        }
-
-        .file-actions .delete-btn:hover {
-            background: #fde8e8;
-            color: #b13e3e;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 2.5rem 1rem;
-            color: #6e8aa8;
-        }
-
-        .empty-state i {
-            font-size: 2.8rem;
-            opacity: 0.4;
-            margin-bottom: 0.5rem;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #0b1e33;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: 0.3s cubic-bezier(0.22, 0.68, 0, 1);
-            z-index: 999;
-            border: 1px solid rgba(255,255,255,0.08);
-            max-width: 90%;
-        }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .toast i {
-            font-size: 1.4rem;
-            color: #8bc34a;
-        }
-
-        .toast.error i {
-            color: #f07b7b;
-        }
-
-        .loading-spinner {
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 0.8s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .clear-all-btn {
-            background: transparent;
-            border: 1px solid #dc3545;
-            color: #dc3545;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
+            padding: 12px 32px;
+            background: #f3c26b;
+            color: #1e2a3a;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
             cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(243, 194, 107, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #f3c26b;
+            color: #f3c26b;
+        }
+
+        .btn-outline:hover {
+            background: #f3c26b;
+            color: #1e2a3a;
+            box-shadow: none;
+        }
+
+        /* SECTION */
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #e0d6c8;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            border-left: 5px solid #f3c26b;
+            padding-left: 16px;
+        }
+
+        /* KOTAK FILSUF HARI INI */
+        .filsuf-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            border-left: 5px solid #f3c26b;
+        }
+
+        .filsuf-card h3 {
+            font-size: 1.8rem;
+            color: #1e2a3a;
+        }
+
+        .filsuf-card blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #3d4a5a;
+            margin: 10px 0;
+        }
+
+        .filsuf-card .bio {
+            color: #6b7a8a;
+        }
+
+        .filsuf-card .tag {
+            display: inline-block;
+            background: #f0ebe4;
+            padding: 2px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        /* GRID ALIRAN */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-card {
+            background: #fff;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-bottom: 4px solid #f3c26b;
+            transition: 0.3s;
+        }
+
+        .grid-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .grid-card .icon {
+            font-size: 2rem;
+        }
+
+        .grid-card h4 {
+            margin: 6px 0 4px;
+        }
+
+        .grid-card p {
+            font-size: 0.9rem;
+            color: #4a5a6a;
+        }
+
+        /* KUTIPAN */
+        .quote-box {
+            background: #1e2a3a;
+            color: #f3efe8;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .quote-box .mark {
+            font-size: 3rem;
+            color: #f3c26b;
+        }
+
+        .quote-box .text {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin: 10px 0;
+        }
+
+        .quote-box .author {
+            color: #cbc1b2;
+        }
+
+        .quote-box .btn-small {
+            margin-top: 16px;
+            padding: 8px 24px;
+            background: #f3c26b;
+            color: #1e2a3a;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* KUIS */
+        .kuis-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .soal {
+            margin-bottom: 20px;
+            padding: 16px;
+            background: #faf8f5;
+            border-radius: 8px;
+        }
+
+        .soal p {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .soal label {
+            display: block;
+            padding: 6px 12px;
+            margin: 2px 0;
+            cursor: pointer;
+            border-radius: 6px;
             transition: 0.2s;
         }
 
-        .clear-all-btn:hover {
-            background: #dc3545;
-            color: white;
+        .soal label:hover {
+            background: #f0ebe4;
         }
 
-        @media (max-width: 650px) {
-            .card { padding: 1.5rem; }
-            .subhead { flex-direction: column; align-items: start; gap: 12px; }
-            .file-info .file-name { max-width: 120px; }
-            .file-info .file-meta { display: none; }
-            .file-info .file-meta:first-of-type { display: inline-flex; }
+        .soal input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        #hasil-kuis {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .footer {
+            background: #1e2a3a;
+            color: #cbc1b2;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 20px;
+        }
+
+        /* RESPONSIF */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            nav ul li a {
+                font-size: 0.85rem;
+                padding: 4px 10px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-box .text {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .filsuf-card h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <div class="subhead">
-        <div>
-            <h1><i class="fas fa-folder-open" style="color: #1f6fb5;"></i> Vault</h1>
-            <p><i class="fas fa-shield-alt"></i> Excel · PDF only</p>
+    <!-- ===== NAVBAR ===== -->
+    <nav>
+        <div class="container">
+            <div class="logo">📜 Filsafat</div>
+            <ul>
+                <li><a href="#" class="active" onclick="tampil('beranda')">Beranda</a></li>
+                <li><a href="#" onclick="tampil('filsuf')">Filsuf</a></li>
+                <li><a href="#" onclick="tampil('aliran')">Aliran</a></li>
+                <li><a href="#" onclick="tampil('kuis')">Kuis</a></li>
+            </ul>
         </div>
-        <div class="storage-badge">
-            <span class="badge local"><i class="fas fa-database"></i> Local Storage</span>
-            <span class="badge"><i class="fas fa-sync"></i> Auto-save</span>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero">
+        <div class="container">
+            <h1>Belajar <span>Filsafat</span></h1>
+            <p>Mengenal pemikiran para filsuf dari seluruh dunia. Sederhana, ringan, dan dalam bahasa Indonesia.</p>
+            <a href="#" class="btn" onclick="tampil('filsuf')">Mulai Belajar</a>
+            <a href="#" class="btn btn-outline" onclick="tampil('kuis')" style="margin-left:10px;">Ikuti Kuis</a>
         </div>
-    </div>
+    </header>
 
-    <!-- Upload area -->
-    <div class="upload-zone" id="dropZone">
-        <i class="fas fa-cloud-upload-alt"></i>
-        <h3>Seret & letakkan file</h3>
-        <p>Hanya mendukung <strong>.xlsx, .xls, .pdf</strong> — maks 20MB</p>
-        <div class="file-input-wrapper">
-            <button class="btn btn-primary" id="uploadBtn"><i class="fas fa-plus-circle"></i> Pilih file</button>
-            <input type="file" id="fileInput" accept=".xlsx,.xls,.pdf" multiple>
-        </div>
-    </div>
+    <!-- ===== KONTEN ===== -->
 
-    <!-- File list -->
-    <div class="file-list-header">
-        <h2><i class="fas fa-list-ul"></i> File tersimpan</h2>
-        <div style="display: flex; gap: 10px; align-items: center;">
-            <span style="font-size:0.85rem; color:#3c5a79;" id="fileCount">0 file</span>
-            <button class="clear-all-btn" id="clearAllBtn" style="display: none;">
-                <i class="fas fa-trash"></i> Hapus Semua
-            </button>
-        </div>
-    </div>
-
-    <div class="file-grid" id="fileGrid">
-        <div class="empty-state" id="emptyState">
-            <i class="fas fa-inbox"></i>
-            <p>Belum ada file. Unggah Excel atau PDF.</p>
-        </div>
-    </div>
-</div>
-
-<!-- Toast notification -->
-<div id="toast" class="toast">
-    <i class="fas fa-check-circle"></i>
-    <span id="toastMessage">File berhasil disimpan</span>
-</div>
-
-<script>
-    // ========== CONFIG ==========
-    const STORAGE_KEY = 'vault_files_data';
-    const MAX_SIZE = 20 * 1024 * 1024; // 20MB
-
-    // ========== DOM REFS ==========
-    const fileInput = document.getElementById('fileInput');
-    const fileGrid = document.getElementById('fileGrid');
-    const emptyState = document.getElementById('emptyState');
-    const fileCount = document.getElementById('fileCount');
-    const dropZone = document.getElementById('dropZone');
-    const toast = document.getElementById('toast');
-    const toastMessage = document.getElementById('toastMessage');
-    const uploadBtn = document.getElementById('uploadBtn');
-    const clearAllBtn = document.getElementById('clearAllBtn');
-
-    // ========== UTILITY ==========
-    function formatSize(bytes) {
-        if (bytes < 1024) return bytes + ' B';
-        if (bytes < 1048576) return (bytes / 1024).toFixed(0) + ' KB';
-        return (bytes / 1048576).toFixed(1) + ' MB';
-    }
-
-    function getFileIcon(name) {
-        const ext = name.split('.').pop().toLowerCase();
-        if (ext === 'pdf') return 'fa-file-pdf';
-        if (ext === 'xlsx' || ext === 'xls') return 'fa-file-excel';
-        return 'fa-file';
-    }
-
-    function getFileTypeLabel(name) {
-        const ext = name.split('.').pop().toLowerCase();
-        if (ext === 'pdf') return 'PDF';
-        if (ext === 'xlsx' || ext === 'xls') return 'Excel';
-        return 'File';
-    }
-
-    function generateId() {
-        return Date.now() + '_' + Math.random().toString(36).substring(2, 8);
-    }
-
-    // ========== TOAST ==========
-    function showToast(msg, isError = false) {
-        toastMessage.textContent = msg;
-        toast.className = 'toast show';
-        if (isError) {
-            toast.classList.add('error');
-            toast.querySelector('i').className = 'fas fa-exclamation-circle';
-        } else {
-            toast.classList.remove('error');
-            toast.querySelector('i').className = 'fas fa-check-circle';
-        }
-        clearTimeout(toast._timer);
-        toast._timer = setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
-    }
-
-    // ========== STORAGE OPERATIONS ==========
-    function getFiles() {
-        try {
-            const raw = localStorage.getItem(STORAGE_KEY);
-            if (!raw) return [];
-            return JSON.parse(raw);
-        } catch {
-            return [];
-        }
-    }
-
-    function saveFiles(files) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(files));
-        renderFileList();
-    }
-
-    function clearAllFiles() {
-        if (confirm('Hapus semua file?')) {
-            saveFiles([]);
-            showToast('Semua file dihapus');
-        }
-    }
-
-    // ========== RENDER ==========
-    function renderFileList() {
-        const files = getFiles();
-        fileGrid.innerHTML = '';
-        
-        if (files.length === 0) {
-            fileGrid.appendChild(emptyState);
-            fileCount.textContent = '0 file';
-            clearAllBtn.style.display = 'none';
-            return;
-        }
-        
-        fileCount.textContent = files.length + ' file' + (files.length > 1 ? 's' : '');
-        clearAllBtn.style.display = 'inline-block';
-
-        files.forEach((file, index) => {
-            const item = document.createElement('div');
-            item.className = 'file-item';
-
-            const icon = getFileIcon(file.name);
-            const typeLabel = getFileTypeLabel(file.name);
-            const uploadDate = new Date(file.uploadedAt).toLocaleDateString('id-ID');
-
-            item.innerHTML = `
-                <div class="file-info">
-                    <i class="fas ${icon}"></i>
-                    <span class="file-name" title="${file.name}">${file.name}</span>
-                    <span class="file-meta"><i class="fas fa-hdd"></i> ${formatSize(file.size)}</span>
-                    <span class="file-meta"><i class="fas fa-tag"></i> ${typeLabel}</span>
-                    <span class="file-meta"><i class="far fa-calendar"></i> ${uploadDate}</span>
+    <!-- BERANDA -->
+    <div id="beranda">
+        <section>
+            <div class="container">
+                <h2 class="section-title">🧠 Filsuf Hari Ini</h2>
+                <div class="filsuf-card" id="filsuf-hari-ini">
+                    <p>Memuat...</p>
                 </div>
-                <div class="file-actions">
-                    <button class="download-btn" data-id="${file.id}" title="Unduh">
-                        <i class="fas fa-download"></i>
-                    </button>
-                    <button class="delete-btn" data-id="${file.id}" title="Hapus">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
+            </div>
+        </section>
+
+        <section style="background:#f8f5f0;">
+            <div class="container">
+                <h2 class="section-title">📚 Aliran Filsafat</h2>
+                <div class="grid" id="aliran-beranda">
+                    <!-- Diisi JS -->
                 </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="quote-box">
+                    <div class="mark">"</div>
+                    <p class="text" id="kutipan-text">Memuat kutipan...</p>
+                    <p class="author" id="kutipan-author">— </p>
+                    <button class="btn-small" onclick="kutipanAcak()">Kutipan Lainnya</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FILSUF -->
+    <div id="filsuf" style="display:none;">
+        <section>
+            <div class="container">
+                <h2 class="section-title">🧑‍🏫 Daftar Filsuf</h2>
+                <div style="margin-bottom:20px;">
+                    <input type="text" id="cari-filsuf" placeholder="Cari nama filsuf..." style="padding:10px 18px;border-radius:30px;border:1px solid #ccc;width:100%;max-width:350px;font-size:1rem;" />
+                </div>
+                <div class="grid" id="daftar-filsuf">
+                    <!-- Diisi JS -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ALIRAN -->
+    <div id="aliran" style="display:none;">
+        <section>
+            <div class="container">
+                <h2 class="section-title">🏛️ Aliran Filsafat</h2>
+                <div class="grid" id="daftar-aliran">
+                    <!-- Diisi JS -->
+                </div>
+            </div>
+        </section>
+
+        <section style="background:#f8f5f0;">
+            <div class="container">
+                <h2 class="section-title">⏳ Garis Waktu</h2>
+                <div id="timeline">
+                    <!-- Diisi JS -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- KUIS -->
+    <div id="kuis" style="display:none;">
+        <section>
+            <div class="container">
+                <h2 class="section-title">❓ Kuis Filsafat</h2>
+                <p style="margin-bottom:20px;">Jawab 5 pertanyaan sederhana. Klik "Lihat Hasil" untuk mengecek jawabanmu.</p>
+                <div class="kuis-box" id="kuis-container">
+                    <!-- Diisi JS -->
+                </div>
+                <div id="hasil-kuis" style="display:none;"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>📜 Belajar Filsafat &copy; 2026. Dibuat untuk para pencari makna.</p>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- ===== JAVASCRIPT (Data + Fungsi) ===== -->
+    <!-- ============================================================ -->
+    <script>
+        // ============================================================
+        // DATA
+        // ============================================================
+
+        const filsufData = [
+            { nama: "Socrates", era: "Yunani Kuno", tahun: "470–399 SM", kutipan: "Satu-satunya kebijaksanaan sejati adalah mengetahui bahwa dirimu tidak mengetahui apa-apa.", bio: "Bapak filsafat Barat." },
+            { nama: "Plato", era: "Yunani Kuno", tahun: "427–347 SM", kutipan: "Kehidupan yang tidak diuji tidak layak untuk dijalani.", bio: "Murid Socrates, guru Aristoteles." },
+            { nama: "Aristoteles", era: "Yunani Kuno", tahun: "384–322 SM", kutipan: "Pendidikan adalah bekal terbaik untuk hari tua.", bio: "Murid Plato, guru Alexander Agung." },
+            { nama: "René Descartes", era: "Modern", tahun: "1596–1650", kutipan: "Aku berpikir, maka aku ada.", bio: "Bapak filsafat modern." },
+            { nama: "Immanuel Kant", era: "Modern", tahun: "1724–1804", kutipan: "Bertindaklah sedemikian rupa sehingga prinsip tindakanmu dapat menjadi hukum universal.", bio: "Tokoh idealisme Jerman." },
+            { nama: "Friedrich Nietzsche", era: "Modern", tahun: "1844–1900", kutipan: "Apa yang tidak membunuhku, membuatku lebih kuat.", bio: "Pengkritik moralitas dan agama." },
+            { nama: "Søren Kierkegaard", era: "Modern", tahun: "1813–1855", kutipan: "Hidup hanya dapat dipahami ke belakang, tetapi harus dijalani ke depan.", bio: "Bapak eksistensialisme." },
+            { nama: "Jean-Paul Sartre", era: "Kontemporer", tahun: "1905–1980", kutipan: "Eksistensi mendahului esensi.", bio: "Tokoh eksistensialisme Prancis." },
+            { nama: "Simone de Beauvoir", era: "Kontemporer", tahun: "1908–1986", kutipan: "Seseorang tidak dilahirkan sebagai perempuan, tetapi menjadi perempuan.", bio: "Tokoh feminisme." },
+            { nama: "Confucius", era: "Timur", tahun: "551–479 SM", kutipan: "Jangan lakukan kepada orang lain apa yang tidak ingin orang lain lakukan kepadamu.", bio: "Filsuf besar Tiongkok." },
+            { nama: "Lao Tzu", era: "Timur", tahun: "Abad ke-6 SM", kutipan: "Perjalanan seribu mil dimulai dengan satu langkah.", bio: "Pendiri Taoisme." },
+            { nama: "Al-Farabi", era: "Abad Pertengahan", tahun: "872–950", kutipan: "Manusia adalah makhluk sosial.", bio: "'Guru Kedua' dalam filsafat Islam." },
+            { nama: "Ibnu Sina", era: "Abad Pertengahan", tahun: "980–1037", kutipan: "Pengetahuan adalah kesempurnaan jiwa.", bio: "Filsuf dan dokter Persia." },
+            { nama: "Thomas Aquinas", era: "Abad Pertengahan", tahun: "1225–1274", kutipan: "Kasih adalah bentuk paling sempurna dari kehendak.", bio: "Tokoh Skolastisisme." },
+            { nama: "David Hume", era: "Modern", tahun: "1711–1776", kutipan: "Kebiasaan adalah pedoman besar kehidupan manusia.", bio: "Tokoh empirisme Skotlandia." },
+            { nama: "Karl Marx", era: "Kontemporer", tahun: "1818–1883", kutipan: "Filsuf hanya menafsirkan dunia; yang penting adalah mengubahnya.", bio: "Pendiri Marxisme." },
+            { nama: "Michel Foucault", era: "Kontemporer", tahun: "1926–1984", kutipan: "Kekuasaan menghasilkan pengetahuan.", bio: "Tokoh pascastrukturalisme." }
+        ];
+
+        const aliranData = [
+            { nama: "Stoikisme", icon: "🏛️", periode: "Yunani-Romawi", deskripsi: "Kebahagiaan melalui pengendalian diri dan penerimaan takdir." },
+            { nama: "Epikureanisme", icon: "🍇", periode: "Yunani-Romawi", deskripsi: "Kesenangan sebagai tujuan hidup, tetapi kesenangan jiwa." },
+            { nama: "Idealisme", icon: "💡", periode: "Modern", deskripsi: "Realitas bersifat mental atau spiritual." },
+            { nama: "Empirisme", icon: "🔬", periode: "Modern", deskripsi: "Pengetahuan berasal dari pengalaman indrawi." },
+            { nama: "Rasionalisme", icon: "🧠", periode: "Modern", deskripsi: "Pengetahuan diperoleh melalui akal dan intuisi." },
+            { nama: "Eksistensialisme", icon: "🌄", periode: "Kontemporer", deskripsi: "Kebebasan individu, pilihan, dan tanggung jawab." },
+            { nama: "Fenomenologi", icon: "👁️", periode: "Kontemporer", deskripsi: "Studi tentang pengalaman sadar." },
+            { nama: "Konfusianisme", icon: "🎎", periode: "Timur", deskripsi: "Etika sosial, harmoni, dan keluarga." },
+            { nama: "Taoisme", icon: "☯️", periode: "Timur", deskripsi: "Hidup selaras dengan alam (Tao)." },
+            { nama: "Skolastisisme", icon: "⛪", periode: "Abad Pertengahan", deskripsi: "Menggabungkan iman Kristen dengan akal." },
+            { nama: "Filsafat Islam", icon: "🕌", periode: "Abad Pertengahan", deskripsi: "Perpaduan pemikiran Yunani dan Islam." },
+            { nama: "Postmodernisme", icon: "🌀", periode: "Kontemporer", deskripsi: "Kritik terhadap kebenaran universal." }
+        ];
+
+        const kuisData = [{
+            pertanyaan: "Siapa yang dijuluki 'Bapak Filsafat'?",
+            pilihan: ["Aristoteles", "Socrates", "Plato"],
+            jawaban: 1
+        }, {
+            pertanyaan: "'Cogito ergo sum' adalah ucapan dari...",
+            pilihan: ["Kant", "Descartes", "Nietzsche"],
+            jawaban: 1
+        }, {
+            pertanyaan: "Aliran yang menekankan pengalaman indrawi adalah...",
+            pilihan: ["Rasionalisme", "Empirisme", "Idealisme"],
+            jawaban: 1
+        }, {
+            pertanyaan: "Siapa guru dari Plato?",
+            pilihan: ["Aristoteles", "Socrates", "Thales"],
+            jawaban: 1
+        }, {
+            pertanyaan: "Filsuf yang menulis 'Tao Te Ching' adalah...",
+            pilihan: ["Confucius", "Lao Tzu", "Mencius"],
+            jawaban: 1
+        }];
+
+        const quoteData = [
+            { text: "Satu-satunya kebijaksanaan sejati adalah mengetahui bahwa dirimu tidak mengetahui apa-apa.", author: "Socrates" },
+            { text: "Kehidupan yang tidak diuji tidak layak untuk dijalani.", author: "Plato" },
+            { text: "Pendidikan adalah bekal terbaik untuk hari tua.", author: "Aristoteles" },
+            { text: "Aku berpikir, maka aku ada.", author: "René Descartes" },
+            { text: "Bertindaklah sedemikian rupa sehingga prinsip tindakanmu dapat menjadi hukum universal.", author: "Immanuel Kant" },
+            { text: "Apa yang tidak membunuhku, membuatku lebih kuat.", author: "Friedrich Nietzsche" },
+            { text: "Eksistensi mendahului esensi.", author: "Jean-Paul Sartre" },
+            { text: "Jangan lakukan kepada orang lain apa yang tidak ingin orang lain lakukan kepadamu.", author: "Confucius" },
+            { text: "Perjalanan seribu mil dimulai dengan satu langkah.", author: "Lao Tzu" },
+            { text: "Kebiasaan adalah pedoman besar kehidupan manusia.", author: "David Hume" }
+        ];
+
+        const timelineData = [
+            { tahun: "600 SM", keterangan: "Thales — Filsuf pertama Barat." },
+            { tahun: "551 SM", keterangan: "Confucius lahir." },
+            { tahun: "470 SM", keterangan: "Socrates lahir." },
+            { tahun: "427 SM", keterangan: "Plato lahir." },
+            { tahun: "384 SM", keterangan: "Aristoteles lahir." },
+            { tahun: "872 M", keterangan: "Al-Farabi lahir." },
+            { tahun: "980 M", keterangan: "Ibnu Sina lahir." },
+            { tahun: "1225 M", keterangan: "Thomas Aquinas lahir." },
+            { tahun: "1596 M", keterangan: "Descartes lahir." },
+            { tahun: "1724 M", keterangan: "Kant lahir." },
+            { tahun: "1813 M", keterangan: "Kierkegaard lahir." },
+            { tahun: "1818 M", keterangan: "Marx lahir." },
+            { tahun: "1844 M", keterangan: "Nietzsche lahir." },
+            { tahun: "1905 M", keterangan: "Sartre lahir." }
+        ];
+
+        // ============================================================
+        // FUNGSI
+        // ============================================================
+
+        // Tampilkan halaman
+        function tampil(halaman) {
+            const pages = ['beranda', 'filsuf', 'aliran', 'kuis'];
+            pages.forEach(p => {
+                document.getElementById(p).style.display = p === halaman ? 'block' : 'none';
+            });
+
+            // Update active nav
+            document.querySelectorAll('nav ul li a').forEach(a => a.classList.remove('active'));
+            const links = document.querySelectorAll('nav ul li a');
+            const map = { beranda: 0, filsuf: 1, aliran: 2, kuis: 3 };
+            if (map[halaman] !== undefined) {
+                links[map[halaman]].classList.add('active');
+            }
+
+            // Render ulang jika perlu
+            if (halaman === 'filsuf') renderFilsuf();
+            if (halaman === 'aliran') renderAliranLengkap();
+            if (halaman === 'kuis') renderKuis();
+        }
+
+        // Filsuf Hari Ini
+        function filsufHariIni() {
+            const container = document.getElementById('filsuf-hari-ini');
+            const today = new Date();
+            const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+            const index = seed % filsufData.length;
+            const f = filsufData[index];
+            container.innerHTML = `
+                <h3>${f.nama}</h3>
+                <blockquote>"${f.kutipan}"</blockquote>
+                <p class="bio">${f.bio} (${f.tahun})</p>
+                <span class="tag">${f.era}</span>
+            `;
+        }
+
+        // Aliran di Beranda (4 aliran)
+        function aliranBeranda() {
+            const container = document.getElementById('aliran-beranda');
+            const data = aliranData.slice(0, 4);
+            container.innerHTML = data.map(a => `
+                <div class="grid-card">
+                    <div class="icon">${a.icon}</div>
+                    <h4>${a.nama}</h4>
+                    <p>${a.deskripsi.substring(0, 60)}...</p>
+                </div>
+            `).join('');
+        }
+
+        // Kutipan acak
+        function kutipanAcak() {
+            const random = Math.floor(Math.random() * quoteData.length);
+            const q = quoteData[random];
+            document.getElementById('kutipan-text').textContent = q.text;
+            document.getElementById('kutipan-author').textContent = `— ${q.author}`;
+        }
+
+        // Daftar Filsuf (dengan search)
+        function renderFilsuf() {
+            const container = document.getElementById('daftar-filsuf');
+            const query = document.getElementById('cari-filsuf')?.value?.toLowerCase() || '';
+            let data = filsufData;
+            if (query) {
+                data = data.filter(f =>
+                    f.nama.toLowerCase().includes(query) ||
+                    f.era.toLowerCase().includes(query)
+                );
+            }
+            container.innerHTML = data.map(f => `
+                <div class="grid-card">
+                    <h4>${f.nama}</h4>
+                    <span style="font-size:0.8rem;color:#8a7a6a;">${f.era} • ${f.tahun}</span>
+                    <p style="font-style:italic;font-size:0.9rem;margin:6px 0;">"${f.kutipan}"</p>
+                    <p style="font-size:0.85rem;color:#6b7a8a;">${f.bio}</p>
+                </div>
+            `).join('');
+        }
+
+        // Daftar Aliran Lengkap
+        function renderAliranLengkap() {
+            const container = document.getElementById('daftar-aliran');
+            container.innerHTML = aliranData.map(a => `
+                <div class="grid-card">
+                    <div class="icon">${a.icon}</div>
+                    <h4>${a.nama}</h4>
+                    <span style="font-size:0.8rem;color:#8a7a6a;">${a.periode}</span>
+                    <p>${a.deskripsi}</p>
+                </div>
+            `).join('');
+
+            // Timeline
+            const tl = document.getElementById('timeline');
+            tl.innerHTML = timelineData.map(t => `
+                <div style="display:flex;gap:16px;padding:10px 16px;background:#fff;border-radius:8px;margin-bottom:8px;border-left:4px solid #f3c26b;">
+                    <span style="font-weight:700;color:#f3c26b;min-width:80px;">${t.tahun}</span>
+                    <span>${t.keterangan}</span>
+                </div>
+            `).join('');
+        }
+
+        // KUIS
+        let jawabanKuis = [];
+
+        function renderKuis() {
+            const container = document.getElementById('kuis-container');
+            const hasilDiv = document.getElementById('hasil-kuis');
+            hasilDiv.style.display = 'none';
+            hasilDiv.innerHTML = '';
+
+            if (jawabanKuis.length === 0) {
+                jawabanKuis = new Array(kuisData.length).fill(null);
+            }
+
+            let html = '';
+            kuisData.forEach((soal, i) => {
+                html += `
+                    <div class="soal">
+                        <p>${i + 1}. ${soal.pertanyaan}</p>
+                        ${soal.pilihan.map((p, j) => `
+                            <label>
+                                <input type="radio" name="q${i}" value="${j}" ${jawabanKuis[i] === j ? 'checked' : ''} onchange="pilihKuis(${i}, ${j})" />
+                                ${p}
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+            });
+
+            html += `
+                <button class="btn" onclick="submitKuis()">Lihat Hasil 🏆</button>
             `;
 
-            fileGrid.appendChild(item);
-        });
+            container.innerHTML = html;
+        }
 
-        // Attach download events
-        document.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const id = btn.dataset.id;
-                const files = getFiles();
-                const found = files.find(f => f.id === id);
-                if (found) {
-                    downloadFile(found);
-                } else {
-                    showToast('File tidak ditemukan', true);
-                }
+        function pilihKuis(index, value) {
+            jawabanKuis[index] = value;
+        }
+
+        function submitKuis() {
+            const container = document.getElementById('kuis-container');
+            const hasilDiv = document.getElementById('hasil-kuis');
+
+            // Cek semua terjawab
+            const semuaTerjawab = jawabanKuis.every(a => a !== null);
+            if (!semuaTerjawab) {
+                alert('⚠️ Jawab semua pertanyaan dulu ya!');
+                return;
+            }
+
+            let benar = 0;
+            let detail = '';
+            kuisData.forEach((soal, i) => {
+                const userAns = jawabanKuis[i];
+                const isBenar = userAns === soal.jawaban;
+                if (isBenar) benar++;
+                const status = isBenar ? '✅' : '❌';
+                const jawabanUser = soal.pilihan[userAns] || 'Tidak dijawab';
+                const jawabanBenar = soal.pilihan[soal.jawaban];
+                detail += `
+                    <div style="padding:6px 0;border-bottom:1px solid #eee;font-size:0.9rem;">
+                        ${status} ${soal.pertanyaan.substring(0,40)}...
+                        <small>(Jawaban: ${jawabanUser} | Benar: ${jawabanBenar})</small>
+                    </div>
+                `;
             });
-        });
 
-        // Attach delete events
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const id = btn.dataset.id;
-                let files = getFiles();
-                files = files.filter(f => f.id !== id);
-                saveFiles(files);
-                showToast('File dihapus');
-            });
-        });
-    }
+            const total = kuisData.length;
+            const persen = Math.round((benar / total) * 100);
+            let pesan = '';
+            if (persen === 100) pesan = '🎉 Sempurna! Kamu filosof sejati!';
+            else if (persen >= 60) pesan = '📚 Bagus! Terus belajar!';
+            else pesan = '📖 Yuk baca lagi materi dasarnya!';
 
-    // ========== DOWNLOAD ==========
-    function downloadFile(file) {
-        try {
-            const byteCharacters = atob(file.content);
-            const byteNumbers = new Array(byteCharacters.length);
-            for (let i = 0; i < byteCharacters.length; i++) {
-                byteNumbers[i] = byteCharacters.charCodeAt(i);
-            }
-            const byteArray = new Uint8Array(byteNumbers);
-            const blob = new Blob([byteArray], { type: file.type });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = file.name;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            showToast(`Mengunduh ${file.name}`);
-        } catch (err) {
-            showToast('Gagal mengunduh file', true);
+            container.style.display = 'none';
+            hasilDiv.style.display = 'block';
+            hasilDiv.innerHTML = `
+                <div style="text-align:center;padding:20px;">
+                    <span style="font-size:3rem;font-weight:bold;color:#f3c26b;">${persen}%</span>
+                    <p style="font-size:1.2rem;">${benar} dari ${total} benar</p>
+                    <p style="margin:12px 0;">${pesan}</p>
+                    <div style="text-align:left;margin-top:16px;">${detail}</div>
+                    <button class="btn" onclick="ulangiKuis()" style="margin-top:20px;">🔄 Ulangi</button>
+                </div>
+            `;
         }
-    }
 
-    // ========== UPLOAD ==========
-    function uploadFiles(fileList) {
-        const filesArray = Array.from(fileList);
-        
-        const validFiles = filesArray.filter(file => {
-            const ext = file.name.split('.').pop().toLowerCase();
-            const validExt = ['xlsx', 'xls', 'pdf'].includes(ext);
-            if (!validExt) {
-                showToast(`"${file.name}" bukan Excel atau PDF`, true);
-                return false;
+        function ulangiKuis() {
+            jawabanKuis = [];
+            document.getElementById('kuis-container').style.display = 'block';
+            document.getElementById('hasil-kuis').style.display = 'none';
+            renderKuis();
+        }
+
+        // ============================================================
+        // EVENT LISTENER SEARCH
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('cari-filsuf');
+            if (searchInput) {
+                searchInput.addEventListener('input', renderFilsuf);
             }
-            if (file.size > MAX_SIZE) {
-                showToast(`"${file.name}" melebihi 20MB`, true);
-                return false;
-            }
-            return true;
         });
 
-        if (validFiles.length === 0) return;
+        // ============================================================
+        // INIT
+        // ============================================================
+        filsufHariIni();
+        aliranBeranda();
+        kutipanAcak();
 
-        uploadBtn.innerHTML = '<span class="loading-spinner"></span> Mengunggah...';
-        uploadBtn.disabled = true;
+        // Tampilkan beranda default
+        tampil('beranda');
+    </script>
 
-        const existingFiles = getFiles();
-        let successCount = 0;
-
-        validFiles.forEach((file, index) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const content = e.target.result.split(',')[1];
-                const newFile = {
-                    id: generateId(),
-                    name: file.name,
-                    size: file.size,
-                    type: file.type,
-                    content: content,
-                    uploadedAt: Date.now()
-                };
-                existingFiles.push(newFile);
-                
-                successCount++;
-                if (successCount === validFiles.length) {
-                    saveFiles(existingFiles);
-                    showToast(`${successCount} file berhasil diunggah`);
-                    uploadBtn.innerHTML = '<i class="fas fa-plus-circle"></i> Pilih file';
-                    uploadBtn.disabled = false;
-                    fileInput.value = '';
-                }
-            };
-            reader.onerror = () => {
-                showToast(`Gagal membaca ${file.name}`, true);
-                uploadBtn.innerHTML = '<i class="fas fa-plus-circle"></i> Pilih file';
-                uploadBtn.disabled = false;
-                fileInput.value = '';
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-
-    // ========== EVENT LISTENERS ==========
-    fileInput.addEventListener('change', (e) => {
-        if (fileInput.files.length) {
-            uploadFiles(fileInput.files);
-        }
-    });
-
-    uploadBtn.addEventListener('click', () => {
-        fileInput.click();
-    });
-
-    clearAllBtn.addEventListener('click', clearAllFiles);
-
-    // Drag and drop
-    dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropZone.classList.add('dragover');
-    });
-
-    dropZone.addEventListener('dragleave', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('dragover');
-    });
-
-    dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('dragover');
-        if (e.dataTransfer.files.length) {
-            uploadFiles(e.dataTransfer.files);
-        }
-    });
-
-    // ========== INIT ==========
-    renderFileList();
-    showToast('Vault siap pakai!', false);
-</script>
 </body>
 </html>
