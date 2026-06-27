@@ -194,8 +194,9 @@
         }
 
         .btn-primary:disabled {
-            opacity: 0.7;
+            opacity: 0.6;
             cursor: not-allowed;
+            transform: none;
         }
 
         .file-list-header {
@@ -370,6 +371,22 @@
             .subhead { flex-direction: column; align-items: start; gap: 12px; }
             .file-info .file-name { max-width: 120px; }
         }
+
+        .debug-console {
+            margin-top: 20px;
+            padding: 12px;
+            background: #1a1a2e;
+            color: #00ff41;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none;
+        }
+        .debug-console.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -386,7 +403,6 @@
         </div>
     </div>
 
-    <!-- Upload area -->
     <div class="upload-zone" id="dropZone">
         <i class="fas fa-cloud-upload-alt"></i>
         <h3>Seret & letakkan file</h3>
@@ -397,7 +413,6 @@
         </div>
     </div>
 
-    <!-- File list -->
     <div class="file-list-header">
         <h2><i class="fas fa-list-ul"></i> File tersimpan</h2>
         <span style="font-size:0.85rem; color:#3c5a79;" id="fileCount">0 file</span>
@@ -409,15 +424,29 @@
             <p>Belum ada file. Unggah Excel atau PDF.</p>
         </div>
     </div>
+
+    <!-- Debug Console -->
+    <div class="debug-console" id="debugConsole">
+        <strong>📋 Debug Log:</strong><br>
+        <div id="debugLog"></div>
+    </div>
 </div>
 
-<!-- Toast notification -->
 <div id="toast" class="toast">
     <i class="fas fa-check-circle"></i>
     <span id="toastMessage">File berhasil disimpan</span>
 </div>
 
 <script>
+    // ========== DEBUG FUNCTION ==========
+    function debugLog(message) {
+        const logDiv = document.getElementById('debugLog');
+        const time = new Date().toLocaleTimeString();
+        logDiv.innerHTML += `[${time}] ${message}<br>`;
+        document.getElementById('debugConsole').classList.add('show');
+        console.log(`[DEBUG] ${message}`);
+    }
+
     // ========== FIREBASE CONFIG ==========
     const firebaseConfig = {
         apiKey: "AIzaSyDLdy8_CbB7QjtByRL0If8utolYREmlGjU",
@@ -428,10 +457,32 @@
         appId: "1:416762367242:web:f02d6221ddeb672d813ef3"
     };
 
+    debugLog('Firebase Config loaded');
+
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    try {
+        firebase.initializeApp(firebaseConfig);
+        debugLog('Firebase initialized successfully');
+    } catch (error) {
+        debugLog('❌ Firebase initialization error: ' + error.message);
+        showToast('Gagal inisialisasi Firebase: ' + error.message, true);
+    }
+
     const storage = firebase.storage();
     const db = firebase.firestore();
+
+    // Test Firestore connection
+    async function testFirestore() {
+        try {
+            await db.collection('test').doc('test').set({ test: true });
+            debugLog('✅ Firestore connection successful');
+            await db.collection('test').doc('test').delete();
+        } catch (error) {
+            debugLog('❌ Firestore connection failed: ' + error.message);
+            showToast('Gagal koneksi ke Firestore: ' + error.message, true);
+        }
+    }
+    testFirestore();
 
     // ========== DOM REFS ==========
     const fileInput = document.getElementById('fileInput');
@@ -478,16 +529,18 @@
         clearTimeout(toast._timer);
         toast._timer = setTimeout(() => {
             toast.classList.remove('show');
-        }, 3200);
+        }, 5000);
     }
 
     // ========== LOAD FILES FROM FIRESTORE ==========
     async function loadFiles() {
+        debugLog('Loading files from Firestore...');
         try {
             const snapshot = await db.collection('files')
                 .orderBy('uploadedAt', 'desc')
                 .get();
             
+            debugLog(`Found ${snapshot.size} files`);
             const files = [];
             snapshot.forEach(doc => {
                 files.push({
@@ -499,7 +552,7 @@
             renderFileList(files);
             return files;
         } catch (error) {
-            console.error('Error loading files:', error);
+            debugLog('❌ Error loading files: ' + error.message);
             showToast('Gagal memuat file dari Firebase: ' + error.message, true);
             return [];
         }
@@ -545,7 +598,6 @@
             fileGrid.appendChild(item);
         });
 
-        // Attach download events
         document.querySelectorAll('.download-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const url = btn.dataset.url;
@@ -554,12 +606,11 @@
                     window.open(url, '_blank');
                     showToast(`Mengunduh ${name}`);
                 } else {
-                    showToast('URL tidak tersedia', true);
+                    showToast('URL download tidak tersedia', true);
                 }
             });
         });
 
-        // Attach delete events
         document.querySelectorAll('.delete-btn').forEach(btn => {
             btn.addEventListener('click', async (e) => {
                 const id = btn.dataset.id;
@@ -574,19 +625,20 @@
     // ========== DELETE FILE ==========
     async function deleteFile(id, storagePath) {
         try {
-            // Delete from Firebase Storage
+            debugLog(`Deleting file: ${id}`);
             if (storagePath) {
                 const fileRef = storage.ref(storagePath);
                 await fileRef.delete();
+                debugLog('File deleted from Storage');
             }
             
-            // Delete from Firestore
             await db.collection('files').doc(id).delete();
+            debugLog('File deleted from Firestore');
             
             showToast('File berhasil dihapus');
-            loadFiles(); // Refresh list
+            loadFiles();
         } catch (error) {
-            console.error('Error deleting file:', error);
+            debugLog('❌ Error deleting file: ' + error.message);
             showToast('Gagal menghapus file: ' + error.message, true);
         }
     }
@@ -594,70 +646,83 @@
     // ========== UPLOAD FILE ==========
     async function uploadFiles(fileList) {
         const filesArray = Array.from(fileList);
+        debugLog(`Processing ${filesArray.length} files`);
+        
         const validFiles = filesArray.filter(file => {
             const ext = file.name.split('.').pop().toLowerCase();
             const validExt = ['xlsx', 'xls', 'pdf'].includes(ext);
             if (!validExt) {
                 showToast(`"${file.name}" bukan Excel atau PDF`, true);
+                debugLog(`❌ Invalid file type: ${file.name} (${ext})`);
                 return false;
             }
             if (file.size > 20 * 1024 * 1024) {
                 showToast(`"${file.name}" melebihi 20MB`, true);
+                debugLog(`❌ File too large: ${file.name} (${file.size} bytes)`);
                 return false;
             }
+            debugLog(`✅ Valid file: ${file.name} (${formatSize(file.size)})`);
             return true;
         });
 
-        if (validFiles.length === 0) return;
+        if (validFiles.length === 0) {
+            debugLog('No valid files to upload');
+            return;
+        }
 
-        // Show loading state
         uploadBtn.innerHTML = '<span class="loading-spinner"></span> Mengunggah...';
         uploadBtn.disabled = true;
 
         let successCount = 0;
-        let errorCount = 0;
+        let failCount = 0;
 
         try {
             for (const file of validFiles) {
                 try {
+                    debugLog(`Uploading: ${file.name}`);
                     const timestamp = Date.now();
                     const storagePath = `files/${timestamp}_${file.name}`;
                     const storageRef = storage.ref(storagePath);
                     
-                    // Upload to Firebase Storage
-                    showToast(`Mengunggah ${file.name}...`);
+                    debugLog('Uploading to Storage...');
                     const snapshot = await storageRef.put(file);
-                    const downloadURL = await snapshot.ref.getDownloadURL();
+                    debugLog('✅ Upload to Storage successful');
                     
-                    // Save metadata to Firestore
+                    debugLog('Getting download URL...');
+                    const downloadURL = await snapshot.ref.getDownloadURL();
+                    debugLog(`✅ Download URL: ${downloadURL}`);
+                    
+                    debugLog('Saving to Firestore...');
                     await db.collection('files').add({
                         fileName: file.name,
                         fileSize: file.size,
-                        fileType: file.type || 'application/octet-stream',
+                        fileType: file.type,
                         storagePath: storagePath,
                         downloadURL: downloadURL,
                         uploadedAt: firebase.firestore.FieldValue.serverTimestamp(),
                         source: 'github+firebase'
                     });
+                    debugLog('✅ Firestore save successful');
                     
                     successCount++;
                     showToast(`"${file.name}" berhasil diunggah`);
                 } catch (fileError) {
-                    errorCount++;
-                    console.error('Error uploading file:', fileError);
-                    showToast(`Gagal mengunggah "${file.name}": ${fileError.message}`, true);
+                    debugLog(`❌ Error uploading ${file.name}: ${fileError.message}`);
+                    failCount++;
+                    showToast(`Gagal mengunggah "${file.name}"`, true);
                 }
             }
             
             if (successCount > 0) {
-                loadFiles(); // Refresh list
+                debugLog(`Upload complete: ${successCount} success, ${failCount} failed`);
+                loadFiles();
             }
             
-            if (errorCount > 0 && successCount === 0) {
-                showToast('Semua file gagal diunggah', true);
+            if (failCount > 0 && successCount === 0) {
+                showToast('Gagal mengunggah semua file', true);
             }
         } catch (error) {
-            console.error('Upload error:', error);
+            debugLog('❌ Upload error: ' + error.message);
             showToast('Gagal mengunggah file: ' + error.message, true);
         } finally {
             uploadBtn.innerHTML = '<i class="fas fa-plus-circle"></i> Pilih file';
@@ -669,15 +734,16 @@
     // ========== EVENT LISTENERS ==========
     fileInput.addEventListener('change', (e) => {
         if (fileInput.files.length) {
+            debugLog(`File input changed: ${fileInput.files.length} files selected`);
             uploadFiles(fileInput.files);
         }
     });
 
     uploadBtn.addEventListener('click', () => {
+        debugLog('Upload button clicked');
         fileInput.click();
     });
 
-    // Drag and drop
     dropZone.addEventListener('dragover', (e) => {
         e.preventDefault();
         dropZone.classList.add('dragover');
@@ -692,6 +758,7 @@
         e.preventDefault();
         dropZone.classList.remove('dragover');
         if (e.dataTransfer.files.length) {
+            debugLog(`Drop event: ${e.dataTransfer.files.length} files dropped`);
             uploadFiles(e.dataTransfer.files);
         }
     });
@@ -699,6 +766,7 @@
     // ========== INIT ==========
     loadFiles();
     showToast('Vault siap · GitHub + Firebase terintegrasi', false);
+    debugLog('Application initialized');
 </script>
 </body>
 </html>
